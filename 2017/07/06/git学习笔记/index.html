@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Record&amp;Think"/>
+        <meta property="og:title" content="gitѧϰ�ʼ�part1"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2017 - Record&amp;Think</title>
+    <title>gitѧϰ�ʼ�part1 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -131,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -141,32 +139,110 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2017</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2017/07/06/git学习笔记/">
-        <span class="archive-date">
-            Jul 2017
-        </span>
-        gitѧϰ�ʼ�part1
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/07/06/git学习笔记/">
+                gitѧϰ�ʼ�part1
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-06</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/git/">git</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="��ʼ��"><a href="#��ʼ��" class="headerlink" title="��ʼ��"></a>��ʼ��</h1><h2 id="�u�����"><a href="#�u�����" class="headerlink" title="�û�����"></a>�û�����</h2><ul>
+<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>�����û���</strong></p>
+</li>
+<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>�����û�����</strong></p>
+</li>
+</ul>
+<p><em>ע��–global��ȫ�ֲ���������������������ʾ����̨���������е�Git�ֿⶼ��ʹ���������ã���ȻҲ���Զ�ĳ���ֿ�ָ����ͬ���û�����Email��ַ��</em></p>
+<h2 id="�������ذ汾��"><a href="#�������ذ汾��" class="headerlink" title="�������ذ汾��"></a>�������ذ汾��</h2><ol>
+<li><code>mkdir folder-name</code>    <strong>�������ذ汾���ļ���</strong></li>
+<li><code>cd folder-name</code> <strong>�����汾��</strong></li>
+<li><code>pwd</code> <strong>��ʾ��ǰĿ¼����������</strong></li>
+<li><code>git init</code> <strong>��ʼ���汾��</strong><br><em>����Ӧ���ļ��ŵ��汾���оͺ�</em></li>
+</ol>
+<h2 id="�������ύ"><a href="#�������ύ" class="headerlink" title="�������ύ"></a>�������ύ</h2><ul>
+<li><code>git add file-name(���ϸ�ʽ��)</code>  <strong>���ļ����ӵ��ֿ�</strong></li>
+</ul>
+<p><em>git add .��ʾ�������ļ��ͱ༭�����ļ�, git add -A��ʾ������������</em></p>
+<ul>
+<li><code>git commit -m &quot;�ύ˵��&quot;</code> <strong>������add���ļ��ύ���ֿ�</strong></li>
+</ul>
+<h1 id="�汾����"><a href="#�汾����" class="headerlink" title="�汾����"></a>�汾����</h1><ul>
+<li><p><code>git log</code> <strong>��ʾ�ύ��־</strong></p>
+<p> <em>���ύ�ߣ��ύʱ�䣬�ύ˵��������–pretty=oneline�������Լ�����ʾ��ʽ</em></p>
+</li>
+<li><p><code>git reset --hard HEAD^</code> <strong>�˻���һ�汾</strong></p>
+<p><em>HEAD��ʾ��ǰ�汾��HEAD^��ʾ��һ�汾��Ҳ������git log �еİ汾��ǰ��λ��ʾ��Ӧ�İ汾</em></p>
+</li>
+<li><code>git reflog</code> <strong>�鿴��ʷ����</strong></li>
+</ul>
+<h2 id="git����g��"><a href="#git����g��" class="headerlink" title="git����ģ��"></a>git����ģ��</h2><ul>
+<li><p>������(Working Directory)</p>
+<p>  <strong>����������������mkdir��������ļ��У����Ƕ��ļ����޸ľ�����������</strong></p>
+</li>
+<li><p>�汾��(Repository)</p>
+</li>
+</ul>
+<p><strong>�汾������.git�ļ��У�����Ϊ�ݴ���(stage/index)��master��֧,<br><code>git add</code> ���ļ����ӵ��ݴ���,<br><code>git commit</code> ���ļ����ӵ��汾��</strong></p>
+<ul>
+<li><code>git status</code> <strong>�鿴�ֿ�״̬</strong></li>
+</ul>
+<h2 id="������ɾ��"><a href="#������ɾ��" class="headerlink" title="������ɾ��"></a>������ɾ��</h2><ul>
+<li><p><code>git checkout --file-name</code> <strong>�����޸ģ����������и��ļ��˻ص���һ��git add ���� git commit��״̬</strong></p>
+</li>
+<li><p><code>rm file-name</code> <strong>ɾ���������ļ�</strong></p>
+</li>
+</ul>
+<h1 id="Զ�ֿ̲�"><a href="#Զ�ֿ̲�" class="headerlink" title="Զ�ֿ̲�"></a>Զ�ֿ̲�</h1><h2 id="����"><a href="#����" class="headerlink" title="����"></a>����</h2><p><em>ע����Ҫgithub�˺�</em></p>
+<ol>
+<li><code>ssh-keygen -t rsa -C &quot;�û�����&quot;</code><br><strong>����ssh-key��ȷ����ȫ��</strong> </li>
+</ol>
+<p><em>&gt;ʹ��������Ĭ��ֵ���ɣ���������KeyҲ�������ھ���Ŀ�ģ�����Ҳ�����������롣����һ��˳���Ļ����������û���Ŀ¼���ҵ�.sshĿ¼��������id_rsa��id_rsa.pub�����ļ�������������SSHKey����Կ�ԣ�id_rsa��˽Կ������й¶��ȥ��id_rsa.pub�ǹ�Կ�����Է��ĵظ����κ��ˣ�Ȼ����id_rsa.pub������Կ���ӵ�github��(��ѩ����git�̳�)</em></p>
+<ol>
+<li><p><code>$ git remote add origin git@����giyhub�ֿ���ַ</code>            <strong>�ѱ��ؿ���GitHub�ϲֿ�����</strong></p>
+</li>
+<li><p><code>$ git push origin master</code> <strong>�ѱ��ؿ����͵�github��</strong></p>
+</li>
+</ol>
+<p><em>��һ��ʹ��push����Ҫ <code>��id_rsa.pub������Կ���ӵ�github��</code></em></p>
+<h2 id="��¡"><a href="#��¡" class="headerlink" title="��¡"></a>��¡</h2><p><code>git clone git@����giyhub�ֿ���ַ</code></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/07/01/hexo-github搭建博客的小坑/">
-        <span class="archive-date">
-            Jul 2017
-        </span>
-        windows环境下hexo-github搭建博客的小坑
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
 
