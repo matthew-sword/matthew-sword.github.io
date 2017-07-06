@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Record&amp;Think"/>
+        <meta property="og:title" content="git学习part1"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>hexo教程 - Record&amp;Think</title>
+    <title>git学习part1 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -131,9 +131,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -141,23 +139,106 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">hexo教程</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2017/07/01/hexo-github搭建博客的小坑/">
-        <span class="archive-date">
-            Jul 2017
-        </span>
-        windows环境下hexo-github搭建博客的小坑
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/07/06/git学习part1/">
+                git学习part1
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-06</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><ul>
+<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>设置用户名</strong></p>
+</li>
+<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>设置用户邮箱</strong></p>
+</li>
+</ul>
+<p><em>注：–global是全局参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</em></p>
+<h2 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h2><ol>
+<li><code>mkdir folder-name</code>    <strong>创建本地版本库文件夹</strong></li>
+<li><code>cd folder-name</code> <strong>进入版本库</strong></li>
+<li><code>pwd</code> <strong>显示当前目录，避免出错</strong></li>
+<li><code>git init</code> <strong>初始化版本库</strong><br><em>把相应的文件放到版本库中就好</em></li>
+</ol>
+<h2 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h2><ul>
+<li><code>git add file-name(带上格式名)</code>  <strong>把文件添加到仓库</strong></li>
+</ul>
+<p><em>git add .表示添加新文件和编辑过的文件, git add -A表示添加所有内容</em></p>
+<ul>
+<li><code>git commit -m &quot;提交说明&quot;</code> <strong>把所有add的文件提交到仓库</strong></li>
+</ul>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ul>
+<li><p><code>git log</code> <strong>显示提交日志</strong></p>
+<p> <em>即提交者，提交时间，提交说明，添加–pretty=oneline参数可以简化显示方式</em></p>
+</li>
+<li><p><code>git reset --hard HEAD^</code> <strong>退回上一版本</strong></p>
+<p><em>HEAD表示当前版本，HEAD^表示上一版本，也可以用git log 中的版本号前几位表示对应的版本</em></p>
+</li>
+<li><code>git reflog</code> <strong>查看历史命令</strong></li>
+</ul>
+<h2 id="git工作模型"><a href="#git工作模型" class="headerlink" title="git工作模型"></a>git工作模型</h2><ul>
+<li><p>工作区(Working Directory)</p>
+<p>  <strong>工作区就是我们用mkdir命令创建的文件夹，我们对文件的修改就在这里进行</strong></p>
+</li>
+<li><p>版本库(Repository)</p>
+</li>
+</ul>
+<p><strong>版本库就是.git文件夹，它分为暂存区(stage/index)和master分支,<br><code>git add</code> 把文件添加到暂存区,<br><code>git commit</code> 把文件添加到版本库</strong></p>
+<ul>
+<li><code>git status</code> <strong>查看仓库状态</strong></li>
+</ul>
+<h2 id="撤销与删除"><a href="#撤销与删除" class="headerlink" title="撤销与删除"></a>撤销与删除</h2><ul>
+<li><p><code>git checkout --file-name</code> <strong>舍弃修改，将工作区中该文件退回到上一次git add 或者 git commit的状态</strong></p>
+</li>
+<li><p><code>rm file-name</code> <strong>删除工作区文件</strong></p>
+</li>
+</ul>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p><em>注：需要github账号</em></p>
+<ol>
+<li><code>ssh-keygen -t rsa -C &quot;用户邮箱&quot;</code><br><strong>创建ssh-key，确保安全性</strong> </li>
+</ol>
+<p><em>&gt;使用命令的默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSHKey的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人，然后把id_rsa.pub里的密钥添加到github中(廖雪峰的git教程)</em></p>
+<ol>
+<li><p><code>$ git remote add origin git@你的giyhub仓库地址</code>            <strong>把本地库与GitHub上仓库关联</strong></p>
+</li>
+<li><p><code>$ git push origin master</code> <strong>把本地库推送到github上</strong></p>
+</li>
+</ol>
+<p><em>第一次使用push命令要 <code>把id_rsa.pub里的密钥添加到github中</code></em></p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p><code>git clone git@你的giyhub仓库地址</code></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
         </section>
+
     </div>
 </div>
 
