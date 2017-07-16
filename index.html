@@ -151,6 +151,203 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/07/15/php基础特性/">
+                php基础特性
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/php/">php</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="php基础特性"><a href="#php基础特性" class="headerlink" title="php基础特性"></a>php基础特性</h1><h2 id="php-标记符-amp-注释"><a href="#php-标记符-amp-注释" class="headerlink" title="php 标记符&amp;注释"></a>php 标记符&amp;注释</h2><ul>
+<li><p>&lt;?php  ?&gt;</p>
+</li>
+<li><p>&lt;?  ?&gt;</p>
+</li>
+<li><p>&lt;%  %&gt;   </p>
+</li>
+</ul>
+<p>​             <em>注释</em></p>
+<ul>
+<li><p>//</p>
+</li>
+<li><p>/<em> </em>/</p>
+</li>
+</ul>
+<ul>
+<li>#</li>
+</ul>
+<h2 id="php标量数据类型"><a href="#php标量数据类型" class="headerlink" title="php标量数据类型"></a>php标量数据类型</h2><ul>
+<li>boolean</li>
+<li>string</li>
+<li>intergrt</li>
+<li>float<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3></li>
+<li><p>$a = ‘string’</p>
+</li>
+<li><p>$a = “string”</p>
+<ul>
+<li><p>&lt;&lt;&lt; string-name<br>  格式化文本</p>
+<pre><code> string-name
+
+**双引号 定界符(&lt;&lt;&lt;)包含的变量自动替换成变量值 ，简单字符串尽量用单引号**
+</code></pre><h3 id="integer"><a href="#integer" class="headerlink" title="integer"></a>integer</h3></li>
+</ul>
+</li>
+<li><p>八进制 ：0开头</p>
+</li>
+<li><p>十六进制；0x开头</p>
+</li>
+</ul>
+<h2 id="php复合数据类型"><a href="#php复合数据类型" class="headerlink" title="php复合数据类型"></a>php复合数据类型</h2><p> ###array</p>
+<ul>
+<li>$array = (“val1”,”val2”…)</li>
+<li>$array[key] = “val”;</li>
+<li>array(key1=&gt;val1, key2=&gt;val2…)<h3 id="检测数据类型"><a href="#检测数据类型" class="headerlink" title="检测数据类型"></a>检测数据类型</h3><ul>
+<li>is_bool</li>
+<li>is_string</li>
+<li>is_array…<h2 id="php数据输出"><a href="#php数据输出" class="headerlink" title="php数据输出"></a>php数据输出</h2>###print &amp; echo<br>print一次只输出一个字符串，echo可以输出多个，不同字符串之间用 . 连接。<strong>echo前不能用@错误屏蔽符。print是一个有返回值的函数，可以作为表达式，echo不行</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="php命名规则"><a href="#php命名规则" class="headerlink" title="php命名规则"></a>php命名规则</h2><ul>
+<li>类名&amp;文件：驼峰法</li>
+<li>常量：大写+下划线</li>
+<li>变量&amp;函数：小写+下划线</li>
+<li>数组：单词复数</li>
+</ul>
+<p>  ​</p>
+<p>  ​</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/15/php变量和表达式/">
+                php运算符和表达式
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-15</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/php/">php</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="php运算符和表达式"><a href="#php运算符和表达式" class="headerlink" title="php运算符和表达式"></a>php运算符和表达式</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
+</li>
+<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
+</li>
+<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
+</li>
+</ul>
+<p>###预定义常量</p>
+<ul>
+<li>__FILE__：当前php文件的绝对路径</li>
+<li>__LINE__：当前行数</li>
+<li>PHP_VERSION：当前php版本</li>
+<li>PHP-OS：当前操作系统</li>
+<li>…</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
+<li><p>直接赋值</p>
+</li>
+<li><p>传值赋值</p>
+</li>
+<li><p><strong>引用赋值</strong></p>
+<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
+<p> <code>$str1 = &#39;hello&#39;;</code></p>
+<p><code>$str2 = &amp; $str1;</code></p>
+</li>
+</ul>
+<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
+<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
+<p>输出：good good study, day day up。</p>
+<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
+<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
+<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
+<li>$_POST</li>
+<li>$_GET</li>
+<li>…</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
+<p><code>$a = $a.$b;</code></p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
+</li>
+<li><p>|| 或者 or：同C语言||</p>
+</li>
+<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
+</li>
+</ul>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
+<li>===：全等（值相等且类型相等）</li>
+<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
+</ul>
+<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
+<li>bool: true = 1, false = 0;</li>
+<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
+<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
+<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
+</ul>
+<p>###强制转换</p>
+<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>浮点型转换为整型时小数部分将被舍去</p>
+</li>
+<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
+</li>
+</ul>
+<p>###使用转换函数</p>
+<ul>
+<li><p>intval (mixed var)</p>
+</li>
+<li><p>floatval (mixed var)</p>
+</li>
+<li><p>strval (mixed var)</p>
+</li>
+<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
+<p>​</p>
+</li>
+</ul>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/07/14/DO-vps+ss 科学上网/">
                 DO-vps+ss 科学上网
             </a>
@@ -400,19 +597,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/07/15/php基础特性/">php基础特性</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/07/15/php变量和表达式/">php运算符和表达式</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/07/14/DO-vps+ss 科学上网/">DO-vps+ss 科学上网</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2017/07/09/git学习part2/">git学习part2</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/07/06/git学习part1/">git学习part1</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/07/01/hexo-github搭建博客的小坑/">windows环境下hexo-github搭建博客</a>
             </li>
             
         </ul>
@@ -435,6 +632,10 @@
         
         <li>
             <a class="footer-post" href="/categories/git/">git</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/php/">php</a>
         </li>
         
     </ul>
