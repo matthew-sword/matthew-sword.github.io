@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="php运算符和表达式"/>
+        <meta property="og:title" content="php函数&amp;文件"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>php运算符和表达式 - Record&amp;Think</title>
+    <title>php函数&amp;文件 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -148,13 +148,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2017/07/15/php变量和表达式/">
-                php运算符和表达式
+            <a href="/2017/09/29/php-part5-函数&文件/">
+                php函数&文件
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-07-15</span>
+                <span class="date">2017-09-29</span>
             
             
             
@@ -171,85 +171,42 @@
         
 
         <!-- Post Content -->
-        <h1 id="php运算符和表达式"><a href="#php运算符和表达式" class="headerlink" title="php运算符和表达式"></a>php运算符和表达式</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
-<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
-</li>
-<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
-</li>
-<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
-</li>
-</ul>
-<p>###预定义常量</p>
+        <h1 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h1><p>分类：</p>
 <ul>
-<li>__FILE__：当前php文件的绝对路径</li>
-<li>__LINE__：当前行数</li>
-<li>PHP_VERSION：当前php版本</li>
-<li>PHP-OS：当前操作系统</li>
-<li>…</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
-<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
-<li><p>直接赋值</p>
+<li><p>内置函数</p>
 </li>
-<li><p>传值赋值</p>
+<li><p>自定义函数</p>
 </li>
-<li><p><strong>引用赋值</strong></p>
-<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
-<p> <code>$str1 = &#39;hello&#39;;</code></p>
-<p><code>$str2 = &amp; $str1;</code></p>
+<li><p>变量函数</p>
 </li>
 </ul>
-<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
-<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
-<p>输出：good good study, day day up。</p>
-<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
-<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
-<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
-<li>$_POST</li>
-<li>$_GET</li>
-<li>…</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
-<p><code>$a = $a.$b;</code></p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
+<p>##自定义函数</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p><code>function func_name(参数1, 参数2,...可选参数1 = default1, 可选参数2 = default2,...)</code> 可选参数放在参数列表的最右端。</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><p>按值传递 <code>func($var);</code></p>
 </li>
-<li><p>|| 或者 or：同C语言||</p>
-</li>
-<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
+<li><p>引用传递 <code>func(&amp;$var);</code></p>
 </li>
 </ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li>===：全等（值相等且类型相等）</li>
-<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
-</ul>
-<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
-<li>bool: true = 1, false = 0;</li>
-<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
-<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
-<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
-</ul>
-<p>###强制转换</p>
-<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
-<p><strong>注意</strong></p>
+<p>###变量作用域</p>
 <ul>
-<li><p>浮点型转换为整型时小数部分将被舍去</p>
+<li><p>全局变量：定义在函数外的变量</p>
 </li>
-<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
+<li><p>局部变量：定义在函数内部的变量</p>
 </li>
-</ul>
-<p>###使用转换函数</p>
-<ul>
-<li><p>intval (mixed var)</p>
-</li>
-<li><p>floatval (mixed var)</p>
-</li>
-<li><p>strval (mixed var)</p>
-</li>
-<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
-<p>​</p>
+<li><p>静态变量：用static声明的变量，同C语言</p>
+<p><strong>要在函数内部引用全局变量，需要用global声明</strong></p>
 </li>
 </ul>
+<hr>
+<p>##变量函数</p>
+<p>如果变量后面有括号，php将寻找与变量值相同函数并执行。</p>
+<hr>
+<p>#php文件</p>
+<h2 id="include-amp-require"><a href="#include-amp-require" class="headerlink" title="include&amp;require"></a>include&amp;require</h2><p><code>include(&quot;file_name&quot;)</code><br><code>require(&quot;file_name&quot;)</code></p>
+<p><strong>区别</strong><br>​        代码执行到include时，php将外部文件引用并读取文件内容。当文件执行错误时，php发出警告，并继续执行后面语句。</p>
+<p>​        require，在php文件执行之前，php解释器先扫描文件，把所有引用文件读取重新合成新的php文件。</p>
+<h2 id="include-once-amp-require-once"><a href="#include-once-amp-require-once" class="headerlink" title="include_once&amp;require_once"></a>include_once&amp;require_once</h2><p>作用同上，区别在于这两个语句会检查引用文件的唯一性，对所有文件只引用一次。</p>
 
     </div>
 

@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="php运算符和表达式"/>
+        <meta property="og:title" content="php语句和数组"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>php运算符和表达式 - Record&amp;Think</title>
+    <title>php语句和数组 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -148,13 +148,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2017/07/15/php变量和表达式/">
-                php运算符和表达式
+            <a href="/2017/09/29/php-part3-语句与数组/">
+                php语句和数组
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-07-15</span>
+                <span class="date">2017-09-29</span>
             
             
             
@@ -171,82 +171,81 @@
         
 
         <!-- Post Content -->
-        <h1 id="php运算符和表达式"><a href="#php运算符和表达式" class="headerlink" title="php运算符和表达式"></a>php运算符和表达式</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
-<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
+        <h1 id="php语句和数组"><a href="#php语句和数组" class="headerlink" title="php语句和数组"></a>php语句和数组</h1><h2 id="php语句"><a href="#php语句" class="headerlink" title="php语句"></a>php语句</h2><ul>
+<li><p>foreach</p>
+<p>一般用于数组遍历，用法：</p>
+<p><code>foreach(array_name as $value)</code>  或者</p>
+<p><code>foreach(array_name as $key =&gt; $value)</code></p>
+<p><code>$value</code>为数组元素的值，<code>$key</code>为数组下标。</p>
 </li>
-<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
-</li>
-<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
+<li><p>exit</p>
+<p>exit用于终止整个php程序的执行，exit之后的语句都不会被执行。用法：</p>
+<p><code>exit(&quot;退出信息&quot;);</code></p>
 </li>
 </ul>
-<p>###预定义常量</p>
+<hr>
+<h2 id="php数组"><a href="#php数组" class="headerlink" title="php数组"></a>php数组</h2><h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><ul>
+<li><p><strong>数字索引数组</strong>：下标是数字</p>
+</li>
+<li><p><strong>关联数组</strong>：数组下标含有字符串（数字字符串混合也行）；<strong>如果下标为字符串，则要加上 ‘’ 或者””</strong></p>
+</li>
+</ul>
+<p>###数组创建方式</p>
 <ul>
-<li>__FILE__：当前php文件的绝对路径</li>
-<li>__LINE__：当前行数</li>
-<li>PHP_VERSION：当前php版本</li>
-<li>PHP-OS：当前操作系统</li>
-<li>…</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
-<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
-<li><p>直接赋值</p>
+<li><p>直接赋值法</p>
+<p><code>$arr[key] =value</code><br><code>$arr[] = value</code><br>其中key为int或者字符串数据，value可以为任何值，包括数组类型（此时$arr为二维数组）</p>
 </li>
-<li><p>传值赋值</p>
+<li><p>使用array()函数<br> ​     <code>$arr = array(&#39;key1&#39;=&gt;&#39;value1&#39;,&#39;kay2&#39;=&gt;&#39;value2&#39;...);</code>使用array()函数时，可以省略键名（key）。如果key省略，则默认以0开始。</p>
 </li>
-<li><p><strong>引用赋值</strong></p>
-<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
-<p> <code>$str1 = &#39;hello&#39;;</code></p>
-<p><code>$str2 = &amp; $str1;</code></p>
-</li>
-</ul>
-<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
-<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
-<p>输出：good good study, day day up。</p>
-<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
-<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
-<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
-<li>$_POST</li>
-<li>$_GET</li>
-<li>…</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
-<p><code>$a = $a.$b;</code></p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
-</li>
-<li><p>|| 或者 or：同C语言||</p>
-</li>
-<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
-</li>
-</ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li>===：全等（值相等且类型相等）</li>
-<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
-</ul>
-<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
-<li>bool: true = 1, false = 0;</li>
-<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
-<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
-<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
-</ul>
-<p>###强制转换</p>
-<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
-<p><strong>注意</strong></p>
+<li><p>创建二维数组</p>
+<p> ​       <em>二维数组的元素本身是数组</em></p>
 <ul>
-<li><p>浮点型转换为整型时小数部分将被舍去</p>
-</li>
-<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
+<li><p>直接赋值法</p>
+<p><code>$arr[0] = array(&#39;key1&#39;=&gt;&#39;value1&#39;...)</code></p>
+<p><code>$arr[1] = array(&#39;key1&#39;=&gt;&#39;value1&#39;...)</code></p>
+<ul>
+<li>使用array()函数<br> `$str = array( <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">keys1 =&gt; <span class="keyword">array</span>(<span class="string">'key1'</span>=&gt;<span class="string">'value1'</span>...)</div><div class="line">keys2 =&gt;  <span class="keyword">array</span>(<span class="string">'key1'</span>=&gt;<span class="string">'value1'</span>...))`</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>###使用转换函数</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###数组遍历与输出</p>
 <ul>
-<li><p>intval (mixed var)</p>
+<li><p>使用foreach（具体见前文）</p>
 </li>
-<li><p>floatval (mixed var)</p>
+<li><p>使用list() 和 each()</p>
+<p> <code>list($key,$value) =each($array)</code>，list()将数组中的值赋给一些变量，each()返回当前数组中指针所指的键名和对应值，<strong>并将指针移到下一位。</strong></p>
 </li>
-<li><p>strval (mixed var)</p>
+</ul>
+<ul>
+<li><p>print_r(mixed expression)</p>
+<p>如果变量为非数组类型，则直接输出其本身，否则按键值对顺序显示数组</p>
+<ul>
+<li>var_dump()</li>
+</ul>
+<p>输出数组或对象，元素数量以及每个字符串长度。还能以缩进方式输出数组或对象的结构</p>
 </li>
-<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
+</ul>
+<hr>
+<h2 id="数组函数"><a href="#数组函数" class="headerlink" title="数组函数"></a>数组函数</h2><h3 id="1-创建函数"><a href="#1-创建函数" class="headerlink" title="1.创建函数"></a>1.创建函数</h3><ul>
+<li><p><strong>range(int low, int high, int step(可选))</strong></p>
+<p>low：数组元素最小值，high：数组元素最大值，step：数值进步数，默认为1</p>
+</li>
+<li><p><strong>array_combine( key_array, value_array)</strong></p>
+<p>将两个元素个数相等的数组合并成一个数组，如果两个数组元素个数不等或者为空，返回false。key_array做索引，value_array做数组值。</p>
+</li>
+<li><p><strong>array_fill( int start_index, int num, mixed value)</strong></p>
+<p>用同一个值填充数组。start_index：起始键名，num：填充数&gt;0，value：用来填充的值。</p>
+</li>
+<li><p><strong>array_pad( array input, int pad_size, pad_value)</strong></p>
+<p>用指定值将数组填充到指定长度。input：输入数组，pad_size：填充长度，正数从左边开始填充，负数从右边开始，pad_value：填充值。</p>
+</li>
+<li><p><strong>explode(separator, string, int limit（可选）)</strong></p>
+<p>按照指定规则对一串字符串进行分割，</p>
+<p>​</p>
+<p>​</p>
 <p>​</p>
 </li>
 </ul>

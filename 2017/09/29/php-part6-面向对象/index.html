@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="php运算符和表达式"/>
+        <meta property="og:title" content="php面向对象"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>php运算符和表达式 - Record&amp;Think</title>
+    <title>php面向对象 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -148,13 +148,13 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2017/07/15/php变量和表达式/">
-                php运算符和表达式
+            <a href="/2017/09/29/php-part6-面向对象/">
+                php面向对象
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-07-15</span>
+                <span class="date">2017-09-29</span>
             
             
             
@@ -171,84 +171,103 @@
         
 
         <!-- Post Content -->
-        <h1 id="php运算符和表达式"><a href="#php运算符和表达式" class="headerlink" title="php运算符和表达式"></a>php运算符和表达式</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
-<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
-</li>
-<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
-</li>
-<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
+        <p>#php面向对象</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li><strong>类（class）：</strong>属性和方法的集合。（可以简单理解为带有函数的结构体）</li>
+<li><strong>对象：</strong>类的实例化。</li>
+<li>三大特点：<strong>封装、继承、多态</strong>。<ul>
+<li>封装：对类的使用和实现分离，用户只需要掌握接口。</li>
+<li>继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。</li>
+<li>多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。</li>
+</ul>
 </li>
 </ul>
-<p>###预定义常量</p>
+<hr>
+<p>##类的操作</p>
+<p>###声明</p>
 <ul>
-<li>__FILE__：当前php文件的绝对路径</li>
-<li>__LINE__：当前行数</li>
-<li>PHP_VERSION：当前php版本</li>
-<li>PHP-OS：当前操作系统</li>
-<li>…</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
-<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
-<li><p>直接赋值</p>
-</li>
-<li><p>传值赋值</p>
-</li>
-<li><p><strong>引用赋值</strong></p>
-<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
-<p> <code>$str1 = &#39;hello&#39;;</code></p>
-<p><code>$str2 = &amp; $str1;</code></p>
-</li>
-</ul>
-<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
-<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
-<p>输出：good good study, day day up。</p>
-<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
-<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
-<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
-<li>$_POST</li>
-<li>$_GET</li>
-<li>…</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
-<p><code>$a = $a.$b;</code></p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
-</li>
-<li><p>|| 或者 or：同C语言||</p>
-</li>
-<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
-</li>
-</ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li>===：全等（值相等且类型相等）</li>
-<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
-</ul>
-<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
-<li>bool: true = 1, false = 0;</li>
-<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
-<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
-<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
-</ul>
-<p>###强制转换</p>
-<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
-<p><strong>注意</strong></p>
+<li><p>定义类：<code>权限修饰符 class 类名{</code><br>​                               <code>类体;</code><br>​                                                       <code>}</code></p>
 <ul>
-<li><p>浮点型转换为整型时小数部分将被舍去</p>
-</li>
-<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
-</li>
+<li>权限修饰符：<code>public  private  protected</code></li>
+<li>成员属性：也称成员变量，用于记录类的属性信息。php中可以为标量类型和复合类型。不能为空类型和资源。</li>
+<li>成员常量：<strong>关键字<code>const</code>。</strong>eg.<code>const PI = 3.14159</code>。常量的输出可以不需要类的实例化<code>类名::常量名</code>。</li>
+<li>成员方法：也称成员函数，同一般函数。</li>
 </ul>
-<p>###使用转换函数</p>
-<ul>
-<li><p>intval (mixed var)</p>
-</li>
-<li><p>floatval (mixed var)</p>
-</li>
-<li><p>strval (mixed var)</p>
-</li>
-<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
 <p>​</p>
 </li>
+</ul>
+<h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><ul>
+<li><p>对象的创建：<code>$对象名 = new 类名([参数]);</code></p>
+</li>
+<li><p>类成员的访问：<code>$对象名-&gt;成员属性;</code><br>​                             <code>$对象名-&gt;成员方法();</code></p>
+</li>
+<li><p>$this操作符：表示对变量本身的引用eg. <code>\$this-&gt;属性; \$this-&gt;方法;</code>  <strong>属性名前没有\$</strong></p>
+</li>
+</ul>
+<p>###构造&amp;析构</p>
+<ul>
+<li>​构造方法：对象创建成功后第一个被对象自动调用的方法。如果没有声明构造方法，系统会自动生成一个没有参数，且内容为空的构造方法,一个类只有一个构造方法。格式<code>function __construct();</code>         </li>
+<li>析构方法：为创建对象的可选方法，一般是完成对象销毁前的清理工作。</li>
+</ul>
+<hr>
+<p>##封装</p>
+<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><ul>
+<li>public ：可以在程序的任何地点被其它类和对象调用，子类可以继承父类的公共成员。</li>
+<li>private:只能在所属类的内部被调用和修改，外部类（即使子类）不能调用修改。</li>
+<li>protected:只有本类和子类可以调用它，其它地方不行。</li>
+</ul>
+<h2 id="​-权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public"><a href="#​-权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public" class="headerlink" title="​           权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public"></a>​           <strong>权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public</strong></h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li><p>关键字extends：<code>class 子类名 extends 父类名 { 类体; }</code>子类可以拥有自己和父类的所有属性。</p>
+</li>
+<li><p>::操作符：<code>::</code>可以在没有声明任何实例的情况下访问类成员。</p>
+<p>​                用法：<code>关键字 ::  变量/常量/方法;</code>其中关键字有如下三种：                         </p>
+<ul>
+<li>parent：调用父类成员</li>
+<li>self：调用自身成员</li>
+<li>类名：调用此类的成员</li>
+</ul>
+</li>
+<li><p>覆盖父类方法：在子类中对父类的同名方法进行重写，<strong>此方法必须和父类方法有相同的名称，参数，返回值。</strong></p>
+</li>
+<li><p>关键字static：用于修饰成员变量和成员函数。静态变量和静态函数可以不用对象而使用类名直接访问。<strong>静态变量</strong>相当于储存在类中的全局变量用法<code>类名 ::$静态变量</code>，静态成员可以在对象被销毁后继续保留，方便下一次调用；<strong>静态函数</strong>只能使用静态变量，<code>类名:: 静态函数(...);</code></p>
+<p>​                                </p>
+</li>
+</ul>
+<hr>
+<h2 id="抽象类-amp-接口"><a href="#抽象类-amp-接口" class="headerlink" title="抽象类&amp;接口"></a>抽象类&amp;接口</h2><p>抽象类和接口是不能被实例化的特殊类。</p>
+<p>###抽象类</p>
+<p>抽象类是不能被实例化的特殊类，只能作为其它类的父类使用。用法</p>
+<p><code>abstract class 类名{</code></p>
+<p><code>//抽象成员变量...</code></p>
+<p><code>abstract function func1();</code></p>
+<p><code>abstract function func2();</code></p>
+<p>​                                     <code>}</code></p>
+<p>抽象类至少包含一个抽象函数；抽象函数没有函数体，只有声明（末尾加分号）其功能在子类中实现；</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>php只支持单继承，要实现多重继承需要用到接口。</p>
+<ul>
+<li>声明</li>
+</ul>
+<p><code>interface 接口名{</code></p>
+<p><code>//成员常量</code></p>
+<p><code>//抽象函数}</code></p>
+<p>接口中不能声明变量，只能是成员常量和抽象函数<strong>所有的函数都必须在子类中实现，否则报错</strong>，接口的权限只能为public。</p>
+<ul>
+<li><p>用法</p>
+<p><code>class 类名 implement 接口1,接口2...{//抽象函数实现}</code></p>
+</li>
+</ul>
+<hr>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ul>
+<li><p>通过重写父类函数实现</p>
+</li>
+<li><p>通过写不同的接口抽象函数实现</p>
+</li>
+</ul>
+<p>##其它关键字&amp;魔术方法</p>
+<ul>
+<li>final：用于修饰类或成员函数，修饰类表示此类为最终版本，不可再有子类；修饰成员函数表示此函数不可被重写覆盖。</li>
+<li>clone：用于对象克隆，<code>$对象名 = clone $原对象名;</code></li>
+<li>instanceof：用于检验某对象是否属于某个类<code>obj_name instanceof class_name</code></li>
 </ul>
 
     </div>
