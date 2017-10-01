@@ -151,286 +151,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/09/29/mysql常用命令/">
-                mysql常用命令
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-09-29</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/mysql/">mysql</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>​           <strong>登录退出mysql</strong></p>
-<ul>
-<li><p>mysql  -v  版本</p>
-</li>
-<li><p>mysql -u root  用户</p>
-</li>
-<li><p>mysql -p  密码</p>
-</li>
-<li><p>mysql -P 端口</p>
-</li>
-<li><p>mysql -h  服务器地址</p>
-</li>
-<li><p>exit   quit  \q  退出服务器</p>
-<p>​</p>
-<p><strong>修改提示符</strong></p>
-</li>
-<li><p>mysql -uroot -ppwd – prompt  提示符     登陆前，修改mysql提示符</p>
-</li>
-<li><p>prompt 提示符   登陆后，修改提示符</p>
-</li>
-<li><p>提示符常用参数  \D –完整日期         \d –当前数据库     \h –服务器名称               \u –当前用户</p>
-<p>​</p>
-<p><strong>查看常用信息</strong></p>
-<ul>
-<li><p>SELECT VERSION()  显示mysql版本</p>
-</li>
-<li><p>SELECT NOW()   显示当前时间</p>
-</li>
-<li><p>SELECT USER()   显示当前用户</p>
-</li>
-<li><p><strong>书写规范</strong> 关键字和函数大写 有关数据的小写</p>
-</li>
-</ul>
-<p>​</p>
-<p><strong>数据库操作</strong></p>
-<ul>
-<li><p>CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] db_name [DEFAULT] CHARACTER SET [=] charset_name    </p>
-<p>​    ——创建数据库{}必选项     []可选项     | 从其中任选其一</p>
-</li>
-<li><p>SHOW {DATABASES | SCHEMAS} [LIKE ‘pattern’ | WHERE expr]  查看数据库</p>
-</li>
-<li><p>SHOW WARNINGS  查看警告</p>
-</li>
-<li><p>SHOW CREATE DATABASE db_name   显示创建数据库时的信息</p>
-<p>​</p>
-<p><strong>修改数据库</strong></p>
-</li>
-<li><p>ALTER {DATABASE | SCHEMA} [db_name][ DEFAULT]  CHARACTER SET  [=]  charset  修改数据库编码方式</p>
-</li>
-<li><p>DROP {DATABASE | SCHEMA} [IF EXISTS] db_name  删除数据库</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>数据类型</strong></p>
-<ul>
-<li>整数</li>
-<li>浮点型  FLOAT(8,2)—总共8位小数点后2位</li>
-<li>时间日期型</li>
-<li>字符型</li>
-</ul>
-<p><strong>创建数据表</strong></p>
-<p>行：记录<br>列：字段  column</p>
-<ul>
-<li>USE db_name  打开数据库</li>
-<li>SELECTE DATABASE()  显示当前打开的数据库</li>
-<li>CREATE TABLE [IF NOT EXISTS] tb_name( col_name datatype, …)  创建数据表</li>
-<li>SHOW TABLES [FROM db_name ][LIKE ‘pattern’ | WHERE expr]    查看数据表</li>
-<li>SHOW TABLES FROM mysql  查看整个mysql中的数据表</li>
-</ul>
-<p><strong>操作数据表</strong></p>
-<ul>
-<li><p>SHOW COLUMNS FROM tb_name   查看数据表结构</p>
-</li>
-<li><p>INSERT [INTO] tb_name [col_name, …] VALUE (value, …)   添加数据，可以只添加一部分数据</p>
-</li>
-<li><p>SELECT expr,… FROM tb_name     查找数据</p>
-</li>
-<li><p>col关键字 AUTO_INCREMENT 自动编号，只能与主键组合使用，默认增量为1</p>
-</li>
-<li><p>PRIMARY  KEY 主键，一张表必须有一个主键，不能为空</p>
-</li>
-<li><p>UNIQUE     KEY   唯一约束  ，一张表可以有多个，可以为null</p>
-</li>
-<li><p>DEFAULT 默认约束，对记录的默认值</p>
-</li>
-</ul>
-<p><strong>INSERT</strong></p>
-<ul>
-<li><p>INSERT [INTO]  tb_name [col_name] {VALUES | VALUE} (,,,,),(,,,,),(,,,,)….插入多条记录</p>
-</li>
-<li><p>INSERT [INTO]  tb_name SET  col_name  = {(expr) | DEFAULT}   使用子查询</p>
-<p>​</p>
-</li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/09/29/mysql学习/">
-                mysql学习
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-09-29</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/mysql/">mysql</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>#基础命令</p>
-<p>​           <strong>命令以 “;”结束</strong></p>
-<ul>
-<li><p>退出mysql控制台：<code>exit/quit</code></p>
-</li>
-<li><p>创建数据库：<code>creat database db_name;</code> 规则：以字母、数字、下划线、$组成，不能单独使用数字，最长64个字符</p>
-</li>
-<li><p>选择数据库：<code>use db_name;</code></p>
-</li>
-<li><p>查看数据库：<code>show databases;</code></p>
-</li>
-<li><p>删除数据库：<code>drop db_name;</code></p>
-</li>
-</ul>
-<p>#数据类型</p>
-<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><ul>
-<li><p>TINYINT       1字节</p>
-</li>
-<li><p>BIT                    1字节</p>
-</li>
-<li><p>BOOL                1字节</p>
-</li>
-<li><p>SMALLINT       2字节</p>
-</li>
-<li><p>MEDIUMINT    3字节</p>
-</li>
-<li><p>INT                     4字节</p>
-</li>
-<li><p>BIGINT              8字节</p>
-<p>​</p>
-</li>
-<li><p>FLOAT                8/4字节</p>
-</li>
-<li><p>DOUBLE             8字节</p>
-</li>
-<li><p>DECIMAL            自定义长度</p>
-</li>
-</ul>
-<hr>
-<p>##字符串类型</p>
-<h3 id="普通文本"><a href="#普通文本" class="headerlink" title="普通文本"></a>普通文本</h3><ul>
-<li>char(M)   最多255个字符</li>
-<li>char       类似char(M)，最多255个字符</li>
-<li>varchar(M)    长度可变</li>
-</ul>
-<h3 id="可变文本TEXT-amp-BLOB"><a href="#可变文本TEXT-amp-BLOB" class="headerlink" title="可变文本TEXT&amp;BLOB"></a>可变文本TEXT&amp;BLOB</h3><p>TEXT用于储存长文本，BLOB用于储存二进制数据，支持任何数据。如文本、声音、图像等。、</p>
-<ul>
-<li><p>TINYBLOB                最大255字节</p>
-</li>
-<li><p>TINYTEXT                最大255字节</p>
-</li>
-<li><p>BLOB                          最大65 535字节</p>
-</li>
-<li><p>TEXT                          最大65 535字节</p>
-</li>
-<li><p>MEDIUMBLOB          最大16 777 215字节</p>
-</li>
-<li><p>MEDIUMTEXT          最大16 777 215字节</p>
-</li>
-<li><p>LONGBLOB                最大4 294 967 295字节</p>
-</li>
-<li><p>LONGTEXT                最大4 294 967 295字节</p>
-</li>
-</ul>
-<p>###特殊类型SET&amp;ENUM</p>
-<ul>
-<li>Enum(“value1”, “value2”, …)：最大字节数65 535，其值只能是所列值或者NULL</li>
-<li>SET(“value1”, “value2”, …)：最大字节数64，其值只能是所列值或者NULL</li>
-</ul>
-<p>##时间日期类型</p>
-<ul>
-<li><p>DATE：格式 YYYY-MM-DD</p>
-</li>
-<li><p>TIME：格式 HH:MM:SS</p>
-</li>
-<li><p>DATETIME：格式 YYYY-MM-DD HH:MM:SS</p>
-</li>
-<li><p>TIMESTAMP：处理报告时所显示的格式</p>
-</li>
-<li><p>YEAR：格式 YYYY</p>
-</li>
-</ul>
-<hr>
-<p>#操作数据表</p>
-<p>###创建数据表</p>
-<p><code>create [TEMPORARY] table [IF NOT EXISTS] table_name [(definition,...)] [table_options] [select_statement];</code></p>
-<ul>
-<li>TEMPORARY表示创建临时表</li>
-<li>definition表示列表属性</li>
-<li>table_options表的一些特性参数</li>
-</ul>
-<p><strong>definition</strong>说明：<br>每一列格式如下 <code>col_name type[ not null | null][DEFAULT default_value]</code> [PRIMARY KEY]</p>
-<h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><ul>
-<li><p>show columns查看列 ：<code>show columns from db_name.table_name</code>;</p>
-</li>
-<li><p>describe：<code>describe table_name ; \ describe table_name columns;</code> describe 可以简写为desc</p>
-</li>
-</ul>
-<p>###修改表结构</p>
-<p><code>alter [IGNORE] table table_name 修改命令1,修改命令2,...;</code> 其中IGNORE表示如果出现重复行，则只执行一行，其它重复行被删除</p>
-<p><strong>修改命令：</strong></p>
-<ul>
-<li><code>ADD [COLUMN] create_definition [FIRST/ AFTER column_name]</code> 添加新列</li>
-<li><code>ADD INDEX [index_name] (index_col_name,...)</code> 添加索引</li>
-<li><code>ADD PRIMARY KEY (index_col_name)</code> 添加主键</li>
-<li><code>ADD UNIQUE [index_name] (index_col_name)</code> 添加唯一索引</li>
-<li><code>ALTER [COLUMN] col_name</code>   修改列名</li>
-<li><code>CHANGE [COLUMN] old_name create_definition</code> 修改字段类型</li>
-<li><code>MODIFY [COLUMN] create_definition</code> 修改子句定义字段</li>
-<li><code>DROP [COLUMN] col_name</code>  删除列</li>
-<li><code>DROP  PRIMARY KEY</code>  删除主键</li>
-<li><code>DROP [INDEX] index_name</code>  删除索引</li>
-<li><code>RENAME [AS] new_tb_name</code> 更改表名</li>
-</ul>
-<p>###重命名&amp;删除表</p>
-<ul>
-<li><code>rename table old_name to new_name;</code> 重命名</li>
-<li><code>drop table [if exists] tb_name;</code> 删除</li>
-</ul>
-<p>#操作数据表记录</p>
-<h2 id="编辑记录"><a href="#编辑记录" class="headerlink" title="编辑记录"></a>编辑记录</h2><ul>
-<li>插入记录  <code>insert into tb_name(col2,col2,col3...)values( value1,value2,...);</code>  一条语句只能插入一行;</li>
-<li>更新记录 <code>update tb_name set col1 = new_val1,col2 = new_val2..., where condition;</code>  如果不指定condition则所有行记录都被修改。</li>
-<li>删除记录  <code>delete from tb_name where condition;</code> 如果不指定condition则所有行记录都被删除。</li>
-</ul>
-<h2 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h2>
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2017/09/29/php-part3-语句与数组/">
                 php语句和数组
             </a>
@@ -900,8 +620,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/09/29/reg_exp/">
-                reg_exp
+            <a href="/2017/09/29/查询系统&爬虫实践小结/">
+                查询系统&爬虫实践小结
             </a>
         </h1>
         <div class="post-info">
@@ -911,7 +631,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/reg-exp/">reg_exp</a>
+                    <a href="/categories/web/">web</a>
                 </span>
             
         </div>
@@ -919,235 +639,22 @@
 
     
         <div class="content">
-            <h1 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h1><ul>
-<li>普通字符</li>
-<li>转义字符</li>
-<li>特殊字符（使用其本身需要转义）<ul>
-<li>$ 匹配末尾</li>
-<li>() 表示一个子表达式</li>
-<li>* 匹配前面子表达式0或多次</li>
-<li>+ 匹配前面子表达式0或多次</li>
-<li>? 匹配前面子表达式0或1次</li>
-<li>. 匹配处换行符之外的所以单字符</li>
-<li>[ 标记一个中括号表达式开始</li>
-<li>\ 转义符号</li>
-<li>^ 匹配开头</li>
-<li>{ 标记限定表达符开始 </li>
-<li>| 两项之间选择一项</li>
-</ul>
-</li>
-</ul>
-<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
-<ul>
-<li>* 0或者多次</li>
-<li>+ 一次或者多次</li>
-<li>?  0次或者1次</li>
-<li>{n} 匹配n次</li>
-<li>{n，} 至少匹配n次</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/15/php基础特性/">
-                php基础特性
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/php/">php</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="php基础特性"><a href="#php基础特性" class="headerlink" title="php基础特性"></a>php基础特性</h1><h2 id="php-标记符-amp-注释"><a href="#php-标记符-amp-注释" class="headerlink" title="php 标记符&amp;注释"></a>php 标记符&amp;注释</h2><ul>
-<li><p>&lt;?php  ?&gt;</p>
-</li>
-<li><p>&lt;?  ?&gt;</p>
-</li>
-<li><p>&lt;%  %&gt;   </p>
-</li>
-</ul>
-<p>​             <em>注释</em></p>
-<ul>
-<li><p>//</p>
-</li>
-<li><p>/<em> </em>/</p>
-</li>
-</ul>
-<ul>
-<li>#</li>
-</ul>
-<h2 id="php标量数据类型"><a href="#php标量数据类型" class="headerlink" title="php标量数据类型"></a>php标量数据类型</h2><ul>
-<li>boolean</li>
-<li>string</li>
-<li>intergrt</li>
-<li>float<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3></li>
-<li><p>$a = ‘string’</p>
-</li>
-<li><p>$a = “string”</p>
-<ul>
-<li><p>&lt;&lt;&lt; string-name<br>  格式化文本</p>
-<pre><code> string-name
-
-**双引号 定界符(&lt;&lt;&lt;)包含的变量自动替换成变量值 ，简单字符串尽量用单引号**
-</code></pre><h3 id="integer"><a href="#integer" class="headerlink" title="integer"></a>integer</h3></li>
-</ul>
-</li>
-<li><p>八进制 ：0开头</p>
-</li>
-<li><p>十六进制；0x开头</p>
-</li>
-</ul>
-<h2 id="php复合数据类型"><a href="#php复合数据类型" class="headerlink" title="php复合数据类型"></a>php复合数据类型</h2><p> ###array</p>
-<ul>
-<li>$array = (“val1”,”val2”…)</li>
-<li>$array[key] = “val”;</li>
-<li>array(key1=&gt;val1, key2=&gt;val2…)<h3 id="检测数据类型"><a href="#检测数据类型" class="headerlink" title="检测数据类型"></a>检测数据类型</h3><ul>
-<li>is_bool</li>
-<li>is_string</li>
-<li>is_array…<h2 id="php数据输出"><a href="#php数据输出" class="headerlink" title="php数据输出"></a>php数据输出</h2>###print &amp; echo<br>print一次只输出一个字符串，echo可以输出多个，不同字符串之间用 . 连接。<strong>echo前不能用@错误屏蔽符。print是一个有返回值的函数，可以作为表达式，echo不行</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="php命名规则"><a href="#php命名规则" class="headerlink" title="php命名规则"></a>php命名规则</h2><ul>
-<li>类名&amp;文件：驼峰法</li>
-<li>常量：大写+下划线</li>
-<li>变量&amp;函数：小写+下划线</li>
-<li>数组：单词复数</li>
-</ul>
-<p>  ​</p>
-<p>  ​</p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/15/php变量和表达式/">
-                php运算符和表达式
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-15</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/php/">php</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="php运算符和表达式"><a href="#php运算符和表达式" class="headerlink" title="php运算符和表达式"></a>php运算符和表达式</h1><h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
-<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
-</li>
-<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
-</li>
-<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
-</li>
-</ul>
-<p>###预定义常量</p>
-<ul>
-<li>__FILE__：当前php文件的绝对路径</li>
-<li>__LINE__：当前行数</li>
-<li>PHP_VERSION：当前php版本</li>
-<li>PHP-OS：当前操作系统</li>
-<li>…</li>
-</ul>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
-<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
-<li><p>直接赋值</p>
-</li>
-<li><p>传值赋值</p>
-</li>
-<li><p><strong>引用赋值</strong></p>
-<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
-<p> <code>$str1 = &#39;hello&#39;;</code></p>
-<p><code>$str2 = &amp; $str1;</code></p>
-</li>
-</ul>
-<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
-<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
-<p>输出：good good study, day day up。</p>
-<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
-<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
-<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
-<li>$_POST</li>
-<li>$_GET</li>
-<li>…</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
-<p><code>$a = $a.$b;</code></p>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
-<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
-</li>
-<li><p>|| 或者 or：同C语言||</p>
-</li>
-<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
-</li>
-</ul>
-<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li>===：全等（值相等且类型相等）</li>
-<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
-</ul>
-<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
-<li>bool: true = 1, false = 0;</li>
-<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
-<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
-<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
-</ul>
-<p>###强制转换</p>
-<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
-<p><strong>注意</strong></p>
-<ul>
-<li><p>浮点型转换为整型时小数部分将被舍去</p>
-</li>
-<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
-</li>
-</ul>
-<p>###使用转换函数</p>
-<ul>
-<li><p>intval (mixed var)</p>
-</li>
-<li><p>floatval (mixed var)</p>
-</li>
-<li><p>strval (mixed var)</p>
-</li>
-<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
-<p>​</p>
-</li>
-</ul>
+            <h1 id="web后端实践小结"><a href="#web后端实践小结" class="headerlink" title="web后端实践小结"></a>web后端实践小结</h1><h2 id="成绩查询系统"><a href="#成绩查询系统" class="headerlink" title="成绩查询系统"></a>成绩查询系统</h2><p>​                   <strong>合作开发，先 git pull，再开始工作</strong></p>
+<h3 id="PDO-PHP数据库对象的使用"><a href="#PDO-PHP数据库对象的使用" class="headerlink" title="PDO-PHP数据库对象的使用"></a>PDO-PHP数据库对象的使用</h3><p>连接</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user, $pass)` PDOl连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user,       $pass,<span class="keyword">array</span>(PDO::ATTR-PERSISTENT =&gt; <span class="keyword">true</span>)) PDO持久连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">null</span>` PDO连接关闭</div></pre></td></tr></table></figure>
+<p>​    <strong>dsn：data source name（数据源） 包括 主机、库名、驱动名</strong><br>​     <em>部分参数可以省略,参数没有顺序</em><br>​    <em>mysql: 最短 会自动调取 php.in 中 mysql.default_host 参数信息</em></p>
+<p>预处理语句</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$stmt = $conn-&gt;prepare(<span class="string">"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)"</span>);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':name'</span>, $name);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':value'</span>, $value);</div><div class="line"></div><div class="line"><span class="comment">// 插入一行</span></div><div class="line">$name = <span class="string">'one'</span>;</div><div class="line">$value = <span class="number">1</span>;</div><div class="line">$stmt-&gt;execute();</div><div class="line"></div><div class="line"><span class="comment">// 用不同的值插入另一行</span></div><div class="line">$name = <span class="string">'two'</span>;</div><div class="line">$value = <span class="number">2</span>;</div><div class="line">$stmt-&gt;execute();</div></pre></td></tr></table></figure>
+<p>$conn-&gt;prepare( ) 预处理语句<br>$stmt-&gt;bindParam 填充参数<br>$stmt-&gt;execute(); 执行语句</p>
+<p>###验证码生产</p>
+<p>利用php GD库<br> <a href="https://github.com/php-login-system/php-demo/blob/master/identify/img.php" target="_blank" rel="external">示例代码</a></p>
+<h3 id="邮件发送-phpmailer"><a href="#邮件发送-phpmailer" class="headerlink" title="邮件发送-phpmailer"></a>邮件发送-phpmailer</h3><p><a href="http://blog.csdn.net/ljl890705/article/details/50345211" target="_blank" rel="external">使用说明</a><br><a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="external">github地址</a></p>
+<h2 id="豆瓣爬虫"><a href="#豆瓣爬虫" class="headerlink" title="豆瓣爬虫"></a>豆瓣爬虫</h2><h3 id="内容获取–curl"><a href="#内容获取–curl" class="headerlink" title="内容获取–curl"></a>内容获取–curl</h3><p><strong>cURL</strong>是一个利用URL语法在<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank" rel="external">命令行</a>下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ch = curl_init(); <span class="comment">//初始化 cURL 会话 $ch curl句柄</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);  <span class="comment">// 设置要抓取的页面地址</span></div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">// 抓取结果直接返回（如果为0，则直接输出内容到页面）</span></div><div class="line">    <span class="comment">//关闭SSL证书验证</span></div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">    $res = curl_exec($ch);   <span class="comment">//返回html字符串</span></div><div class="line">    curl_close($ch);   <span class="comment">//关闭 cURL 会话</span></div></pre></td></tr></table></figure>
+<h3 id="HTML解析–simple-html-dom"><a href="#HTML解析–simple-html-dom" class="headerlink" title="HTML解析–simple-html-dom"></a>HTML解析–simple-html-dom</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取网页内容</span></div><div class="line">        $html = get_html($url);</div><div class="line">        $douban = <span class="keyword">new</span> simple_html_dom(); <span class="comment">//创建simple_html_dom对象douban</span></div><div class="line">        $douban-&gt;load($html);</div><div class="line">        <span class="comment">//提取电影名</span></div><div class="line">        $names = $douban-&gt;find(<span class="string">'span.title,span.other'</span>);</div></pre></td></tr></table></figure>
+<p>  主要熟悉html树</p>
 
         </div>
     
@@ -1187,24 +694,203 @@
 
 </div>
             
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/09/git学习part2/">
+                git学习part2
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-09</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/git/">git</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p><em>注：一项工程的不同部分可以看作不同的分支</em></p>
+<h2 id="创建与合并"><a href="#创建与合并" class="headerlink" title="创建与合并"></a>创建与合并</h2><ul>
+<li><p><code>git checkout -b new-branch</code> <strong>创建并切换到新分支，-b参数表示切换到新分支</strong></p>
+<p> <em>上述命令等于以下两条命令</em></p>
+</li>
+</ul>
+<ol>
+<li><p><code>git branch new-branch</code></p>
+</li>
+<li><p><code>git checkout new-branch</code></p>
+</li>
+</ol>
+<ul>
+<li><p><code>git branch</code> <strong>查看分支目录，带*号为当前分支</strong></p>
+</li>
+<li><p><code>git merge branch-name</code> <strong>把指定分支合并到当前分支</strong></p>
+</li>
+<li><p><code>git branch -d branch-name</code> <strong>删除分支</strong></p>
+<p>  <em>合并后可以删除该分支</em></p>
+</li>
+<li><p><code>git merge --no-ff -m &quot;message&quot; branch-name</code> <strong>以no-ff模式合并(no fast-forward),合并后branch不会被删除</strong></p>
+</li>
+</ul>
+<h2 id="bug-amp-feature"><a href="#bug-amp-feature" class="headerlink" title="bug &amp; feature"></a>bug &amp; feature</h2><ul>
+<li><p><code>git stash</code> <strong>临时储存当前工作区文件，把工作区留给临时任务</strong></p>
+</li>
+<li><p><code>git stash list</code> <strong>查看临时储存区目录</strong></p>
+</li>
+<li><p><code>git stash pop</code> <strong>弹出stash中的内容</strong></p>
+<p>  <em>上述命令等于以下两条命令</em></p>
+<ol>
+<li><code>git stash apply</code></li>
+<li><code>git stash drop</code></li>
+</ol>
+</li>
+<li><p><code>git stash apply stash@{0}</code> <strong>恢复指定内容</strong></p>
+</li>
+<li><p><code>git branch -D branch-name</code> <strong>删除未合并的分支</strong></p>
+</li>
+</ul>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/06/git学习part1/">
+                git学习part1
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-06</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/git/">git</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><ul>
+<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>设置用户名</strong></p>
+</li>
+<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>设置用户邮箱</strong></p>
+</li>
+</ul>
+<p><em>注：–global是全局参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</em></p>
+<h2 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h2><ol>
+<li><code>mkdir folder-name</code>    <strong>创建本地版本库文件夹</strong></li>
+<li><code>cd folder-name</code> <strong>进入版本库</strong></li>
+<li><code>pwd</code> <strong>显示当前目录，避免出错</strong></li>
+<li><code>git init</code> <strong>初始化版本库</strong><br><em>把相应的文件放到版本库中就好</em></li>
+</ol>
+<h2 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h2><ul>
+<li><code>git add file-name(带上格式名)</code>  <strong>把文件添加到仓库</strong></li>
+</ul>
+<p><em>git add .表示添加新文件和编辑过的文件, git add -A表示添加所有内容</em></p>
+<ul>
+<li><code>git commit -m &quot;提交说明&quot;</code> <strong>把所有add的文件提交到仓库</strong></li>
+</ul>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ul>
+<li><p><code>git log</code> <strong>显示提交日志</strong></p>
+<p> <em>即提交者，提交时间，提交说明，添加–pretty=oneline参数可以简化显示方式</em></p>
+</li>
+<li><p><code>git reset --hard HEAD^</code> <strong>退回上一版本</strong></p>
+<p><em>HEAD表示当前版本，HEAD^表示上一版本，也可以用git log 中的版本号前几位表示对应的版本</em></p>
+</li>
+<li><code>git reflog</code> <strong>查看历史命令</strong></li>
+</ul>
+<h2 id="git工作模型"><a href="#git工作模型" class="headerlink" title="git工作模型"></a>git工作模型</h2><ul>
+<li><p>工作区(Working Directory)</p>
+<p>  <strong>工作区就是我们用mkdir命令创建的文件夹，我们对文件的修改就在这里进行</strong></p>
+</li>
+<li><p>版本库(Repository)</p>
+</li>
+</ul>
+<p><strong>版本库就是.git文件夹，它分为暂存区(stage/index)和master分支,<br><code>git add</code> 把文件添加到暂存区,<br><code>git commit</code> 把文件添加到版本库</strong></p>
+<ul>
+<li><code>git status</code> <strong>查看仓库状态</strong></li>
+</ul>
+<h2 id="撤销与删除"><a href="#撤销与删除" class="headerlink" title="撤销与删除"></a>撤销与删除</h2><ul>
+<li><p><code>git checkout --file-name</code> <strong>舍弃修改，将工作区中该文件退回到上一次git add 或者 git commit的状态</strong></p>
+</li>
+<li><p><code>rm file-name</code> <strong>删除工作区文件</strong></p>
+</li>
+</ul>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p><em>注：需要github账号</em></p>
+<ol>
+<li><code>ssh-keygen -t rsa -C &quot;用户邮箱&quot;</code><br><strong>创建ssh-key，确保安全性</strong> </li>
+</ol>
+<p><em>&gt;使用命令的默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSHKey的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人，然后把id_rsa.pub里的密钥添加到github中(廖雪峰的git教程)</em></p>
+<ol>
+<li><p><code>$ git remote add origin git@你的giyhub仓库地址</code>            <strong>把本地库与GitHub上仓库关联</strong></p>
+</li>
+<li><p><code>$ git push origin master</code> <strong>把本地库推送到github上</strong></p>
+</li>
+</ol>
+<p><em>第一次使用push命令要 <code>把id_rsa.pub里的密钥添加到github中</code></em></p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p><code>git clone git@你的giyhub仓库地址</code></p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/01/hexo-github搭建博客的小坑/">
+                windows环境下hexo-github搭建博客的小坑
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/hexo/">hexo</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="教程推荐"><a href="#教程推荐" class="headerlink" title="教程推荐"></a>教程推荐</h1><p>  <a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">参考教程</a><br>  前面关于<strong>node git hexo</strong>的安装依照教程即可。</p>
+<h1 id="前方有坑"><a href="#前方有坑" class="headerlink" title="前方有坑"></a>前方有坑</h1><p>  在修改全局配置文件<strong>_config.yml</strong>时要注意<br>  <strong>url: 你的博客网址</strong>  <em>GitHub上这个库的名字最好和你的用户名一样</em></p>
+<p>  <strong>deploy:<br>    type: git<br>    repository: 你的博客所在库的地址<br>    branch: master </strong></p>
+
+        </div>
+    
+
+</div>
+            
         </section>
     </div>
 </div>
 
 
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrap-pagination">
-                <a class="disabled" href="/">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-                <a class="" href="/page/2/">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -1220,7 +906,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
                 <h2>About</h2>
                 <p>
-                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                    
                 </p>
             </div>
             
@@ -1229,19 +915,19 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2017/09/29/mysql常用命令/">mysql常用命令</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/29/mysql学习/">mysql学习</a>
-            </li>
-            
-            <li>
                 <a class="footer-post" href="/2017/09/29/php-part3-语句与数组/">php语句和数组</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2017/09/29/php-part4-网页交互/">php网页交互</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/29/php-part5-函数&文件/">php函数&amp;文件</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/29/php-part6-面向对象/">php面向对象</a>
             </li>
             
         </ul>
@@ -1255,7 +941,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/ladder/">ladder</a>
+            <a class="footer-post" href="/categories/mysql/">mysql</a>
         </li>
         
         <li>
@@ -1263,11 +949,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/hexo/">hexo</a>
+            <a class="footer-post" href="/categories/ladder/">ladder</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/git/">git</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
     </ul>

@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="git学习part2"/>
+        <meta property="og:title" content="查询系统&amp;爬虫实践小结"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>git学习part2 - Record&amp;Think</title>
+    <title>查询系统&amp;爬虫实践小结 - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -148,18 +148,18 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2017/07/09/git学习part2/">
-                git学习part2
+            <a href="/2017/09/29/查询系统&爬虫实践小结/">
+                查询系统&爬虫实践小结
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-07-09</span>
+                <span class="date">2017-09-29</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/git/">git</a>
+                    <a href="/categories/web/">web</a>
                 </span>
             
         </div>
@@ -171,46 +171,22 @@
         
 
         <!-- Post Content -->
-        <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p><em>注：一项工程的不同部分可以看作不同的分支</em></p>
-<h2 id="创建与合并"><a href="#创建与合并" class="headerlink" title="创建与合并"></a>创建与合并</h2><ul>
-<li><p><code>git checkout -b new-branch</code> <strong>创建并切换到新分支，-b参数表示切换到新分支</strong></p>
-<p> <em>上述命令等于以下两条命令</em></p>
-</li>
-</ul>
-<ol>
-<li><p><code>git branch new-branch</code></p>
-</li>
-<li><p><code>git checkout new-branch</code></p>
-</li>
-</ol>
-<ul>
-<li><p><code>git branch</code> <strong>查看分支目录，带*号为当前分支</strong></p>
-</li>
-<li><p><code>git merge branch-name</code> <strong>把指定分支合并到当前分支</strong></p>
-</li>
-<li><p><code>git branch -d branch-name</code> <strong>删除分支</strong></p>
-<p>  <em>合并后可以删除该分支</em></p>
-</li>
-<li><p><code>git merge --no-ff -m &quot;message&quot; branch-name</code> <strong>以no-ff模式合并(no fast-forward),合并后branch不会被删除</strong></p>
-</li>
-</ul>
-<h2 id="bug-amp-feature"><a href="#bug-amp-feature" class="headerlink" title="bug &amp; feature"></a>bug &amp; feature</h2><ul>
-<li><p><code>git stash</code> <strong>临时储存当前工作区文件，把工作区留给临时任务</strong></p>
-</li>
-<li><p><code>git stash list</code> <strong>查看临时储存区目录</strong></p>
-</li>
-<li><p><code>git stash pop</code> <strong>弹出stash中的内容</strong></p>
-<p>  <em>上述命令等于以下两条命令</em></p>
-<ol>
-<li><code>git stash apply</code></li>
-<li><code>git stash drop</code></li>
-</ol>
-</li>
-<li><p><code>git stash apply stash@{0}</code> <strong>恢复指定内容</strong></p>
-</li>
-<li><p><code>git branch -D branch-name</code> <strong>删除未合并的分支</strong></p>
-</li>
-</ul>
+        <h1 id="web后端实践小结"><a href="#web后端实践小结" class="headerlink" title="web后端实践小结"></a>web后端实践小结</h1><h2 id="成绩查询系统"><a href="#成绩查询系统" class="headerlink" title="成绩查询系统"></a>成绩查询系统</h2><p>​                   <strong>合作开发，先 git pull，再开始工作</strong></p>
+<h3 id="PDO-PHP数据库对象的使用"><a href="#PDO-PHP数据库对象的使用" class="headerlink" title="PDO-PHP数据库对象的使用"></a>PDO-PHP数据库对象的使用</h3><p>连接</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user, $pass)` PDOl连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user,       $pass,<span class="keyword">array</span>(PDO::ATTR-PERSISTENT =&gt; <span class="keyword">true</span>)) PDO持久连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">null</span>` PDO连接关闭</div></pre></td></tr></table></figure>
+<p>​    <strong>dsn：data source name（数据源） 包括 主机、库名、驱动名</strong><br>​     <em>部分参数可以省略,参数没有顺序</em><br>​    <em>mysql: 最短 会自动调取 php.in 中 mysql.default_host 参数信息</em></p>
+<p>预处理语句</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$stmt = $conn-&gt;prepare(<span class="string">"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)"</span>);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':name'</span>, $name);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':value'</span>, $value);</div><div class="line"></div><div class="line"><span class="comment">// 插入一行</span></div><div class="line">$name = <span class="string">'one'</span>;</div><div class="line">$value = <span class="number">1</span>;</div><div class="line">$stmt-&gt;execute();</div><div class="line"></div><div class="line"><span class="comment">// 用不同的值插入另一行</span></div><div class="line">$name = <span class="string">'two'</span>;</div><div class="line">$value = <span class="number">2</span>;</div><div class="line">$stmt-&gt;execute();</div></pre></td></tr></table></figure>
+<p>$conn-&gt;prepare( ) 预处理语句<br>$stmt-&gt;bindParam 填充参数<br>$stmt-&gt;execute(); 执行语句</p>
+<p>###验证码生产</p>
+<p>利用php GD库<br> <a href="https://github.com/php-login-system/php-demo/blob/master/identify/img.php" target="_blank" rel="external">示例代码</a></p>
+<h3 id="邮件发送-phpmailer"><a href="#邮件发送-phpmailer" class="headerlink" title="邮件发送-phpmailer"></a>邮件发送-phpmailer</h3><p><a href="http://blog.csdn.net/ljl890705/article/details/50345211" target="_blank" rel="external">使用说明</a><br><a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="external">github地址</a></p>
+<h2 id="豆瓣爬虫"><a href="#豆瓣爬虫" class="headerlink" title="豆瓣爬虫"></a>豆瓣爬虫</h2><h3 id="内容获取–curl"><a href="#内容获取–curl" class="headerlink" title="内容获取–curl"></a>内容获取–curl</h3><p><strong>cURL</strong>是一个利用URL语法在<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank" rel="external">命令行</a>下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ch = curl_init(); <span class="comment">//初始化 cURL 会话 $ch curl句柄</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);  <span class="comment">// 设置要抓取的页面地址</span></div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">// 抓取结果直接返回（如果为0，则直接输出内容到页面）</span></div><div class="line">    <span class="comment">//关闭SSL证书验证</span></div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">    $res = curl_exec($ch);   <span class="comment">//返回html字符串</span></div><div class="line">    curl_close($ch);   <span class="comment">//关闭 cURL 会话</span></div></pre></td></tr></table></figure>
+<h3 id="HTML解析–simple-html-dom"><a href="#HTML解析–simple-html-dom" class="headerlink" title="HTML解析–simple-html-dom"></a>HTML解析–simple-html-dom</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取网页内容</span></div><div class="line">        $html = get_html($url);</div><div class="line">        $douban = <span class="keyword">new</span> simple_html_dom(); <span class="comment">//创建simple_html_dom对象douban</span></div><div class="line">        $douban-&gt;load($html);</div><div class="line">        <span class="comment">//提取电影名</span></div><div class="line">        $names = $douban-&gt;find(<span class="string">'span.title,span.other'</span>);</div></pre></td></tr></table></figure>
+<p>  主要熟悉html树</p>
 
     </div>
 
