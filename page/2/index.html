@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="php函数&amp;文件"/>
+        <meta property="og:title" content="Record&amp;Think"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>php函数&amp;文件 - Record&amp;Think</title>
+    <title>page - Record&amp;Think</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -139,89 +139,156 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
+            <h1 id="main-title" class="title">Record&Think</h1>
+        
     </div>
 </header>
 
         <section class="main">
             
+                
 <div class="post">
 
-    <div class="post-header">
+    <div class="post-header index">
         <h1 class="title">
-            <a href="/2017/09/29/php-part5-函数&文件/">
-                php函数&文件
+            <a href="/2017/07/06/git学习part1/">
+                git学习part1
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-09-29</span>
+                <span class="date">2017-07-06</span>
             
             
             
                 <span class="category">
-                    <a href="/categories/php/">php</a>
+                    <a href="/categories/git/">git</a>
                 </span>
             
         </div>
     </div>
 
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-        <h1 id="php函数"><a href="#php函数" class="headerlink" title="php函数"></a>php函数</h1><p>分类：</p>
-<ul>
-<li><p>内置函数</p>
-</li>
-<li><p>自定义函数</p>
-</li>
-<li><p>变量函数</p>
-</li>
-</ul>
-<p>##自定义函数</p>
-<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p><code>function func_name(参数1, 参数2,...可选参数1 = default1, 可选参数2 = default2,...)</code> 可选参数放在参数列表的最右端。</p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
-<li><p>按值传递 <code>func($var);</code></p>
-</li>
-<li><p>引用传递 <code>func(&amp;$var);</code></p>
-</li>
-</ul>
-<p>###变量作用域</p>
-<ul>
-<li><p>全局变量：定义在函数外的变量</p>
-</li>
-<li><p>局部变量：定义在函数内部的变量</p>
-</li>
-<li><p>静态变量：用static声明的变量，同C语言</p>
-<p><strong>要在函数内部引用全局变量，需要用global声明</strong></p>
-</li>
-</ul>
-<hr>
-<p>##变量函数</p>
-<p>如果变量后面有括号，php将寻找与变量值相同函数并执行。</p>
-<hr>
-<p>#php文件</p>
-<h2 id="include-amp-require"><a href="#include-amp-require" class="headerlink" title="include&amp;require"></a>include&amp;require</h2><p><code>include(&quot;file_name&quot;)</code><br><code>require(&quot;file_name&quot;)</code></p>
-<p><strong>区别</strong><br>​        代码执行到include时，php将外部文件引用并读取文件内容。当文件执行错误时，php发出警告，并继续执行后面语句。</p>
-<p>​        require，在php文件执行之前，php解释器先扫描文件，把所有引用文件读取重新合成新的php文件。</p>
-<h2 id="include-once-amp-require-once"><a href="#include-once-amp-require-once" class="headerlink" title="include_once&amp;require_once"></a>include_once&amp;require_once</h2><p>作用同上，区别在于这两个语句会检查引用文件的唯一性，对所有文件只引用一次。</p>
-
-    </div>
-
     
+        <div class="content">
+            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><ul>
+<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>设置用户名</strong></p>
+</li>
+<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>设置用户邮箱</strong></p>
+</li>
+</ul>
+<p><em>注：–global是全局参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</em></p>
+<h2 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h2><ol>
+<li><code>mkdir folder-name</code>    <strong>创建本地版本库文件夹</strong></li>
+<li><code>cd folder-name</code> <strong>进入版本库</strong></li>
+<li><code>pwd</code> <strong>显示当前目录，避免出错</strong></li>
+<li><code>git init</code> <strong>初始化版本库</strong><br><em>把相应的文件放到版本库中就好</em></li>
+</ol>
+<h2 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h2><ul>
+<li><code>git add file-name(带上格式名)</code>  <strong>把文件添加到仓库</strong></li>
+</ul>
+<p><em>git add .表示添加新文件和编辑过的文件, git add -A表示添加所有内容</em></p>
+<ul>
+<li><code>git commit -m &quot;提交说明&quot;</code> <strong>把所有add的文件提交到仓库</strong></li>
+</ul>
+<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ul>
+<li><p><code>git log</code> <strong>显示提交日志</strong></p>
+<p> <em>即提交者，提交时间，提交说明，添加–pretty=oneline参数可以简化显示方式</em></p>
+</li>
+<li><p><code>git reset --hard HEAD^</code> <strong>退回上一版本</strong></p>
+<p><em>HEAD表示当前版本，HEAD^表示上一版本，也可以用git log 中的版本号前几位表示对应的版本</em></p>
+</li>
+<li><code>git reflog</code> <strong>查看历史命令</strong></li>
+</ul>
+<h2 id="git工作模型"><a href="#git工作模型" class="headerlink" title="git工作模型"></a>git工作模型</h2><ul>
+<li><p>工作区(Working Directory)</p>
+<p>  <strong>工作区就是我们用mkdir命令创建的文件夹，我们对文件的修改就在这里进行</strong></p>
+</li>
+<li><p>版本库(Repository)</p>
+</li>
+</ul>
+<p><strong>版本库就是.git文件夹，它分为暂存区(stage/index)和master分支,<br><code>git add</code> 把文件添加到暂存区,<br><code>git commit</code> 把文件添加到版本库</strong></p>
+<ul>
+<li><code>git status</code> <strong>查看仓库状态</strong></li>
+</ul>
+<h2 id="撤销与删除"><a href="#撤销与删除" class="headerlink" title="撤销与删除"></a>撤销与删除</h2><ul>
+<li><p><code>git checkout --file-name</code> <strong>舍弃修改，将工作区中该文件退回到上一次git add 或者 git commit的状态</strong></p>
+</li>
+<li><p><code>rm file-name</code> <strong>删除工作区文件</strong></p>
+</li>
+</ul>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p><em>注：需要github账号</em></p>
+<ol>
+<li><code>ssh-keygen -t rsa -C &quot;用户邮箱&quot;</code><br><strong>创建ssh-key，确保安全性</strong> </li>
+</ol>
+<p><em>&gt;使用命令的默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSHKey的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人，然后把id_rsa.pub里的密钥添加到github中(廖雪峰的git教程)</em></p>
+<ol>
+<li><p><code>$ git remote add origin git@你的giyhub仓库地址</code>            <strong>把本地库与GitHub上仓库关联</strong></p>
+</li>
+<li><p><code>$ git push origin master</code> <strong>把本地库推送到github上</strong></p>
+</li>
+</ol>
+<p><em>第一次使用push命令要 <code>把id_rsa.pub里的密钥添加到github中</code></em></p>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p><code>git clone git@你的giyhub仓库地址</code></p>
 
-    
-
-    <!-- Comments -->
+        </div>
     
 
 </div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/07/01/hexo-github搭建博客的小坑/">
+                windows环境下hexo-github搭建博客的小坑
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-01</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/hexo/">hexo</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="教程推荐"><a href="#教程推荐" class="headerlink" title="教程推荐"></a>教程推荐</h1><p>  <a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">参考教程</a><br>  前面关于<strong>node git hexo</strong>的安装依照教程即可。</p>
+<h1 id="前方有坑"><a href="#前方有坑" class="headerlink" title="前方有坑"></a>前方有坑</h1><p>  在修改全局配置文件<strong>_config.yml</strong>时要注意<br>  <strong>url: 你的博客网址</strong>  <em>GitHub上这个库的名字最好和你的用户名一样</em></p>
+<p>  <strong>deploy:<br>    type: git<br>    repository: 你的博客所在库的地址<br>    branch: master </strong></p>
+
+        </div>
+    
+
+</div>
+            
         </section>
-
     </div>
 </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
 
 </div>
 

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="matthew-sword&#39;s blog">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="matthew-sword">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="js概览"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="matthew-sword&#39;s blog" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Record&amp;Think"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>js概览 - Record&amp;Think</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    归档
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    关于
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    标签
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/12/08/js概览/">
+                js概览
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-12-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/前端/">前端</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><ul>
+<li><p>JavaScript代码可以直接嵌在网页的任何地方，不过通常我们都把JavaScript代码放到<code>&lt;head&gt;</code>中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">'Hello, world'</span>);</div><div class="line">  &lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二种方法是把JavaScript代码放到一个单独的<code>.js</code>文件，然后在HTML中通过<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>引入这个文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/static/js/abc.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><ul>
+<li><p>变量：<code>var x=1;</code></p>
+</li>
+<li><p>注释：同C语言</p>
+</li>
+<li><p>数据类型</p>
+<ul>
+<li>Number：所有数字</li>
+<li>NaN:    NaN表示Not a Number，当无法计算结果时用NaN表示</li>
+<li>Infinity: 表示无限大，当数值超过了JS的Number所能表示的最大值时，就表示为Infinity</li>
+</ul>
+</li>
+<li><p>字符串：<code>&#39;abc&#39; 或者 &quot;abc&quot;</code></p>
+</li>
+<li><p>比较运算</p>
+<ul>
+<li><code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果</li>
+<li><code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</li>
+<li><strong><em>不要</em>使用<code>==</code>比较，始终坚持使用<code>===</code>比较。</strong></li>
+<li><code>NaN</code>这个特殊的Number与所有其他值都不相等，包括它自己</li>
+</ul>
+</li>
+<li><p>​ null &amp; undefined</p>
+<ul>
+<li><code>null</code>表示一个“空”的值，它和<code>0</code>以及空字符串<code>&#39;&#39;</code>不同，<code>0</code>是一个数值，<code>&#39;&#39;</code>表示长度为0的字符串，而<code>null</code>表示“空”。</li>
+<li>用<code>null</code>表示一个空的值，而<code>undefined</code>表示值未定义。一般都应该用<code>null</code>。<code>undefined</code>仅仅在判断函数参数是否传递的情况下有用。</li>
+</ul>
+</li>
+<li><p>数组 ：JavaScript的数组可以包括任意数据类型。</p>
+<p>​           <code>var arr = [1, 2, 3.14, &#39;Hello&#39;, null, true];</code></p>
+<p>​           <code>new Array(1, 2, 3); // 创建了数组[1, 2, 3]</code>  <strong>Array!!</strong></p>
+<p>​          <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449921138898cdeb7fc2214dc08c6c67827758cd2f000" target="_blank" rel="external">具体操作方法</a></p>
+<p>​</p>
+<p>​</p>
+</li>
+<li><p>对象：JavaScript的对象是一组由键值对组成的无序集合，带有特殊字符的变量，需要用<code>&#39;&#39;</code>括起来。访问这个属性也无法使用<code>.</code>操作符，必须用<code>[&#39;xxx&#39;]</code>来访问：</p>
+</li>
+<li><p>​</p>
+<pre><code>​<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">'Bob'</span>,</div><div class="line"><span class="attr">age</span>: <span class="number">20</span>,</div><div class="line"><span class="attr">tags</span>: [<span class="string">'js'</span>, <span class="string">'web'</span>, <span class="string">'mobile'</span>],</div><div class="line"><span class="attr">city</span>: <span class="string">'Beijing'</span>,</div><div class="line"><span class="attr">hasCar</span>: <span class="literal">true</span>,</div><div class="line"><span class="attr">zipcode</span>: <span class="literal">null</span></div><div class="line">&#125;; <span class="comment">//变量名也可以用中文，但是，请不要给自己找麻烦。</span></div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>strict模式：在strict模式下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div></pre></td></tr></table></figure>
+<p> ​</p>
+</li>
+<li><p>多行字符串：最新的ES6标准新增了一种多行字符串的表示方法，用反引号 <em>`</em> … <em>`</em> 表示</p>
+<p> ​</p>
+</li>
+<li><p>模板字符串：要把多个字符串连接起来，可以用<code>+</code>号连接</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'小明'</span>;</div><div class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> message = <span class="string">`你好, <span class="subst">$&#123;name&#125;</span>, 你今年<span class="subst">$&#123;age&#125;</span>岁了!`</span>;</div></pre></td></tr></table></figure>
+<p> ​</p>
+</li>
+<li><p>循环</p>
+<ul>
+<li><p>for  同C语言</p>
+</li>
+<li><p><code>for ... in</code>循环，把一个对象的所有<strong>属性</strong>依次循环出来，<code>Array</code>也是对象，而它的每个元素的<strong>索引</strong>被视为对象的属性</p>
+<pre><code>​<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> a) &#123;     <span class="comment">//i是索引</span></div><div class="line">    alert(i); <span class="comment">// '0', '1', '2'</span></div><div class="line">    alert(a[i]); <span class="comment">// 'A', 'B', 'C'</span></div><div class="line">&#125;</div><div class="line">    ​</div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p><code>for ... of</code> 只循环集合本身的元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</div><div class="line">a.name = <span class="string">'Hello'</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> a) &#123;</div><div class="line">    alert(x); <span class="comment">// 'A', 'B', 'C'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>while 同C语言</p>
+</li>
+</ul>
+</li>
+<li><p>map &amp; set </p>
+<p> <code>Map</code>是一组键值对的结构，具有极快的查找速度。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'Michael'</span>, <span class="number">95</span>], [<span class="string">'Bob'</span>, <span class="number">75</span>], [<span class="string">'Tracy'</span>, <span class="number">85</span>]]);</div></pre></td></tr></table></figure>
+<p>  一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉,<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000" target="_blank" rel="external">详细讲解</a></p>
+<p> <code>Set</code>和<code>Map</code>类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在<code>Set</code>中，没有重复的key</p>
+</li>
+<li><p>iterable</p>
+<p> ​    ES6标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。具有<code>iterable</code>类型的集合可以通过新的<code>for ... of</code>循环来遍历。</p>
+<p> #函数</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func_name</span>(<span class="params">x</span>) </span></div><div class="line">&#123;</div><div class="line">    ...........</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> func_name = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span></div><div class="line">&#123;</div><div class="line">    ..........</div><div class="line">&#125;;<span class="comment">//匿名函数，末尾加;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>关键字<code>arguments</code>，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。<code>arguments</code>类似<code>Array</code>但它不是一个<code>Array</code></p>
+</li>
+<li><p>rest参数</p>
+<p>rest用于接受任意参数<code>function foo(a, b, ...rest);foo(1, 2, 3, 4, 5);</code>rest参数只能写在最后，前面用<code>...</code>标识</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h1>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/12/08/reg_exp待续/">reg_exp</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/12/08/js概览/">js概览</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/11/17/关于ssd/">SSD科普</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/09/29/php-part3-语句与数组/">php语句和数组</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/mysql/">mysql</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/ladder/">ladder</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/前端/">前端</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/matthew-sword">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:lucklgh@126.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

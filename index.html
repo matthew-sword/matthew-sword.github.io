@@ -151,6 +151,250 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/12/08/reg_exp待续/">
+                reg_exp
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-12-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/reg-exp/">reg_exp</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h1><ul>
+<li>普通字符</li>
+<li>转义字符</li>
+<li>特殊字符（使用其本身需要转义）<ul>
+<li>$ 匹配末尾</li>
+<li>() 表示一个子表达式</li>
+<li>* 匹配前面子表达式0或多次</li>
+<li>+ 匹配前面子表达式0或多次</li>
+<li>? 匹配前面子表达式0或1次</li>
+<li>. 匹配处换行符之外的所以单字符</li>
+<li>[ 标记一个中括号表达式开始</li>
+<li>\ 转义符号</li>
+<li>^ 匹配开头</li>
+<li>{ 标记限定表达符开始 </li>
+<li>| 两项之间选择一项</li>
+</ul>
+</li>
+</ul>
+<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
+<ul>
+<li>* 0或者多次</li>
+<li>+ 一次或者多次</li>
+<li>?  0次或者1次</li>
+<li>{n} 匹配n次</li>
+<li>{n，} 至少匹配n次</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/12/08/js概览/">
+                js概览
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-12-08</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/前端/">前端</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><ul>
+<li><p>JavaScript代码可以直接嵌在网页的任何地方，不过通常我们都把JavaScript代码放到<code>&lt;head&gt;</code>中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">'Hello, world'</span>);</div><div class="line">  &lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二种方法是把JavaScript代码放到一个单独的<code>.js</code>文件，然后在HTML中通过<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>引入这个文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/static/js/abc.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><ul>
+<li><p>变量：<code>var x=1;</code></p>
+</li>
+<li><p>注释：同C语言</p>
+</li>
+<li><p>数据类型</p>
+<ul>
+<li>Number：所有数字</li>
+<li>NaN:    NaN表示Not a Number，当无法计算结果时用NaN表示</li>
+<li>Infinity: 表示无限大，当数值超过了JS的Number所能表示的最大值时，就表示为Infinity</li>
+</ul>
+</li>
+<li><p>字符串：<code>&#39;abc&#39; 或者 &quot;abc&quot;</code></p>
+</li>
+<li><p>比较运算</p>
+<ul>
+<li><code>==</code>比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果</li>
+<li><code>===</code>比较，它不会自动转换数据类型，如果数据类型不一致，返回<code>false</code>，如果一致，再比较。</li>
+<li><strong><em>不要</em>使用<code>==</code>比较，始终坚持使用<code>===</code>比较。</strong></li>
+<li><code>NaN</code>这个特殊的Number与所有其他值都不相等，包括它自己</li>
+</ul>
+</li>
+<li><p>​ null &amp; undefined</p>
+<ul>
+<li><code>null</code>表示一个“空”的值，它和<code>0</code>以及空字符串<code>&#39;&#39;</code>不同，<code>0</code>是一个数值，<code>&#39;&#39;</code>表示长度为0的字符串，而<code>null</code>表示“空”。</li>
+<li>用<code>null</code>表示一个空的值，而<code>undefined</code>表示值未定义。一般都应该用<code>null</code>。<code>undefined</code>仅仅在判断函数参数是否传递的情况下有用。</li>
+</ul>
+</li>
+<li><p>数组 ：JavaScript的数组可以包括任意数据类型。</p>
+<p>​           <code>var arr = [1, 2, 3.14, &#39;Hello&#39;, null, true];</code></p>
+<p>​           <code>new Array(1, 2, 3); // 创建了数组[1, 2, 3]</code>  <strong>Array!!</strong></p>
+<p>​          <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143449921138898cdeb7fc2214dc08c6c67827758cd2f000" target="_blank" rel="external">具体操作方法</a></p>
+<p>​</p>
+<p>​</p>
+</li>
+<li><p>对象：JavaScript的对象是一组由键值对组成的无序集合，带有特殊字符的变量，需要用<code>&#39;&#39;</code>括起来。访问这个属性也无法使用<code>.</code>操作符，必须用<code>[&#39;xxx&#39;]</code>来访问：</p>
+</li>
+<li><p>​</p>
+<pre><code>​<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">'Bob'</span>,</div><div class="line"><span class="attr">age</span>: <span class="number">20</span>,</div><div class="line"><span class="attr">tags</span>: [<span class="string">'js'</span>, <span class="string">'web'</span>, <span class="string">'mobile'</span>],</div><div class="line"><span class="attr">city</span>: <span class="string">'Beijing'</span>,</div><div class="line"><span class="attr">hasCar</span>: <span class="literal">true</span>,</div><div class="line"><span class="attr">zipcode</span>: <span class="literal">null</span></div><div class="line">&#125;; <span class="comment">//变量名也可以用中文，但是，请不要给自己找麻烦。</span></div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>strict模式：在strict模式下运行的JavaScript代码，强制通过<code>var</code>申明变量，未使用<code>var</code>申明变量就使用的，将导致运行错误。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div></pre></td></tr></table></figure>
+<p> ​</p>
+</li>
+<li><p>多行字符串：最新的ES6标准新增了一种多行字符串的表示方法，用反引号 <em>`</em> … <em>`</em> 表示</p>
+<p> ​</p>
+</li>
+<li><p>模板字符串：要把多个字符串连接起来，可以用<code>+</code>号连接</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'小明'</span>;</div><div class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> message = <span class="string">`你好, <span class="subst">$&#123;name&#125;</span>, 你今年<span class="subst">$&#123;age&#125;</span>岁了!`</span>;</div></pre></td></tr></table></figure>
+<p> ​</p>
+</li>
+<li><p>循环</p>
+<ul>
+<li><p>for  同C语言</p>
+</li>
+<li><p><code>for ... in</code>循环，把一个对象的所有<strong>属性</strong>依次循环出来，<code>Array</code>也是对象，而它的每个元素的<strong>索引</strong>被视为对象的属性</p>
+<pre><code>​<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> a) &#123;     <span class="comment">//i是索引</span></div><div class="line">    alert(i); <span class="comment">// '0', '1', '2'</span></div><div class="line">    alert(a[i]); <span class="comment">// 'A', 'B', 'C'</span></div><div class="line">&#125;</div><div class="line">    ​</div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p><code>for ... of</code> 只循环集合本身的元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>];</div><div class="line">a.name = <span class="string">'Hello'</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> x <span class="keyword">of</span> a) &#123;</div><div class="line">    alert(x); <span class="comment">// 'A', 'B', 'C'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>while 同C语言</p>
+</li>
+</ul>
+</li>
+<li><p>map &amp; set </p>
+<p> <code>Map</code>是一组键值对的结构，具有极快的查找速度。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'Michael'</span>, <span class="number">95</span>], [<span class="string">'Bob'</span>, <span class="number">75</span>], [<span class="string">'Tracy'</span>, <span class="number">85</span>]]);</div></pre></td></tr></table></figure>
+<p>  一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉,<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000" target="_blank" rel="external">详细讲解</a></p>
+<p> <code>Set</code>和<code>Map</code>类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在<code>Set</code>中，没有重复的key</p>
+</li>
+<li><p>iterable</p>
+<p> ​    ES6标准引入了新的<code>iterable</code>类型，<code>Array</code>、<code>Map</code>和<code>Set</code>都属于<code>iterable</code>类型。具有<code>iterable</code>类型的集合可以通过新的<code>for ... of</code>循环来遍历。</p>
+<p> #函数</p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func_name</span>(<span class="params">x</span>) </span></div><div class="line">&#123;</div><div class="line">    ...........</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> func_name = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>)</span></div><div class="line">&#123;</div><div class="line">    ..........</div><div class="line">&#125;;<span class="comment">//匿名函数，末尾加;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>关键字<code>arguments</code>，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。<code>arguments</code>类似<code>Array</code>但它不是一个<code>Array</code></p>
+</li>
+<li><p>rest参数</p>
+<p>rest用于接受任意参数<code>function foo(a, b, ...rest);foo(1, 2, 3, 4, 5);</code>rest参数只能写在最后，前面用<code>...</code>标识</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h1>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/11/17/关于ssd/">
+                SSD科普
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-11-17</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/etc/">etc</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="ssd结构"><a href="#ssd结构" class="headerlink" title="ssd结构"></a>ssd结构</h1><p>全称：Solid State Drive</p>
+<ul>
+<li><p>控制单元</p>
+</li>
+<li><p>存储单元(FLASH芯片、DRAM芯片)</p>
+</li>
+<li><p>缓存单元</p>
+</li>
+</ul>
+<h2 id="存储单元"><a href="#存储单元" class="headerlink" title="存储单元"></a>存储单元</h2><h3 id="FLASH闪存"><a href="#FLASH闪存" class="headerlink" title="FLASH闪存"></a>FLASH闪存</h3><p>利用快闪（flash）浮栅MOS管</p>
+<p>MOS管（浮栅）不同存储模式</p>
+<ul>
+<li><p>SLC（Single Level Cell） 快，贵，存储密度低，耐用</p>
+<p>SLC的一个Flash存储单元（<strong>浮栅</strong>）只有两种电荷值，高低不同的电荷值表明0或者1，因为只需要一组高低电压就可以区分出0或者1信号，所以SLC最大的驱动电压可以做到很低。SLC结构简单，用一组变化电压驱动，速度很快，同时寿命较长也更为可靠，不过这种一个Block只存储一组数据的模式无法在相同的晶圆面积上实现较高的存储密度，存储容量提高完全依赖芯片工艺的提升。</p>
+</li>
+<li><p>MLC（Multi Levels Cell）  慢，便宜，存储密度高，不耐用</p>
+<p>MLC在存储单元（<strong>浮栅</strong>）中实现多位存储能力，典型的是2bit。它通过<strong>不同级别的电压</strong>在一个单元中记录两组位信息（00、01、11、10），这样就可以将原本SLC的记录密度理论提升一倍。因为电压变化更频繁，所以MLC技术的Flash在寿命方面远劣于SLC，同时它的读写速度不如SLC，一个Block存储两组位数据，自然需要更长的时间，这里面还有电压控制、CRC写入方式等因素需要考虑。</p>
+<ul>
+<li><p>TLC （Trinary-Level Cell）</p>
+<p>在1个存储器储存单元(浮栅)中存放3位元(bit)的资料</p>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<p>###DRAM</p>
+<p>DRAM：Dynamic Random Access Memory   动态随机存取存储器</p>
+<p>内存原理，少见</p>
+<h2 id="寿命限制"><a href="#寿命限制" class="headerlink" title="寿命限制"></a>寿命限制</h2><p>反复写－擦，非常薄的栅氧化层（SiO2）的绝缘性就会降低（晶格结构被反复冲击之类的各种电效应热效应），漏电会越来越大，最后封不住电荷，也自然就读不出来不同状态－－所谓失效。 TLC在修改相同量数据时单个单元写－擦次数多，所以寿命短</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/09/29/php-part3-语句与数组/">
                 php语句和数组
             </a>
@@ -764,133 +1008,24 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/06/git学习part1/">
-                git学习part1
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-06</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/git/">git</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><ul>
-<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>设置用户名</strong></p>
-</li>
-<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>设置用户邮箱</strong></p>
-</li>
-</ul>
-<p><em>注：–global是全局参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</em></p>
-<h2 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h2><ol>
-<li><code>mkdir folder-name</code>    <strong>创建本地版本库文件夹</strong></li>
-<li><code>cd folder-name</code> <strong>进入版本库</strong></li>
-<li><code>pwd</code> <strong>显示当前目录，避免出错</strong></li>
-<li><code>git init</code> <strong>初始化版本库</strong><br><em>把相应的文件放到版本库中就好</em></li>
-</ol>
-<h2 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h2><ul>
-<li><code>git add file-name(带上格式名)</code>  <strong>把文件添加到仓库</strong></li>
-</ul>
-<p><em>git add .表示添加新文件和编辑过的文件, git add -A表示添加所有内容</em></p>
-<ul>
-<li><code>git commit -m &quot;提交说明&quot;</code> <strong>把所有add的文件提交到仓库</strong></li>
-</ul>
-<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ul>
-<li><p><code>git log</code> <strong>显示提交日志</strong></p>
-<p> <em>即提交者，提交时间，提交说明，添加–pretty=oneline参数可以简化显示方式</em></p>
-</li>
-<li><p><code>git reset --hard HEAD^</code> <strong>退回上一版本</strong></p>
-<p><em>HEAD表示当前版本，HEAD^表示上一版本，也可以用git log 中的版本号前几位表示对应的版本</em></p>
-</li>
-<li><code>git reflog</code> <strong>查看历史命令</strong></li>
-</ul>
-<h2 id="git工作模型"><a href="#git工作模型" class="headerlink" title="git工作模型"></a>git工作模型</h2><ul>
-<li><p>工作区(Working Directory)</p>
-<p>  <strong>工作区就是我们用mkdir命令创建的文件夹，我们对文件的修改就在这里进行</strong></p>
-</li>
-<li><p>版本库(Repository)</p>
-</li>
-</ul>
-<p><strong>版本库就是.git文件夹，它分为暂存区(stage/index)和master分支,<br><code>git add</code> 把文件添加到暂存区,<br><code>git commit</code> 把文件添加到版本库</strong></p>
-<ul>
-<li><code>git status</code> <strong>查看仓库状态</strong></li>
-</ul>
-<h2 id="撤销与删除"><a href="#撤销与删除" class="headerlink" title="撤销与删除"></a>撤销与删除</h2><ul>
-<li><p><code>git checkout --file-name</code> <strong>舍弃修改，将工作区中该文件退回到上一次git add 或者 git commit的状态</strong></p>
-</li>
-<li><p><code>rm file-name</code> <strong>删除工作区文件</strong></p>
-</li>
-</ul>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p><em>注：需要github账号</em></p>
-<ol>
-<li><code>ssh-keygen -t rsa -C &quot;用户邮箱&quot;</code><br><strong>创建ssh-key，确保安全性</strong> </li>
-</ol>
-<p><em>&gt;使用命令的默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSHKey的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人，然后把id_rsa.pub里的密钥添加到github中(廖雪峰的git教程)</em></p>
-<ol>
-<li><p><code>$ git remote add origin git@你的giyhub仓库地址</code>            <strong>把本地库与GitHub上仓库关联</strong></p>
-</li>
-<li><p><code>$ git push origin master</code> <strong>把本地库推送到github上</strong></p>
-</li>
-</ol>
-<p><em>第一次使用push命令要 <code>把id_rsa.pub里的密钥添加到github中</code></em></p>
-<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p><code>git clone git@你的giyhub仓库地址</code></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/07/01/hexo-github搭建博客的小坑/">
-                windows环境下hexo-github搭建博客的小坑
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-07-01</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/hexo/">hexo</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="教程推荐"><a href="#教程推荐" class="headerlink" title="教程推荐"></a>教程推荐</h1><p>  <a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">参考教程</a><br>  前面关于<strong>node git hexo</strong>的安装依照教程即可。</p>
-<h1 id="前方有坑"><a href="#前方有坑" class="headerlink" title="前方有坑"></a>前方有坑</h1><p>  在修改全局配置文件<strong>_config.yml</strong>时要注意<br>  <strong>url: 你的博客网址</strong>  <em>GitHub上这个库的名字最好和你的用户名一样</em></p>
-<p>  <strong>deploy:<br>    type: git<br>    repository: 你的博客所在库的地址<br>    branch: master </strong></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
 
 
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="" href="/page/2/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -915,19 +1050,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/12/08/reg_exp待续/">reg_exp</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/12/08/js概览/">js概览</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/11/17/关于ssd/">SSD科普</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/09/29/php-part3-语句与数组/">php语句和数组</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/29/php-part4-网页交互/">php网页交互</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/29/php-part5-函数&文件/">php函数&amp;文件</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/29/php-part6-面向对象/">php面向对象</a>
             </li>
             
         </ul>
@@ -945,15 +1080,15 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/reg-exp/">reg_exp</a>
-        </li>
-        
-        <li>
             <a class="footer-post" href="/categories/ladder/">ladder</a>
         </li>
         
         <li>
             <a class="footer-post" href="/categories/hexo/">hexo</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/前端/">前端</a>
         </li>
         
     </ul>
