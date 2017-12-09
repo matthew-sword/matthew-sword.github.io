@@ -151,6 +151,76 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/07/09/git学习part2/">
+                git学习part2
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-07-09</span>
+            
+            
+            
+                <span class="category">
+                    <a href="/categories/git/">git</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p><em>注：一项工程的不同部分可以看作不同的分支</em></p>
+<h2 id="创建与合并"><a href="#创建与合并" class="headerlink" title="创建与合并"></a>创建与合并</h2><ul>
+<li><p><code>git checkout -b new-branch</code> <strong>创建并切换到新分支，-b参数表示切换到新分支</strong></p>
+<p> <em>上述命令等于以下两条命令</em></p>
+</li>
+</ul>
+<ol>
+<li><p><code>git branch new-branch</code></p>
+</li>
+<li><p><code>git checkout new-branch</code></p>
+</li>
+</ol>
+<ul>
+<li><p><code>git branch</code> <strong>查看分支目录，带*号为当前分支</strong></p>
+</li>
+<li><p><code>git merge branch-name</code> <strong>把指定分支合并到当前分支</strong></p>
+</li>
+<li><p><code>git branch -d branch-name</code> <strong>删除分支</strong></p>
+<p>  <em>合并后可以删除该分支</em></p>
+</li>
+<li><p><code>git merge --no-ff -m &quot;message&quot; branch-name</code> <strong>以no-ff模式合并(no fast-forward),合并后branch不会被删除</strong></p>
+</li>
+</ul>
+<h2 id="bug-amp-feature"><a href="#bug-amp-feature" class="headerlink" title="bug &amp; feature"></a>bug &amp; feature</h2><ul>
+<li><p><code>git stash</code> <strong>临时储存当前工作区文件，把工作区留给临时任务</strong></p>
+</li>
+<li><p><code>git stash list</code> <strong>查看临时储存区目录</strong></p>
+</li>
+<li><p><code>git stash pop</code> <strong>弹出stash中的内容</strong></p>
+<p>  <em>上述命令等于以下两条命令</em></p>
+<ol>
+<li><code>git stash apply</code></li>
+<li><code>git stash drop</code></li>
+</ol>
+</li>
+<li><p><code>git stash apply stash@{0}</code> <strong>恢复指定内容</strong></p>
+</li>
+<li><p><code>git branch -D branch-name</code> <strong>删除未合并的分支</strong></p>
+</li>
+</ul>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/07/06/git学习part1/">
                 git学习part1
             </a>
@@ -310,6 +380,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/12/09/HttpNote/">HttpStudy</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/12/08/reg_exp待续/">reg_exp</a>
             </li>
             
@@ -319,10 +393,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/11/17/关于ssd/">SSD科普</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/09/29/php-part3-语句与数组/">php语句和数组</a>
             </li>
             
         </ul>
@@ -340,15 +410,15 @@
         </li>
         
         <li>
+            <a class="footer-post" href="/categories/etc/">etc</a>
+        </li>
+        
+        <li>
             <a class="footer-post" href="/categories/ladder/">ladder</a>
         </li>
         
         <li>
             <a class="footer-post" href="/categories/hexo/">hexo</a>
-        </li>
-        
-        <li>
-            <a class="footer-post" href="/categories/前端/">前端</a>
         </li>
         
     </ul>
