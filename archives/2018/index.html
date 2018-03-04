@@ -6,20 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>HttpStudy | Record&amp;Think</title>
+  <title>Archives: 2018 | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#tinyhttpd学习  由客户端程序和服务器程序构成，服务器程序由web服务器实现  相关文件函数sys/socket.hSocket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。  ###st">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HttpStudy">
-<meta property="og:url" content="https://matthew-sword.github.io/2017/12/09/HttpNote/index.html">
+  <meta name="description" content="走在勇往直前的路上">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Record&amp;Think">
+<meta property="og:url" content="https://matthew-sword.github.io/archives/2018/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
-<meta property="og:description" content="#tinyhttpd学习  由客户端程序和服务器程序构成，服务器程序由web服务器实现  相关文件函数sys/socket.hSocket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。  ###st">
-<meta property="og:image" content="d:/BLOG/source/_drafts/http协议/socket原理.PNG">
-<meta property="og:updated_time" content="2017-12-09T12:37:50.318Z">
+<meta property="og:description" content="走在勇往直前的路上">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HttpStudy">
-<meta name="twitter:description" content="#tinyhttpd学习  由客户端程序和服务器程序构成，服务器程序由web服务器实现  相关文件函数sys/socket.hSocket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。  ###st">
-<meta name="twitter:image" content="d:/BLOG/source/_drafts/http协议/socket原理.PNG">
+<meta name="twitter:title" content="Record&amp;Think">
+<meta name="twitter:description" content="走在勇往直前的路上">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -149,375 +146,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HttpNote" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      HttpStudy
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/03/04/关于系统底层/" class="archive-article-date">
+  	<time datetime="2018-03-04T08:04:26.116Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/03/04/关于系统底层/">关于系统底层的杂烩</a>
     </h1>
   
 
-        
-        <a href="/2017/12/09/HttpNote/" class="archive-article-date">
-  	<time datetime="2017-12-09T12:36:20.184Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#tinyhttpd学习</p>
-<ul>
-<li>由客户端程序和服务器程序构成，服务器程序由web服务器实现</li>
-</ul>
-<h2 id="相关文件函数"><a href="#相关文件函数" class="headerlink" title="相关文件函数"></a>相关文件函数</h2><h3 id="sys-socket-h"><a href="#sys-socket-h" class="headerlink" title="sys/socket.h"></a>sys/socket.h</h3><p>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，<strong>它是一组接口</strong>。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。</p>
-<p><img src="D:\BLOG\source\_drafts\http协议\socket原理.PNG" alt="socket原理"></p>
-<p>###struct sockaddr结构体</p>
-<p>struct sockaddr和struct sockaddr_in这两个结构体用来处理网络通信的地址。</p>
-<p>在各种系统调用或者函数中，只要和网络地址打交道，就得用到这两个结构体。</p>
-<p>网络中的地址包含3个方面的属性：</p>
-<p>1 地址类型: ipv4还是ipv6</p>
-<p>2 ip地址</p>
-<p>3 端口</p>
-<p>例如</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span> &#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span>    sa_family; <span class="comment">//通信类型，最常用的是"AF_INET"</span></div><div class="line">    <span class="keyword">char</span>              sa_data[<span class="number">14</span>]; <span class="comment">// 目标地址 和 端口信息</span></div><div class="line">                &#125;;</div><div class="line"><span class="comment">//sockaddr缺陷：将ip和端口号放到一起</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> &#123;</span></div><div class="line">    <span class="keyword">short</span> sin_family;       <span class="comment">// 通信类型 e.g. AF_INET,AF_INET6</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span>  sin_port;    <span class="comment">// 端口号 e.g.htons(3490)</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span>;</span>     <span class="comment">//ip地址</span></div><div class="line">    <span class="keyword">char</span> sin_zero[<span class="number">8</span>];     <span class="comment">// 8 bytes zero this if you want to</span></div><div class="line">                    &#125;;</div><div class="line"></div><div class="line"><span class="comment">//ip地址结构体  多余结构体？</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span>&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> s_addr;</div><div class="line">               &#125;;</div></pre></td></tr></table></figure>
-<h3 id="socket"><a href="#socket" class="headerlink" title="socket( )"></a>socket( )</h3><p>​      socket()函数的原型如下，这个函数建立一个协议族为domain、协议类型为type、协议编号为protocol的<strong>套接字文件描述符</strong>。如果函数调用成功，会返回一个标识这个套接字的文件描述符，失败的时候返回-1。socket函数是任何套接口网络编程中第一个使用的函数，它向用户提供一个套接字，即套接口描述文件字，它是一个整数，如同文件描述符一样，是<strong>内核标识一个IO结构的索引</strong>(UID?)。通过socket函数，我们指定一个套接口的协议相关的属性，为进行使用socket api做好准备。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>domain用于设置网络通信的域，函数socket()根据这个参数选择通信协议的族。通信协议族在文件sys/socket.h中定义。</p>
-</li>
-<li><p>type用于设置套接字通信的类型，主要有SOCKET_STREAM（流式套接字）、SOCK——DGRAM（数据包套接字）等</p>
-</li>
-<li><p>protocol用于制定某个协议的特定类型，即type类型中的某个类型。通常某协议中只有一种特定类型，这样protocol参数仅能设置为0；但是有些协议有多种特定的类型，就需要设置这个参数来选择特定的类型</p>
-</li>
-<li><p><a href="http://blog.csdn.net/xc_tsao/article/details/44123331" target="_blank" rel="external">具体见此处</a>…</p>
-</li>
-</ul>
-<h3 id="htonl"><a href="#htonl" class="headerlink" title="htonl( )"></a>htonl( )</h3><p>​         htonl把本机字节顺序转化为网络字节顺序，网络字节顺序（大尾顺序）就是指一个数在内存中存储的时候“高对低，低对高”（即一个数的高位字节存放于低地址单元，低位字节存放在高地址单元中）。但是计算机的内存存储数据时有可能是大尾顺序或者小尾顺序。</p>
-<p>###bind( ) </p>
-<p>​        在建立套接字文件描述符成功后，需要对套接字进行地址和端口的绑定，才能进行数据的接收和发送操作。</p>
-<p>函数原型:<br><code>int bind(int sockfd, struct sockaddr * my_addr, int addrlen);</code></p>
-<ul>
-<li>sockfd: socket file descriptor 套接字文件描述符</li>
-<li>struct sockaddr:网络通信的地址 ，协议类型，ip，端口</li>
-<li>成功则返回0, 失败返回-1, 错误原因存于errno 中</li>
-</ul>
-<h3 id="getsockname"><a href="#getsockname" class="headerlink" title="getsockname( )"></a>getsockname( )</h3><p>​         用getsockname获得一个与socket相关的地址，服务器端可以通过它得到相关客户端地址，而客户端也可以得到当前已连接成功的socket的ip和端口。可用于验证某个socket是否存在。<br><a href="https://baike.baidu.com/item/getsockname(" target="_blank" rel="external">具体见此处</a>/10081920)</p>
-<h3 id="listen"><a href="#listen" class="headerlink" title="listen ( )"></a>listen ( )</h3><p>listen函数使用主动连接套接口变为被连接套接口，使得一个进程可以接受其它进程的请求，从而成为一个服务器进程。在TCP服务器编程中listen函数把进程变为一个服务器，并指定相应的套接字变为被动连接。</p>
-<p>函数原型：<code>int listen(int sockfd, int backlog);</code></p>
-<ul>
-<li><p>sockfd：socket file descriptor 套接字文件描述符</p>
-<p>​        在被socket函数返回的套接字sockfd之时，它是一个<strong>主动连接的套接字</strong>，也就是此时系统假设用户会对这个套接字调用connect函数，期待它主动与其它进程连接，然后在服务 器编程中，用户希望这个套接字可以接受外来的连接请求，也就是被动等待用户来连接。由于系统默认时认为一个套接字是主动连接的，所以需要通过某种方式来告 诉系统，用户进程通过系统调用listen来完成这件事。</p>
-</li>
-<li><p>backlog：连接请求队列(queue of pending connections)的最大长度</p>
-<p>​        在进程正理一个一个连接请求的时候，可能还存在其它的连接请求。因为TCP连接是一个过程，所以可能存在一种半连接的状态，有时由 于同时尝试连接的用户过多，使得服务器进程无法快速地完成连接请求。如果这个情况出现了，服务器进程希望内核如何处理呢？<strong>内核会在自己的进程空间里维护一 个队列以跟踪这些完成的连接</strong>，但服务器进程还没有接手处理或正在进行的连接，这样的一个队列内核不可能让其任意大，所以必须有一个大小的上限。这个 backlog告诉内核使用这个数值作为上限。</p>
-</li>
-<li><p><strong>listen函数一般在调用bind之后、调用accept之前调用</strong></p>
-<h3 id="accept"><a href="#accept" class="headerlink" title="accept ( )"></a>accept ( )</h3></li>
-</ul>
-<p>​     当套接字处于监听（listen）状态时，可以通过 accept() 函数来接收客户端请求。accept() 返回一个新的套接字来和客户端通信，addr 保存了<strong>客户端的IP地址和端口号</strong>，而 sock 是服务器端的套接字，</p>
-<p>函数原型：<br><code>int accept(int sever_sock, struct sockaddr *addr, socklen_t *addrlen);</code></p>
-<ul>
-<li><p>输入 sever_sock</p>
-</li>
-<li><p>返回client_sockfd</p>
-</li>
-<li><p>struct sockaddr: 客户端ip和端口</p>
-</li>
-</ul>
-<p>###pthread</p>
-<p>​        pthread定义了创建和操纵线程的一套API。具体Pthreads定义了一套C语言的类型、函数与常量，它以<code>pthread.h</code>头文件和一个线程库实现。Pthreads API中大致共有100个函数调用，全都以”pthread_”开头，并可以分为四类：</p>
-<ul>
-<li>线程管理，例如创建线程，等待(join)线程，查询线程状态等。</li>
-<li>互斥锁（Mutex）：创建、摧毁、锁定、解锁、设置属性等操作</li>
-<li>条件变量（Condition Variable）：创建、摧毁、等待、通知、设置与查询属性等操作</li>
-<li>使用了互斥锁的线程间的同步管理</li>
-</ul>
-<p>####pthread_create( )</p>
-<p>创建线程，若成功则返回0，否则返回出错编号</p>
-<p>函数原型：<br><code>int pthread_create(pthread_t*restrict tidp,const pthread_attr_t *restrict_attr,void*（*start_rtn)(void*),void *restrict arg);</code></p>
-<ul>
-<li><p>tidp：线程ID，指向线程标识符的指针</p>
-</li>
-<li><p>restrict_attr：线程属性</p>
-</li>
-<li><p>(*start_rtn)(void*)：线程运行函数的起始地址(函数名是函数的入口的指针)</p>
-</li>
-<li><p>arg：运行函数的参数</p>
-</li>
-<li><p>e.g.: <code>pthread_create(&amp;newthread , NULL, accept_request, client_sock)</code></p>
-<p>​</p>
-</li>
-</ul>
-<p>###HTTP报文</p>
-<p>请求</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GET /webDemo/Hellow HTTP/1.1  //请求行</div><div class="line">Host: localhost:8080      //请求头</div><div class="line">Connection: keep-alive</div><div class="line">Accept: text/html</div><div class="line">Accept-Encoding: gzip, deflate, sdch, br</div><div class="line">Accept-Language: zh-CN,zh;q=0.8</div><div class="line">                //空行，表示请求头已经结束</div><div class="line">data                //实体内容，GET方法此项为空。POST方法为提交的数据</div></pre></td></tr></table></figure>
-<p>响应</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK       //响应行</div><div class="line">Server: Apache-Coyote/1.1  //相应头</div><div class="line">Content-Length: 0</div><div class="line">Date: Thu, 18 May 2017 13:21:23 GMT</div><div class="line">              //空行，表示响应头已经结束</div><div class="line">data              //实体内容</div></pre></td></tr></table></figure>
-<h3 id="recv"><a href="#recv" class="headerlink" title="recv ( )"></a>recv ( )</h3><p>函数原型：<code>int recv( SOCKET s, char *buf, int  len, int flags)</code></p>
-<ul>
-<li><p>s: 接收端套接字描述符</p>
-</li>
-<li><p>*buf：缓冲区，用来存放recv函数接收到的数据</p>
-</li>
-<li><p>len：指明buf的长度</p>
-</li>
-<li><p>flags ：flags取值有：</p>
-<ul>
-<li>0：常规操作，与read()相同</li>
-<li>MSG_DONTWAIT:将单个I／O操作设置为非阻塞模式</li>
-<li>MSG_OOB:指明发送的是带外信息</li>
-<li>MSG_PEEK:可以查看可读的信息，在接收数据后不会将这些数据丢失</li>
-<li>MSG_WAITALL:通知内核直到读到请求的数据字节数时，才返回。</li>
-</ul>
-</li>
-<li><p>成功执行时，返回接收到的字节数。</p>
-</li>
-<li><p>另一端已关闭则返回0</p>
-</li>
-<li><p>失败返回-1</p>
-</li>
-</ul>
-<p>###send ( )</p>
-<p>函数原型：<code>int send(int s, const void *msg, size_t len, int flags);</code></p>
-<ul>
-<li><p>s: 接收端套接字描述符</p>
-</li>
-<li><p>*buf：缓冲区，用来存放send函数接收到的数据</p>
-</li>
-<li><p>len：指明buf的长度</p>
-</li>
-<li><p>flags ：flags取值有：</p>
-<ul>
-<li><p>0： 与write()无异</p>
-</li>
-<li><p>MSG_DONTROUTE:告诉内核，目标主机在本地网络，不用查路由表</p>
-</li>
-<li><p>MSG_DONTWAIT:将单个I／O操作设置为非阻塞模式</p>
-</li>
-<li><p>MSG_OOB:指明发送的是带外信息</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>###CGI</p>
-<p>CGI(Common Gateway Interface)是一个用于定Web服务器与外部程序之间通信方式的标准，其程序须运行在网络服务器上</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>GET方法是默认的HTTP请求方法，用GET方法提交的数据将作为URL的一部分向Web服务器发送。?之后的内容为参数，不同参数之间用&amp;隔开 。（php获取get参数？）<br>例如：<br><a href="http://news.baidu.com/ns?word=akg&amp;tn=news&amp;from=news&amp;cl=2&amp;rn=20&amp;ct=1" target="_blank" rel="external">http://news.baidu.com/ns?word=akg&amp;tn=news&amp;from=news&amp;cl=2&amp;rn=20&amp;ct=1</a></p>
-<p>###stat()</p>
-<p>定义： int stat(const char <em>file_name, struct stat </em>buf); </p>
-<p>通过文件名filename获取文件信息，并保存在buf所指的结构体stat中 。执行成功则返回0，失败返回-1，错误代码存于errno（需要include \<errno.h>）</errno.h></p>
-<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><ul>
-<li><p>starup：在相应端口启动httpd服务</p>
-<ul>
-<li><p>用socket(int domain, int type, int protocol) 指定一个套接口的协议相关的属性，为进行使用socket api做好准备</p>
-</li>
-<li><p>用struct sockaddr指定网络通信地址</p>
-</li>
-<li><p>用bind()将socket套接字和一个IP地址及端口绑定</p>
-</li>
-<li><p>如果端口是 0，随机分配一个端口 。</p>
-</li>
-<li><p>用listen( )进行监听</p>
-</li>
-<li><p>返回<strong>套接字描述符</strong> （socket file descriptor）给主函数</p>
-<p>​</p>
-</li>
-</ul>
-</li>
-<li><p>while( 1 )</p>
-<ul>
-<li><p><code>client_sock = accept( int sockfd, struct sockaddr *addr, socklen_t *addrlen);</code><br>不断从已完成的服务端连接队列返回下一个已完成连接</p>
-</li>
-<li><p><code>pthread_create(&amp;newthread , NULL, accept_request, client_sock)</code></p>
-<p> 用pthread_creat( )派生新线程，用accept_request( )处理新请求</p>
-<p> <strong>accept_request(client_sockfd )</strong></p>
-<ul>
-<li><p><code>numchars = get_line( );//得到请求的第一行</code></p>
-</li>
-<li><p>方法不是GET或者POST， 则用unimplemented( )返回错误信息（http请求方法？？）    </p>
-<ul>
-<li>unimplemented( )发送http 错误代码 501，返回http相应报文</li>
-</ul>
-</li>
-<li><p>若为POST方法则启用CGI</p>
-</li>
-<li><p>用get_line( )获取url，若有？开启CGI</p>
-</li>
-<li><p>根据url生成资源路径path</p>
-</li>
-<li><p>用stat()获取路径path对应文件(夹)信息</p>
-</li>
-<li><p>如果路径是目录则返回该目录下的index.html</p>
-</li>
-<li><p>如果是文件，先判断文件是否为cgi文件（是否有可执行权限）</p>
-</li>
-<li><p>若是cgi，则用execute_cgi( )执行该cgi</p>
-<p><strong>execute_cgi( )</strong></p>
-<ul>
-<li>若method是GET，则完全丢弃请求头部</li>
-<li>若method是POST，则找出：Content-Length</li>
-<li>Content-Length没有找到，用bad_request( )返回 400 bad request</li>
-<li>否则 返回 200，开始执行cgi</li>
-<li>…….待续</li>
-</ul>
-<p>​</p>
-</li>
-<li><p>如果不是cgi，则返用serve_file( )回该文件</p>
-</li>
-<li><p>若没有找到相应文件或者目录，则用not_found()返回404 not fount</p>
-</li>
-<li><p>关闭http连接</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>结束服务</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info info-on-right">
+          
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/web//" class="article-tag-list-link color4">web</a>
+        			<a href="/categories/sundry//" class="article-tag-list-link color2">sundry</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2017/12/09/HttpNote/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/03/04/关于系统底层/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于系统底层的杂烩
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/12/08/reg_exp待续/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">reg_exp</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#相关文件函数"><span class="toc-number">1.</span> <span class="toc-text">相关文件函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sys-socket-h"><span class="toc-number">1.1.</span> <span class="toc-text">sys/socket.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#socket"><span class="toc-number">1.2.</span> <span class="toc-text">socket( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htonl"><span class="toc-number">1.3.</span> <span class="toc-text">htonl( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getsockname"><span class="toc-number">1.4.</span> <span class="toc-text">getsockname( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#listen"><span class="toc-number">1.5.</span> <span class="toc-text">listen ( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#accept"><span class="toc-number">1.6.</span> <span class="toc-text">accept ( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#recv"><span class="toc-number">1.7.</span> <span class="toc-text">recv ( )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GET方法"><span class="toc-number">1.8.</span> <span class="toc-text">GET方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行流程"><span class="toc-number">2.</span> <span class="toc-text">执行流程</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -540,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

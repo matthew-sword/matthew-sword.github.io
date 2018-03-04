@@ -155,13 +155,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/15/关于系统底层/">关于系统底层的杂烩</a>
+      <a class="article-title" href="/2018/03/04/关于系统底层/">关于系统底层的杂烩</a>
     </h1>
   
 
         
-        <a href="/2017/12/15/关于系统底层/" class="archive-article-date">
-  	<time datetime="2017-12-15T06:13:46.078Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
+        <a href="/2018/03/04/关于系统底层/" class="archive-article-date">
+  	<time datetime="2018-03-04T08:04:26.116Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
 </a>
         
       </header>
@@ -227,9 +227,9 @@
 </ul>
 <p>​             以Linux系统为例，先载入/boot目录下面的kernel。内核加载成功后，第一个运行的程序是/sbin/init。它根据配置文件（Debian系统是/etc/initab）产生init进程。这是Linux启动后的第一个进程，pid进程编号为1，其他进程都是它的后代。然后，init线程加载系统的各个模块，比如窗口程序和网络程序，直至执行/bin/login程序，跳出登录界面，等待用户输入用户名和密码。</p>
 <p>​                                                                           参考自<a href="http://www.ruanyifeng.com/blog/2013/02/booting.html" target="_blank" rel="external">阮一峰的网络日志</a></p>
-<h2 id="机械硬盘结构"><a href="#机械硬盘结构" class="headerlink" title="机械硬盘结构"></a>机械硬盘结构</h2><p><img src="/关于系统底层/hdd.jpg" alt="hdd"></p>
+<h2 id="机械硬盘结构"><a href="#机械硬盘结构" class="headerlink" title="机械硬盘结构"></a>机械硬盘结构</h2><p><img src="/2018/03/04/关于系统底层/hdd.jpg" alt="hdd"></p>
 <p>机械硬盘主要由以下几部分组成：机械手臂（Boom）,磁头（Head）,转轴（Spindle），盘片（Platter）组成，在实际应用中又将盘片分成了磁道（Track），扇区（Sector）和柱面（Cylinder）。每一个盘片的结构如图</p>
-<p><img src="/关于系统底层/plater.png" alt="plater"></p>
+<p><img src="/2018/03/04/关于系统底层/plater.png" alt="plater"></p>
 <h3 id="磁道"><a href="#磁道" class="headerlink" title="磁道"></a>磁道</h3><p>​         每个盘片的每个盘面被划分成多个狭窄的同心圆环，数据就是存储在这样的同心圆环上，我们将这样的圆环称为磁道(Track)，每个盘面可以划分多个磁道。在每个盘面的最外圈，离盘心最远的地方是“0”磁道，向盘心方向依次增长为1磁道，2磁道，等等。硬盘数据的存放就是从最外圈开始。</p>
 <h3 id="扇区"><a href="#扇区" class="headerlink" title="扇区"></a>扇区</h3><p>每个磁道划分成若干弧段，每段称为一个扇区(Sector)。扇区是硬盘上存储的物理单位。从DOS时代起，每扇区是128×22＝512字节，现在已经成了业界不成文的规定。另外扇区的编号是从1开始，而不是0。</p>
 <h3 id="柱面"><a href="#柱面" class="headerlink" title="柱面"></a>柱面</h3><p>柱面是抽象出来的一个逻辑概念，前面说过，离盘心最远的磁道为0磁道，依此往里为1磁道，2磁道，3磁道….，不同面上相同磁道编号则组成了一个圆柱面，即所称的柱面(Cylinder)。</p>
@@ -263,7 +263,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/15/关于系统底层/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/04/关于系统底层/">展开全文 >></a>
         </p>
       
 
