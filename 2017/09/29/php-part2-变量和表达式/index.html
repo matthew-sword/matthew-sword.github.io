@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>正则表达式 | Record&amp;Think</title>
+  <title>php-part2-运算符和表达式 | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
-<meta name="keywords" content="Tools">
+  <meta name="description" content="常量 define函数：定义常量。 define(常量名,常量值,大小写敏感(可选参数) )  constant函数：获取常量值。$var = constant(常量名)  defined函数：判断常量是否被定义。defined(常量名)   ###预定义常量  __FILE__：当前php文件的绝对路径 __LINE__：当前行数 PHP_VERSION：当前php版本 PHP-OS：当前操作系">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="https://matthew-sword.github.io/2017/12/08/reg_exp待续/index.html">
+<meta property="og:title" content="php-part2-运算符和表达式">
+<meta property="og:url" content="https://matthew-sword.github.io/2017/09/29/php-part2-变量和表达式/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
-<meta property="og:description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
-<meta property="og:updated_time" content="2018-03-04T13:56:38.527Z">
+<meta property="og:description" content="常量 define函数：定义常量。 define(常量名,常量值,大小写敏感(可选参数) )  constant函数：获取常量值。$var = constant(常量名)  defined函数：判断常量是否被定义。defined(常量名)   ###预定义常量  __FILE__：当前php文件的绝对路径 __LINE__：当前行数 PHP_VERSION：当前php版本 PHP-OS：当前操作系">
+<meta property="og:updated_time" content="2018-03-04T13:52:07.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
+<meta name="twitter:title" content="php-part2-运算符和表达式">
+<meta name="twitter:description" content="常量 define函数：定义常量。 define(常量名,常量值,大小写敏感(可选参数) )  constant函数：获取常量值。$var = constant(常量名)  defined函数：判断常量是否被定义。defined(常量名)   ###预定义常量  __FILE__：当前php文件的绝对路径 __LINE__：当前行数 PHP_VERSION：当前php版本 PHP-OS：当前操作系">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -148,57 +148,105 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-reg_exp待续" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-php-part2-变量和表达式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      正则表达式
+      php-part2-运算符和表达式
     </h1>
   
 
         
-        <a href="/2017/12/08/reg_exp待续/" class="archive-article-date">
-  	<time datetime="2017-12-08T06:45:08.002Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
+        <a href="/2017/09/29/php-part2-变量和表达式/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:48:37.905Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h1><ul>
-<li>普通字符</li>
-<li>转义字符</li>
-<li>特殊字符（使用其本身需要转义）<ul>
-<li>$ 匹配末尾</li>
-<li>() 表示一个子表达式</li>
-<li>* 匹配前面子表达式0或多次</li>
-<li>+ 匹配前面子表达式0或多次</li>
-<li>? 匹配前面子表达式0或1次</li>
-<li>. 匹配处换行符之外的所以单字符</li>
-<li>[ 标记一个中括号表达式开始</li>
-<li>\ 转义符号</li>
-<li>^ 匹配开头</li>
-<li>{ 标记限定表达符开始 </li>
-<li>| 两项之间选择一项</li>
-</ul>
+        <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ul>
+<li><p>define函数：定义常量。 <strong>define(常量名,常量值,大小写敏感(可选参数) )</strong></p>
+</li>
+<li><p>constant函数：获取常量值。<strong>$var = constant(常量名)</strong></p>
+</li>
+<li><p>defined函数：判断常量是否被定义。<strong>defined(常量名)</strong></p>
 </li>
 </ul>
-<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
+<p>###预定义常量</p>
 <ul>
-<li>* 0或者多次</li>
-<li>+ 一次或者多次</li>
-<li>?  0次或者1次</li>
-<li>{n} 匹配n次</li>
-<li>{n，} 至少匹配n次</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>__FILE__：当前php文件的绝对路径</li>
+<li>__LINE__：当前行数</li>
+<li>PHP_VERSION：当前php版本</li>
+<li>PHP-OS：当前操作系统</li>
+<li>…</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>变量必须以$开头，不区分变量类型</strong></p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><ul>
+<li><p>直接赋值</p>
+</li>
+<li><p>传值赋值</p>
+</li>
+<li><p><strong>引用赋值</strong></p>
+<p><strong>引用赋值指以不同名字访问同一个变量内容，当其中一个变量值改变时，另一个变量也改变,用 &amp; 来表示引用赋值</strong></p>
+<p> <code>$str1 = &#39;hello&#39;;</code></p>
+<p><code>$str2 = &amp; $str1;</code></p>
+</li>
+</ul>
+<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><p>可变变量使用一个变量的值作为其名称，用两个$表示。</p>
+<p><code>$chang = &#39;saying&#39;;</code><br><code>$saying = &#39;good good study, day day up&#39;;</code><br><code>echo &quot;$$change&quot;</code></p>
+<p>输出：good good study, day day up。</p>
+<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><ul>
+<li>$_SERVER[‘SERVER_ADDR’]：php服务器IP</li>
+<li>$_SEVER[‘DERVER_NAME’]：php服务器主机名</li>
+<li>$_POST</li>
+<li>$_GET</li>
+<li>…</li>
+</ul>
+<hr>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接 ."></a>字符串连接 .</h3><p>. 把两个字符串连接起来，合成一个新的字符串。</p>
+<p><code>$a = $a.$b;</code></p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><p>&amp;&amp; 或者 and：同C语言&amp;&amp;</p>
+</li>
+<li><p>|| 或者 or：同C语言||</p>
+</li>
+<li><p>xor：异或 (<code>$a xor $b</code>当<code>$a $b</code>只有一个真时为真，其它情况均为假)</p>
+</li>
+</ul>
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
+<li>===：全等（值相等且类型相等）</li>
+<li>!==：不全等（<code>$a !== $</code>b，<code>$a和$b</code>或者类型不等或者数值不等）</li>
+</ul>
+<h1 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h1><h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h3><ul>
+<li>bool: true = 1, false = 0;</li>
+<li><strong>字符串与数值进行计算，字符串以数字开头则转换为相应数字，否则转换为0</strong></li>
+<li><strong>进行字符串连接运算时，int float 被转换为字符串型数据，bool true转换为字符串”1”,bool false 转换为空字符串””</strong></li>
+<li><strong>进行逻辑运算时，<em>0   0.0  空字符串””  字符串”0”  Null  空数组</em>   将转换为bool false，其它转换为bool true </strong></li>
+</ul>
+<p>###强制转换</p>
+<p>变量前加上数据类型即可<code>(数据类型)$var</code> 。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>浮点型转换为整型时小数部分将被舍去</p>
+</li>
+<li><p>字符串转换为整型时截取到非数字位，若不以数字开头则为0</p>
+</li>
+</ul>
+<p>###使用转换函数</p>
+<ul>
+<li><p>intval (mixed var)</p>
+</li>
+<li><p>floatval (mixed var)</p>
+</li>
+<li><p>strval (mixed var)</p>
+</li>
+<li><p>settype(mixed var, 数据类型)，数据类型 = （boolean / float  / integer / array / null / object / string）</p>
+<p>​</p>
+</li>
 </ul>
 
       
@@ -213,7 +261,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -269,7 +317,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2017/12/08/reg_exp待续/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2017/09/29/php-part2-变量和表达式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +331,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/09/tinyhttpd学习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/29/php-part1-基础特性/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          tinyhttpd学习
+          php-part1-基础特性
         
       </div>
     </a>
   
   
-    <a href="/2017/12/08/js概览/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js概览</div>
+    <a href="/2017/09/29/php-part3-语句与数组/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">php-part3-语句和数组</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +369,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符类型"><span class="toc-number">1.</span> <span class="toc-text">字符类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限定符"><span class="toc-number">2.</span> <span class="toc-text">限定符</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常量"><span class="toc-number">1.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量"><span class="toc-number">2.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值"><span class="toc-number">2.1.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变变量"><span class="toc-number">2.2.</span> <span class="toc-text">可变变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预定义变量"><span class="toc-number">2.3.</span> <span class="toc-text">预定义变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算符"><span class="toc-number">3.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串连接"><span class="toc-number">3.1.</span> <span class="toc-text">字符串连接 .</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑运算符"><span class="toc-number">3.2.</span> <span class="toc-text">逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较运算符"><span class="toc-number">3.3.</span> <span class="toc-text">比较运算符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表达式"><span class="toc-number"></span> <span class="toc-text">表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型转换"><span class="toc-number">1.</span> <span class="toc-text">数据类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动转换"><span class="toc-number">1.1.</span> <span class="toc-text">自动转换</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

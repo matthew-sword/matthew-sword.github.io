@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>正则表达式 | Record&amp;Think</title>
+  <title>php-part1-基础特性 | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
-<meta name="keywords" content="Tools">
+  <meta name="description" content="php 标记符&amp;amp;注释 &amp;lt;?php  ?&amp;gt;  &amp;lt;?  ?&amp;gt;  &amp;lt;%  %&amp;gt;      ​             注释  //  / /    #  php标量数据类型 boolean string intergrt floatstring $a = ‘string’  $a = “string”  &amp;lt;&amp;lt;&amp;lt; string-name  格式">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式">
-<meta property="og:url" content="https://matthew-sword.github.io/2017/12/08/reg_exp待续/index.html">
+<meta property="og:title" content="php-part1-基础特性">
+<meta property="og:url" content="https://matthew-sword.github.io/2017/09/29/php-part1-基础特性/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
-<meta property="og:description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
-<meta property="og:updated_time" content="2018-03-04T13:56:38.527Z">
+<meta property="og:description" content="php 标记符&amp;amp;注释 &amp;lt;?php  ?&amp;gt;  &amp;lt;?  ?&amp;gt;  &amp;lt;%  %&amp;gt;      ​             注释  //  / /    #  php标量数据类型 boolean string intergrt floatstring $a = ‘string’  $a = “string”  &amp;lt;&amp;lt;&amp;lt; string-name  格式">
+<meta property="og:updated_time" content="2018-03-04T13:51:42.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="字符类型 普通字符 转义字符 特殊字符（使用其本身需要转义） $ 匹配末尾 () 表示一个子表达式 * 匹配前面子表达式0或多次 + 匹配前面子表达式0或多次 ? 匹配前面子表达式0或1次 . 匹配处换行符之外的所以单字符 [ 标记一个中括号表达式开始 \ 转义符号 ^ 匹配开头 { 标记限定表达符开始  | 两项之间选择一项    限定符限定符用来指定正则表达式的一个给定组件必须要出现多少次才能">
+<meta name="twitter:title" content="php-part1-基础特性">
+<meta name="twitter:description" content="php 标记符&amp;amp;注释 &amp;lt;?php  ?&amp;gt;  &amp;lt;?  ?&amp;gt;  &amp;lt;%  %&amp;gt;      ​             注释  //  / /    #  php标量数据类型 boolean string intergrt floatstring $a = ‘string’  $a = “string”  &amp;lt;&amp;lt;&amp;lt; string-name  格式">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -148,58 +148,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-reg_exp待续" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-php-part1-基础特性" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      正则表达式
+      php-part1-基础特性
     </h1>
   
 
         
-        <a href="/2017/12/08/reg_exp待续/" class="archive-article-date">
-  	<time datetime="2017-12-08T06:45:08.002Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
+        <a href="/2017/09/29/php-part1-基础特性/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:48:37.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h1><ul>
-<li>普通字符</li>
-<li>转义字符</li>
-<li>特殊字符（使用其本身需要转义）<ul>
-<li>$ 匹配末尾</li>
-<li>() 表示一个子表达式</li>
-<li>* 匹配前面子表达式0或多次</li>
-<li>+ 匹配前面子表达式0或多次</li>
-<li>? 匹配前面子表达式0或1次</li>
-<li>. 匹配处换行符之外的所以单字符</li>
-<li>[ 标记一个中括号表达式开始</li>
-<li>\ 转义符号</li>
-<li>^ 匹配开头</li>
-<li>{ 标记限定表达符开始 </li>
-<li>| 两项之间选择一项</li>
+        <h2 id="php-标记符-amp-注释"><a href="#php-标记符-amp-注释" class="headerlink" title="php 标记符&amp;注释"></a>php 标记符&amp;注释</h2><ul>
+<li><p>&lt;?php  ?&gt;</p>
+</li>
+<li><p>&lt;?  ?&gt;</p>
+</li>
+<li><p>&lt;%  %&gt;   </p>
+</li>
+</ul>
+<p>​             <em>注释</em></p>
+<ul>
+<li><p>//</p>
+</li>
+<li><p>/<em> </em>/</p>
+</li>
+</ul>
+<ul>
+<li>#</li>
+</ul>
+<h2 id="php标量数据类型"><a href="#php标量数据类型" class="headerlink" title="php标量数据类型"></a>php标量数据类型</h2><ul>
+<li>boolean</li>
+<li>string</li>
+<li>intergrt</li>
+<li>float<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3></li>
+<li><p>$a = ‘string’</p>
+</li>
+<li><p>$a = “string”</p>
+<ul>
+<li><p>&lt;&lt;&lt; string-name<br>  格式化文本</p>
+<pre><code> string-name
+
+**双引号 定界符(&lt;&lt;&lt;)包含的变量自动替换成变量值 ，简单字符串尽量用单引号**
+</code></pre><h3 id="integer"><a href="#integer" class="headerlink" title="integer"></a>integer</h3></li>
+</ul>
+</li>
+<li><p>八进制 ：0开头</p>
+</li>
+<li><p>十六进制；0x开头</p>
+</li>
+</ul>
+<h2 id="php复合数据类型"><a href="#php复合数据类型" class="headerlink" title="php复合数据类型"></a>php复合数据类型</h2><p> ###array</p>
+<ul>
+<li>$array = (“val1”,”val2”…)</li>
+<li>$array[key] = “val”;</li>
+<li>array(key1=&gt;val1, key2=&gt;val2…)<h3 id="检测数据类型"><a href="#检测数据类型" class="headerlink" title="检测数据类型"></a>检测数据类型</h3><ul>
+<li>is_bool</li>
+<li>is_string</li>
+<li>is_array…<h2 id="php数据输出"><a href="#php数据输出" class="headerlink" title="php数据输出"></a>php数据输出</h2>###print &amp; echo<br>print一次只输出一个字符串，echo可以输出多个，不同字符串之间用 . 连接。<strong>echo前不能用@错误屏蔽符。print是一个有返回值的函数，可以作为表达式，echo不行</strong></li>
 </ul>
 </li>
 </ul>
-<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
-<ul>
-<li>* 0或者多次</li>
-<li>+ 一次或者多次</li>
-<li>?  0次或者1次</li>
-<li>{n} 匹配n次</li>
-<li>{n，} 至少匹配n次</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<h2 id="php命名规则"><a href="#php命名规则" class="headerlink" title="php命名规则"></a>php命名规则</h2><ul>
+<li>类名&amp;文件：驼峰法</li>
+<li>常量：大写+下划线</li>
+<li>变量&amp;函数：小写+下划线</li>
+<li>数组：单词复数</li>
 </ul>
+<p>  ​</p>
+<p>  ​</p>
 
       
 
@@ -213,7 +239,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -269,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2017/12/08/reg_exp待续/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2017/09/29/php-part1-基础特性/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +309,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/09/tinyhttpd学习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/17/关于ssd/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          tinyhttpd学习
+          SSD结构
         
       </div>
     </a>
   
   
-    <a href="/2017/12/08/js概览/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js概览</div>
+    <a href="/2017/09/29/php-part2-变量和表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">php-part2-运算符和表达式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +347,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符类型"><span class="toc-number">1.</span> <span class="toc-text">字符类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限定符"><span class="toc-number">2.</span> <span class="toc-text">限定符</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#php-标记符-amp-注释"><span class="toc-number">1.</span> <span class="toc-text">php 标记符&注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php标量数据类型"><span class="toc-number">2.</span> <span class="toc-text">php标量数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">2.1.</span> <span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#integer"><span class="toc-number">2.2.</span> <span class="toc-text">integer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php复合数据类型"><span class="toc-number">3.</span> <span class="toc-text">php复合数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检测数据类型"><span class="toc-number">3.1.</span> <span class="toc-text">检测数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php数据输出"><span class="toc-number">4.</span> <span class="toc-text">php数据输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php命名规则"><span class="toc-number">5.</span> <span class="toc-text">php命名规则</span></a></li></ol>
                     </div>
                 </span>
             </div>

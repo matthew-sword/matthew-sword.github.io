@@ -148,6 +148,265 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-php-part6-面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/php-part6-面向对象/">php-patr6-面向对象</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/php-part6-面向对象/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:48:37.865Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li><strong>类（class）：</strong>属性和方法的集合。（可以简单理解为带有函数的结构体）</li>
+<li><strong>对象：</strong>类的实例化。</li>
+<li>三大特点：<strong>封装、继承、多态</strong>。<ul>
+<li>封装：对类的使用和实现分离，用户只需要掌握接口。</li>
+<li>继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。</li>
+<li>多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>##类的操作</p>
+<p>###声明</p>
+<ul>
+<li><p>定义类：<code>权限修饰符 class 类名{</code><br>​                               <code>类体;</code><br>​                                                       <code>}</code></p>
+<ul>
+<li>权限修饰符：<code>public  private  protected</code></li>
+<li>成员属性：也称成员变量，用于记录类的属性信息。php中可以为标量类型和复合类型。不能为空类型和资源。</li>
+<li>成员常量：<strong>关键字<code>const</code>。</strong>eg.<code>const PI = 3.14159</code>。常量的输出可以不需要类的实例化<code>类名::常量名</code>。</li>
+<li>成员方法：也称成员函数，同一般函数。</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h3 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h3><ul>
+<li><p>对象的创建：<code>$对象名 = new 类名([参数]);</code></p>
+</li>
+<li><p>类成员的访问：<code>$对象名-&gt;成员属性;</code><br>​                             <code>$对象名-&gt;成员方法();</code></p>
+</li>
+<li><p>$this操作符：表示对变量本身的引用eg. <code>\$this-&gt;属性; \$this-&gt;方法;</code>  <strong>属性名前没有\$</strong></p>
+</li>
+</ul>
+<p>###构造&amp;析构</p>
+<ul>
+<li>​构造方法：对象创建成功后第一个被对象自动调用的方法。如果没有声明构造方法，系统会自动生成一个没有参数，且内容为空的构造方法,一个类只有一个构造方法。格式<code>function __construct();</code>         </li>
+<li>析构方法：为创建对象的可选方法，一般是完成对象销毁前的清理工作。</li>
+</ul>
+<hr>
+<p>##封装</p>
+<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><ul>
+<li>public ：可以在程序的任何地点被其它类和对象调用，子类可以继承父类的公共成员。</li>
+<li>private:只能在所属类的内部被调用和修改，外部类（即使子类）不能调用修改。</li>
+<li>protected:只有本类和子类可以调用它，其它地方不行。</li>
+</ul>
+<h2 id="​-权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public"><a href="#​-权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public" class="headerlink" title="​           权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public"></a>​           <strong>权限修饰符用于类定义前和成员声明前，如果省略权修饰符，默认为public</strong></h2><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li><p>关键字extends：<code>class 子类名 extends 父类名 { 类体; }</code>子类可以拥有自己和父类的所有属性。</p>
+</li>
+<li><p>::操作符：<code>::</code>可以在没有声明任何实例的情况下访问类成员。</p>
+<p>​                用法：<code>关键字 ::  变量/常量/方法;</code>其中关键字有如下三种：                         </p>
+<ul>
+<li>parent：调用父类成员</li>
+<li>self：调用自身成员</li>
+<li>类名：调用此类的成员</li>
+</ul>
+</li>
+<li><p>覆盖父类方法：在子类中对父类的同名方法进行重写，<strong>此方法必须和父类方法有相同的名称，参数，返回值。</strong></p>
+</li>
+<li><p>关键字static：用于修饰成员变量和成员函数。静态变量和静态函数可以不用对象而使用类名直接访问。<strong>静态变量</strong>相当于储存在类中的全局变量用法<code>类名 ::$静态变量</code>，静态成员可以在对象被销毁后继续保留，方便下一次调用；<strong>静态函数</strong>只能使用静态变量，<code>类名:: 静态函数(...);</code></p>
+<p>​                                </p>
+</li>
+</ul>
+<hr>
+<h2 id="抽象类-amp-接口"><a href="#抽象类-amp-接口" class="headerlink" title="抽象类&amp;接口"></a>抽象类&amp;接口</h2><p>抽象类和接口是不能被实例化的特殊类。</p>
+<p>###抽象类</p>
+<p>抽象类是不能被实例化的特殊类，只能作为其它类的父类使用。用法</p>
+<p><code>abstract class 类名{</code></p>
+<p><code>//抽象成员变量...</code></p>
+<p><code>abstract function func1();</code></p>
+<p><code>abstract function func2();</code></p>
+<p>​                                     <code>}</code></p>
+<p>抽象类至少包含一个抽象函数；抽象函数没有函数体，只有声明（末尾加分号）其功能在子类中实现；</p>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>php只支持单继承，要实现多重继承需要用到接口。</p>
+<ul>
+<li>声明</li>
+</ul>
+<p><code>interface 接口名{</code></p>
+<p><code>//成员常量</code></p>
+<p><code>//抽象函数}</code></p>
+<p>接口中不能声明变量，只能是成员常量和抽象函数<strong>所有的函数都必须在子类中实现，否则报错</strong>，接口的权限只能为public。</p>
+<ul>
+<li><p>用法</p>
+<p><code>class 类名 implement 接口1,接口2...{//抽象函数实现}</code></p>
+</li>
+</ul>
+<hr>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ul>
+<li><p>通过重写父类函数实现</p>
+</li>
+<li><p>通过写不同的接口抽象函数实现</p>
+</li>
+</ul>
+<p>##其它关键字&amp;魔术方法</p>
+<ul>
+<li>final：用于修饰类或成员函数，修饰类表示此类为最终版本，不可再有子类；修饰成员函数表示此函数不可被重写覆盖。</li>
+<li>clone：用于对象克隆，<code>$对象名 = clone $原对象名;</code></li>
+<li>instanceof：用于检验某对象是否属于某个类<code>obj_name instanceof class_name</code></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/php-part6-面向对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-查询系统&amp;爬虫实践小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/查询系统&爬虫实践小结/">查询系统&amp;爬虫实践小结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/查询系统&爬虫实践小结/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:48:37.844Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="web后端实践小结"><a href="#web后端实践小结" class="headerlink" title="web后端实践小结"></a>web后端实践小结</h1><h2 id="成绩查询系统"><a href="#成绩查询系统" class="headerlink" title="成绩查询系统"></a>成绩查询系统</h2><p>​                   <strong>合作开发，先 git pull，再开始工作</strong></p>
+<h3 id="PDO-PHP数据库对象的使用"><a href="#PDO-PHP数据库对象的使用" class="headerlink" title="PDO-PHP数据库对象的使用"></a>PDO-PHP数据库对象的使用</h3><p>连接</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user, $pass)` PDOl连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user,       $pass,<span class="keyword">array</span>(PDO::ATTR-PERSISTENT =&gt; <span class="keyword">true</span>)) PDO持久连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">null</span>` PDO连接关闭</div></pre></td></tr></table></figure>
+<p>​    <strong>dsn：data source name（数据源） 包括 主机、库名、驱动名</strong><br>​     <em>部分参数可以省略,参数没有顺序</em><br>​    <em>mysql: 最短 会自动调取 php.in 中 mysql.default_host 参数信息</em></p>
+<p>预处理语句</p>
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$stmt = $conn-&gt;prepare(<span class="string">"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)"</span>);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':name'</span>, $name);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':value'</span>, $value);</div><div class="line"></div><div class="line"><span class="comment">// 插入一行</span></div><div class="line">$name = <span class="string">'one'</span>;</div><div class="line">$value = <span class="number">1</span>;</div><div class="line">$stmt-&gt;execute();</div><div class="line"></div><div class="line"><span class="comment">// 用不同的值插入另一行</span></div><div class="line">$name = <span class="string">'two'</span>;</div><div class="line">$value = <span class="number">2</span>;</div><div class="line">$stmt-&gt;execute();</div></pre></td></tr></table></figure>
+<p>$conn-&gt;prepare( ) 预处理语句<br>$stmt-&gt;bindParam 填充参数<br>$stmt-&gt;execute(); 执行语句</p>
+<p>###验证码生产</p>
+<p>利用php GD库<br> <a href="https://github.com/php-login-system/php-demo/blob/master/identify/img.php" target="_blank" rel="external">示例代码</a></p>
+<h3 id="邮件发送-phpmailer"><a href="#邮件发送-phpmailer" class="headerlink" title="邮件发送-phpmailer"></a>邮件发送-phpmailer</h3><p><a href="http://blog.csdn.net/ljl890705/article/details/50345211" target="_blank" rel="external">使用说明</a><br><a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="external">github地址</a></p>
+<h2 id="豆瓣爬虫"><a href="#豆瓣爬虫" class="headerlink" title="豆瓣爬虫"></a>豆瓣爬虫</h2><h3 id="内容获取–curl"><a href="#内容获取–curl" class="headerlink" title="内容获取–curl"></a>内容获取–curl</h3><p><strong>cURL</strong>是一个利用URL语法在<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank" rel="external">命令行</a>下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ch = curl_init(); <span class="comment">//初始化 cURL 会话 $ch curl句柄</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);  <span class="comment">// 设置要抓取的页面地址</span></div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">// 抓取结果直接返回（如果为0，则直接输出内容到页面）</span></div><div class="line">    <span class="comment">//关闭SSL证书验证</span></div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">    $res = curl_exec($ch);   <span class="comment">//返回html字符串</span></div><div class="line">    curl_close($ch);   <span class="comment">//关闭 cURL 会话</span></div></pre></td></tr></table></figure>
+<h3 id="HTML解析–simple-html-dom"><a href="#HTML解析–simple-html-dom" class="headerlink" title="HTML解析–simple-html-dom"></a>HTML解析–simple-html-dom</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取网页内容</span></div><div class="line">        $html = get_html($url);</div><div class="line">        $douban = <span class="keyword">new</span> simple_html_dom(); <span class="comment">//创建simple_html_dom对象douban</span></div><div class="line">        $douban-&gt;load($html);</div><div class="line">        <span class="comment">//提取电影名</span></div><div class="line">        $names = $douban-&gt;find(<span class="string">'span.title,span.other'</span>);</div></pre></td></tr></table></figure>
+<p>  主要熟悉html树</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂想</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/查询系统&爬虫实践小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DO-vps+ss 科学上网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -179,18 +438,18 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/ladder//" class="article-tag-list-link color2">ladder</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
         <p class="article-more-link">
@@ -292,18 +551,18 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
         <p class="article-more-link">
@@ -424,18 +683,18 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
         <p class="article-more-link">
@@ -500,18 +759,18 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
         <p class="article-more-link">
@@ -643,6 +902,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">transistor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">硬件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
               </li>
             
             <div class="clearfix"></div>

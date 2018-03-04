@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>php面向对象 | Record&amp;Think</title>
+  <title>php-patr6-面向对象 | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#php面向对象 基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明">
+  <meta name="description" content="基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明  定义类：权限修饰">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php面向对象">
+<meta property="og:title" content="php-patr6-面向对象">
 <meta property="og:url" content="https://matthew-sword.github.io/2017/09/29/php-part6-面向对象/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
-<meta property="og:description" content="#php面向对象 基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明">
-<meta property="og:updated_time" content="2017-08-11T03:15:06.915Z">
+<meta property="og:description" content="基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明  定义类：权限修饰">
+<meta property="og:updated_time" content="2018-03-04T13:54:44.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php面向对象">
-<meta name="twitter:description" content="#php面向对象 基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明">
+<meta name="twitter:title" content="php-patr6-面向对象">
+<meta name="twitter:description" content="基本概念 类（class）：属性和方法的集合。（可以简单理解为带有函数的结构体） 对象：类的实例化。 三大特点：封装、继承、多态。 封装：对类的使用和实现分离，用户只需要掌握接口。 继承：子类可以直接使用父类的属性和方法，简化了类操作，提高代码重用性。 多态：同一个类的不同对象，使用同一个方法可以得到不同的结果。提高代码重用性和程序的灵活性。。     ##类的操作 ###声明  定义类：权限修饰">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -154,7 +155,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      php面向对象
+      php-patr6-面向对象
     </h1>
   
 
@@ -167,8 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#php面向对象</p>
-<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
 <li><strong>类（class）：</strong>属性和方法的集合。（可以简单理解为带有函数的结构体）</li>
 <li><strong>对象：</strong>类的实例化。</li>
 <li>三大特点：<strong>封装、继承、多态</strong>。<ul>
@@ -273,18 +273,18 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/php//" class="article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
 
@@ -352,7 +352,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          php函数&amp;文件
+          php-part5-函数&amp;文件
         
       </div>
     </a>
@@ -499,6 +499,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">transistor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">硬件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
               </li>
             
             <div class="clearfix"></div>
