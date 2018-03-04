@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>Record&amp;Think</title>
+  <title>Archives: 2018 | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="走在勇往直前的路上">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Record&amp;Think">
-<meta property="og:url" content="https://matthew-sword.github.io/page/2/index.html">
+<meta property="og:url" content="https://matthew-sword.github.io/archives/2018/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
 <meta property="og:description" content="走在勇往直前的路上">
 <meta name="twitter:card" content="summary">
@@ -148,497 +148,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-查询系统&amp;爬虫实践小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/03/04/post-name/" class="archive-article-date">
+  	<time datetime="2018-03-04T06:39:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/29/查询系统&爬虫实践小结/">查询系统&amp;爬虫实践小结</a>
+      <a class="archive-article-title" href="/2018/03/04/post-name/">post_name</a>
     </h1>
   
 
-        
-        <a href="/2017/09/29/查询系统&爬虫实践小结/" class="archive-article-date">
-  	<time datetime="2017-09-29T06:48:37.844Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="web后端实践小结"><a href="#web后端实践小结" class="headerlink" title="web后端实践小结"></a>web后端实践小结</h1><h2 id="成绩查询系统"><a href="#成绩查询系统" class="headerlink" title="成绩查询系统"></a>成绩查询系统</h2><p>​                   <strong>合作开发，先 git pull，再开始工作</strong></p>
-<h3 id="PDO-PHP数据库对象的使用"><a href="#PDO-PHP数据库对象的使用" class="headerlink" title="PDO-PHP数据库对象的使用"></a>PDO-PHP数据库对象的使用</h3><p>连接</p>
-<hr>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user, $pass)` PDOl连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">new</span> PDO(<span class="string">'mysql:host=xxx;dbname=xxx'</span>, $user,       $pass,<span class="keyword">array</span>(PDO::ATTR-PERSISTENT =&gt; <span class="keyword">true</span>)) PDO持久连接</div><div class="line"></div><div class="line">$conn = <span class="keyword">null</span>` PDO连接关闭</div></pre></td></tr></table></figure>
-<p>​    <strong>dsn：data source name（数据源） 包括 主机、库名、驱动名</strong><br>​     <em>部分参数可以省略,参数没有顺序</em><br>​    <em>mysql: 最短 会自动调取 php.in 中 mysql.default_host 参数信息</em></p>
-<p>预处理语句</p>
-<hr>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$stmt = $conn-&gt;prepare(<span class="string">"INSERT INTO REGISTRY (name, value) VALUES (:name, :value)"</span>);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':name'</span>, $name);</div><div class="line">$stmt-&gt;bindParam(<span class="string">':value'</span>, $value);</div><div class="line"></div><div class="line"><span class="comment">// 插入一行</span></div><div class="line">$name = <span class="string">'one'</span>;</div><div class="line">$value = <span class="number">1</span>;</div><div class="line">$stmt-&gt;execute();</div><div class="line"></div><div class="line"><span class="comment">// 用不同的值插入另一行</span></div><div class="line">$name = <span class="string">'two'</span>;</div><div class="line">$value = <span class="number">2</span>;</div><div class="line">$stmt-&gt;execute();</div></pre></td></tr></table></figure>
-<p>$conn-&gt;prepare( ) 预处理语句<br>$stmt-&gt;bindParam 填充参数<br>$stmt-&gt;execute(); 执行语句</p>
-<p>###验证码生产</p>
-<p>利用php GD库<br> <a href="https://github.com/php-login-system/php-demo/blob/master/identify/img.php" target="_blank" rel="external">示例代码</a></p>
-<h3 id="邮件发送-phpmailer"><a href="#邮件发送-phpmailer" class="headerlink" title="邮件发送-phpmailer"></a>邮件发送-phpmailer</h3><p><a href="http://blog.csdn.net/ljl890705/article/details/50345211" target="_blank" rel="external">使用说明</a><br><a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="external">github地址</a></p>
-<h2 id="豆瓣爬虫"><a href="#豆瓣爬虫" class="headerlink" title="豆瓣爬虫"></a>豆瓣爬虫</h2><h3 id="内容获取–curl"><a href="#内容获取–curl" class="headerlink" title="内容获取–curl"></a>内容获取–curl</h3><p><strong>cURL</strong>是一个利用URL语法在<a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2" target="_blank" rel="external">命令行</a>下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ch = curl_init(); <span class="comment">//初始化 cURL 会话 $ch curl句柄</span></div><div class="line">    curl_setopt($ch, CURLOPT_URL, $url);  <span class="comment">// 设置要抓取的页面地址</span></div><div class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">// 抓取结果直接返回（如果为0，则直接输出内容到页面）</span></div><div class="line">    <span class="comment">//关闭SSL证书验证</span></div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, <span class="keyword">false</span>);</div><div class="line">    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, <span class="keyword">false</span>);</div><div class="line">    $res = curl_exec($ch);   <span class="comment">//返回html字符串</span></div><div class="line">    curl_close($ch);   <span class="comment">//关闭 cURL 会话</span></div></pre></td></tr></table></figure>
-<h3 id="HTML解析–simple-html-dom"><a href="#HTML解析–simple-html-dom" class="headerlink" title="HTML解析–simple-html-dom"></a>HTML解析–simple-html-dom</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取网页内容</span></div><div class="line">        $html = get_html($url);</div><div class="line">        $douban = <span class="keyword">new</span> simple_html_dom(); <span class="comment">//创建simple_html_dom对象douban</span></div><div class="line">        $douban-&gt;load($html);</div><div class="line">        <span class="comment">//提取电影名</span></div><div class="line">        $names = $douban-&gt;find(<span class="string">'span.title,span.other'</span>);</div></pre></td></tr></table></figure>
-<p>  主要熟悉html树</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/web//" class="article-tag-list-link color4">web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/29/查询系统&爬虫实践小结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-DO-vps+ss 科学上网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/DO-vps+ss 科学上网/">DO-vps+ss 科学上网</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/14/DO-vps+ss 科学上网/" class="archive-article-date">
-  	<time datetime="2017-07-14T08:57:55.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.mf8.biz/github-education-pack/" target="_blank" rel="external">github学生包获取教程</a></p>
-<p><a href="http://jerryzou.com/posts/shadowsocks-and-digitalocean/" target="_blank" rel="external">vps+ss教程</a></p>
-<p><a href="https://www.polarxiong.com/archives/Ubuntu-16-04%E4%B8%8BShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96.html" target="_blank" rel="external">优化教程</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ladder//" class="article-tag-list-link color2">ladder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/14/DO-vps+ss 科学上网/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git学习part2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/09/git学习part2/">git学习part2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/09/git学习part2/" class="archive-article-date">
-  	<time datetime="2017-07-09T13:20:05.391Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p><em>注：一项工程的不同部分可以看作不同的分支</em></p>
-<h2 id="创建与合并"><a href="#创建与合并" class="headerlink" title="创建与合并"></a>创建与合并</h2><ul>
-<li><p><code>git checkout -b new-branch</code> <strong>创建并切换到新分支，-b参数表示切换到新分支</strong></p>
-<p> <em>上述命令等于以下两条命令</em></p>
-</li>
-</ul>
-<ol>
-<li><p><code>git branch new-branch</code></p>
-</li>
-<li><p><code>git checkout new-branch</code></p>
-</li>
-</ol>
-<ul>
-<li><p><code>git branch</code> <strong>查看分支目录，带*号为当前分支</strong></p>
-</li>
-<li><p><code>git merge branch-name</code> <strong>把指定分支合并到当前分支</strong></p>
-</li>
-<li><p><code>git branch -d branch-name</code> <strong>删除分支</strong></p>
-<p>  <em>合并后可以删除该分支</em></p>
-</li>
-<li><p><code>git merge --no-ff -m &quot;message&quot; branch-name</code> <strong>以no-ff模式合并(no fast-forward),合并后branch不会被删除</strong></p>
-</li>
-</ul>
-<h2 id="bug-amp-feature"><a href="#bug-amp-feature" class="headerlink" title="bug &amp; feature"></a>bug &amp; feature</h2><ul>
-<li><p><code>git stash</code> <strong>临时储存当前工作区文件，把工作区留给临时任务</strong></p>
-</li>
-<li><p><code>git stash list</code> <strong>查看临时储存区目录</strong></p>
-</li>
-<li><p><code>git stash pop</code> <strong>弹出stash中的内容</strong></p>
-<p>  <em>上述命令等于以下两条命令</em></p>
-<ol>
-<li><code>git stash apply</code></li>
-<li><code>git stash drop</code></li>
-</ol>
-</li>
-<li><p><code>git stash apply stash@{0}</code> <strong>恢复指定内容</strong></p>
-</li>
-<li><p><code>git branch -D branch-name</code> <strong>删除未合并的分支</strong></p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/09/git学习part2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git学习part1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/git学习part1/">git学习part1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/06/git学习part1/" class="archive-article-date">
-  	<time datetime="2017-07-06T08:04:58.144Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><h2 id="用户设置"><a href="#用户设置" class="headerlink" title="用户设置"></a>用户设置</h2><ul>
-<li><p><code>$ git config --global user.name &quot;Your Name&quot;</code>   <strong>设置用户名</strong></p>
-</li>
-<li><p><code>$ git config --global user.email &quot;email@example.com&quot;</code>  <strong>设置用户邮箱</strong></p>
-</li>
-</ul>
-<p><em>注：–global是全局参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</em></p>
-<h2 id="创建本地版本库"><a href="#创建本地版本库" class="headerlink" title="创建本地版本库"></a>创建本地版本库</h2><ol>
-<li><code>mkdir folder-name</code>    <strong>创建本地版本库文件夹</strong></li>
-<li><code>cd folder-name</code> <strong>进入版本库</strong></li>
-<li><code>pwd</code> <strong>显示当前目录，避免出错</strong></li>
-<li><code>git init</code> <strong>初始化版本库</strong><br><em>把相应的文件放到版本库中就好</em></li>
-</ol>
-<h2 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h2><ul>
-<li><code>git add file-name(带上格式名)</code>  <strong>把文件添加到仓库</strong></li>
-</ul>
-<p><em>git add .表示添加新文件和编辑过的文件, git add -A表示添加所有内容</em></p>
-<ul>
-<li><code>git commit -m &quot;提交说明&quot;</code> <strong>把所有add的文件提交到仓库</strong></li>
-</ul>
-<h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ul>
-<li><p><code>git log</code> <strong>显示提交日志</strong></p>
-<p> <em>即提交者，提交时间，提交说明，添加–pretty=oneline参数可以简化显示方式</em></p>
-</li>
-<li><p><code>git reset --hard HEAD^</code> <strong>退回上一版本</strong></p>
-<p><em>HEAD表示当前版本，HEAD^表示上一版本，也可以用git log 中的版本号前几位表示对应的版本</em></p>
-</li>
-<li><code>git reflog</code> <strong>查看历史命令</strong></li>
-</ul>
-<h2 id="git工作模型"><a href="#git工作模型" class="headerlink" title="git工作模型"></a>git工作模型</h2><ul>
-<li><p>工作区(Working Directory)</p>
-<p>  <strong>工作区就是我们用mkdir命令创建的文件夹，我们对文件的修改就在这里进行</strong></p>
-</li>
-<li><p>版本库(Repository)</p>
-</li>
-</ul>
-<p><strong>版本库就是.git文件夹，它分为暂存区(stage/index)和master分支,<br><code>git add</code> 把文件添加到暂存区,<br><code>git commit</code> 把文件添加到版本库</strong></p>
-<ul>
-<li><code>git status</code> <strong>查看仓库状态</strong></li>
-</ul>
-<h2 id="撤销与删除"><a href="#撤销与删除" class="headerlink" title="撤销与删除"></a>撤销与删除</h2><ul>
-<li><p><code>git checkout --file-name</code> <strong>舍弃修改，将工作区中该文件退回到上一次git add 或者 git commit的状态</strong></p>
-</li>
-<li><p><code>rm file-name</code> <strong>删除工作区文件</strong></p>
-</li>
-</ul>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h2><p><em>注：需要github账号</em></p>
-<ol>
-<li><code>ssh-keygen -t rsa -C &quot;用户邮箱&quot;</code><br><strong>创建ssh-key，确保安全性</strong> </li>
-</ol>
-<p><em>&gt;使用命令的默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSHKey的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人，然后把id_rsa.pub里的密钥添加到github中(廖雪峰的git教程)</em></p>
-<ol>
-<li><p><code>$ git remote add origin git@你的giyhub仓库地址</code>            <strong>把本地库与GitHub上仓库关联</strong></p>
-</li>
-<li><p><code>$ git push origin master</code> <strong>把本地库推送到github上</strong></p>
-</li>
-</ol>
-<p><em>第一次使用push命令要 <code>把id_rsa.pub里的密钥添加到github中</code></em></p>
-<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><p><code>git clone git@你的giyhub仓库地址</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/git学习part1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo-github搭建博客的小坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/01/hexo-github搭建博客的小坑/">windows环境下hexo-github搭建博客的小坑</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/01/hexo-github搭建博客的小坑/" class="archive-article-date">
-  	<time datetime="2017-07-01T03:42:13.389Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="教程推荐"><a href="#教程推荐" class="headerlink" title="教程推荐"></a>教程推荐</h1><p>  <a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">参考教程</a><br>  前面关于<strong>node git hexo</strong>的安装依照教程即可。</p>
-<h1 id="前方有坑"><a href="#前方有坑" class="headerlink" title="前方有坑"></a>前方有坑</h1><p>  在修改全局配置文件<strong>_config.yml</strong>时要注意<br>  <strong>url: 你的博客网址</strong>  <em>GitHub上这个库的名字最好和你的用户名一样</em></p>
-<p>  <strong>deploy:<br>    type: git<br>    repository: 你的博客所在库的地址<br>    branch: master </strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/hexo//" class="article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/01/hexo-github搭建博客的小坑/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -660,9 +210,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
