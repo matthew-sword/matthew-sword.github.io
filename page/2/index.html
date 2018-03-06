@@ -148,6 +148,216 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-php-part4-网页交互" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/php-part4-网页交互/">php-part4-网页交互</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/php-part4-网页交互/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:48:37.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="php网页交互"><a href="#php网页交互" class="headerlink" title="php网页交互"></a>php网页交互</h1><h2 id="GET-amp-POST方法获取数据"><a href="#GET-amp-POST方法获取数据" class="headerlink" title="GET &amp; POST方法获取数据"></a>GET &amp; POST方法获取数据</h2><ul>
+<li><strong>GET方法</strong>是<form>表单默认方法，提交的信息附加于url提交到服务器；并且url数据大小 &lt; 1MB，否则会被截断。</form></li>
+<li><strong>POST方法</strong>信息不附加于url；并且大小没有限制<h2 id="GET-amp-POST全局变量获取数据"><a href="#GET-amp-POST全局变量获取数据" class="headerlink" title="\$_GET &amp; $_POST全局变量获取数据"></a>\$_GET &amp; $_POST全局变量获取数据</h2></li>
+</ul>
+<p>\$_GET &amp; $_POST实际上是两个关联数组，//键名依次是”user”,”pwd”,”submit”</p>
+<hr>
+<h2 id="web表单"><a href="#web表单" class="headerlink" title="web表单"></a>web表单</h2><p>web表单主要用于将网页中的数据发送到服务器，实现交互。</p>
+<p>表单结构如下</p>
+<p><code>&lt;form name = &quot;&quot; method = &quot;&quot; action = &quot;&quot; enctype = &quot;&quot; target = &quot;&quot; id = &quot;&quot;&gt;</code></p>
+<p>​       <code>表单元素</code></p>
+<p> <code>&lt;/form&gt;</code></p>
+<h3 id="表单属性："><a href="#表单属性：" class="headerlink" title="表单属性："></a>表单属性：</h3><ul>
+<li><p>name：表单名称</p>
+</li>
+<li><p>method：提交方法（GET /  POST）</p>
+</li>
+<li><p>action：处理表单的页面的url（<strong>必须指定</strong>）</p>
+</li>
+<li><p>enctype：表单的编码方式（utf-8 …）</p>
+</li>
+<li><p>target：返回信息的<strong>显示方式</strong>，具体见下表</p>
+</li>
+<li><p>id：表单的id号</p>
+</li>
+</ul>
+<p>target属性</p>
+<ul>
+<li><p>_blank      返回信息显示在新窗口</p>
+</li>
+<li><p>_parent     返回信息显示在父级窗口</p>
+</li>
+<li><p>_self           返回信息显示在当前窗口</p>
+</li>
+<li><p>_top            返回信息显示在顶级窗口</p>
+</li>
+</ul>
+<hr>
+<h3 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a><strong>表单元素</strong></h3><h4 id="文字域text"><a href="#文字域text" class="headerlink" title="文字域text"></a>文字域text</h4><p>用于向文本域中输入任何字符。</p>
+<p> <code>&lt;input type = &quot;text&quot; name = &quot;&quot; maxlength = xxx size = xxx value = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：文字域名称</li>
+<li>maxlength：最大输入长度</li>
+<li>size：文字域宽度</li>
+<li>value：文字域默认值（一般用于输出说明）</li>
+</ul>
+<h4 id="密码域password"><a href="#密码域password" class="headerlink" title="密码域password"></a>密码域password</h4><p> <code>&lt;input type = &quot;password&quot; name = &quot;&quot; maxlength = xxx size = xxx &gt;</code></p>
+<ul>
+<li>name：密码域名称</li>
+<li>maxlength：最大密码长度</li>
+<li>size：密码域宽度</li>
+</ul>
+<h4 id="单选按钮radio"><a href="#单选按钮radio" class="headerlink" title="单选按钮radio"></a>单选按钮radio</h4><p><code>&lt;input type = &quot;radio&quot; name = &quot;&quot; value = &quot;&quot; checked &gt;</code></p>
+<ul>
+<li>name：按钮名称</li>
+<li>checked：表示此按钮默认选中</li>
+<li>value：选中后传送到服务器的值</li>
+</ul>
+<h4 id="复选框checkbox"><a href="#复选框checkbox" class="headerlink" title="复选框checkbox"></a>复选框checkbox</h4><p><code>&lt;input type = &quot;checkbox&quot; name = &quot;&quot; value = &quot;&quot; checked &gt;</code></p>
+<ul>
+<li>name：复选框名称</li>
+<li>checked：表示此按钮默认选中</li>
+<li>value：选中后传送到服务器的值<h4 id="普通按钮button"><a href="#普通按钮button" class="headerlink" title="普通按钮button"></a>普通按钮button</h4></li>
+</ul>
+<p><code>&lt;input type = &quot;button&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：普通按钮名称</li>
+<li>value：显示在按钮上的文字<h4 id="提交按钮submit"><a href="#提交按钮submit" class="headerlink" title="提交按钮submit"></a>提交按钮submit</h4></li>
+</ul>
+<p><code>&lt;input type = &quot;submit&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：提交按钮名称</li>
+<li>value：显示在按钮上的文字</li>
+</ul>
+<h4 id="重置按钮reset"><a href="#重置按钮reset" class="headerlink" title="重置按钮reset"></a>重置按钮reset</h4><p>清楚表单已填内容，恢复默认</p>
+<p><code>&lt;input type = &quot;reset&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：重置按钮名称</li>
+<li>value：显示在按钮上的文字</li>
+</ul>
+<h4 id="图像域image"><a href="#图像域image" class="headerlink" title="图像域image"></a>图像域image</h4><p>用图片代替按钮，使网页效果统一</p>
+<p><code>&lt;input type = &quot;image&quot; name = &quot;&quot; src = &quot;url&quot;&gt;</code></p>
+<ul>
+<li>name：图像域名称</li>
+<li>src：图片路径</li>
+</ul>
+<h4 id="隐藏域hidden"><a href="#隐藏域hidden" class="headerlink" title="隐藏域hidden"></a>隐藏域hidden</h4><p>在网页中对用户不可见。隐藏域用于向服务器收发数据，便于处理比如用户id，点提交时隐藏域一并提交到服务器。</p>
+<p><code>&lt;input type = &quot;hidden&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：隐藏域名称</li>
+<li>value：选中后传送到服务器的值<h4 id="文件域file"><a href="#文件域file" class="headerlink" title="文件域file"></a>文件域file</h4></li>
+</ul>
+<p>用于传输文件，它可以查找硬盘中文件路径，并用表单将文件上传</p>
+<p><code>&lt;input type = &quot;file&quot; name = &quot;file&quot; size = &quot;&quot; maxlength = &quot;&quot;&gt;</code></p>
+<ul>
+<li>name：文件域名称</li>
+<li>size：文件域宽度</li>
+<li>maxlength：输入的最大字符数</li>
+</ul>
+<h4 id="文本域标记textarea"><a href="#文本域标记textarea" class="headerlink" title="文本域标记textarea"></a>文本域标记textarea</h4><p>与text相比textarea可以添加多行文字，一般用于留言板。</p>
+<p><code>&lt;textarea name = &quot;&quot; rows = xxx cols = xxx &gt; content &lt;/textarea&gt;</code></p>
+<ul>
+<li>name：文本域名称</li>
+<li>rows：文本域行数</li>
+<li>cols：文本域列数</li>
+<li>content：文本域显示的类容</li>
+</ul>
+<h4 id="选择域-amp"><a href="#选择域-amp" class="headerlink" title="选择域\ &amp;\"></a>选择域\<select> &amp;\<option></option></select></h4><p>\<select>可以建一个下拉菜单，\<option>可以建立一个列表菜单。</option></select></p>
+<p><code>&lt;select name = &quot;&quot; size = xxx multiple&gt;</code></p>
+<p> <code>&lt;option value = &quot;&quot; selected&gt;选项1&lt;/option&gt;</code><br><code>&lt;option value = &quot;&quot; &gt;选项2&lt;/option&gt;</code><br><code>&lt;option value = &quot;&quot; &gt;选项3&lt;/option&gt;</code><br><code>...</code><br><code>&lt;/select&gt;</code></p>
+<ul>
+<li>name：选择域名称</li>
+<li>size：列表行数</li>
+<li>value：菜单选项值</li>
+<li>multiple：表示以列表方式显示数据，省略则以菜单方式显示数据</li>
+</ul>
+<hr>
+<h3 id="使用数组提交表单"><a href="#使用数组提交表单" class="headerlink" title="使用数组提交表单"></a>使用数组提交表单</h3><h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><h4 id="配置php-ini文件相关参数"><a href="#配置php-ini文件相关参数" class="headerlink" title="配置php.ini文件相关参数"></a>配置php.ini文件相关参数</h4><h4 id="全局变量-FILES"><a href="#全局变量-FILES" class="headerlink" title="全局变量$_FILES"></a>全局变量$_FILES</h4><p>$_FILES是一个数组包含了上传文件的信息</p>
+<ul>
+<li>$_FILES[file_name][name]   上传文件名</li>
+<li>$_FILES[file_name][size]   文件大小</li>
+<li>$_FILES[file_name][tmp_name]   临时目录中使用的文件名</li>
+<li>$_FILES[file_name][type]   储存文件的MIME类型</li>
+<li>$_FILES[file_name][error]   储存文件上传结果</li>
+</ul>
+<h4 id="文件上传函数"><a href="#文件上传函数" class="headerlink" title="文件上传函数"></a>文件上传函数</h4><ul>
+<li><p>is_uploaded_file( filename )   判断文件是否是否是通过POST上传的</p>
+</li>
+<li><p>move_uploaded_file( filename, destination )  </p>
+<p>filename：指定文件上传的临时名称（tmp_name）</p>
+<p>destination：指定文件上传后的保存路径和新名称</p>
+</li>
+</ul>
+<p>##服务器获取数据的其它方法</p>
+<ul>
+<li>$_REQUEST[]全局变量可以获取GET / POST / http cookie传递的数据，当不能确定用什么方法传递数据时可以用\$_REQUEST[]获取数据</li>
+<li>$_SERVER[]全局变量包含服务器创建的信息</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/php-part4-网页交互/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-php-part5-函数&amp;文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1018,11 +1228,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
+                <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">web</a>
+                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1030,11 +1240,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
               </li>
              
               <li class="article-tag-list-item">
