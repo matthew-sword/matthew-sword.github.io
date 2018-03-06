@@ -187,8 +187,23 @@
 <li>看看文件夹里是否有相应的图片</li>
 <li>打开相应html文件查查看图片src是否为日期加上相应文件名，如2017/12/15/hexo插入图片教程/xxx.jpg</li>
 </ul>
-<h2 id="gitpage域名绑定"><a href="#gitpage域名绑定" class="headerlink" title="gitpage域名绑定"></a>gitpage域名绑定</h2><p>看官方文档！！！</p>
-<p><a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">https://help.github.com/articles/setting-up-an-apex-domain/</a></p>
+<h2 id="gitpage域名绑定"><a href="#gitpage域名绑定" class="headerlink" title="gitpage域名绑定"></a>gitpage域名绑定</h2><ul>
+<li>首先购买一个域名。以阿里云为例。<a href="http://www.wphostcn.com/?p=41" target="_blank" rel="external">具体见此处</a></li>
+</ul>
+<ul>
+<li><p>绑定域名</p>
+<p><strong>最直接方案：看官方文档！！！</strong><a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">传送门</a></p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/官方文档.PNG" alt="官方文档"></p>
+<p>google翻译后<img src="/2018/03/06/关于hexo博客的一些“bug”修复/官方文档翻译.PNG" alt="官方文档翻译"></p>
+<p>购买域名后，创建<strong>两条A记录</strong>将你的域名解析到所示两个IP<code>192.30.252.153</code>和<code>192.30.252.154</code>。</p>
+</li>
+<li><p>之后在自己github博客仓库的settings中找到git pages 选项</p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/setings1.png" alt="setings1"></p>
+</li>
+<li><p>在hexo目录下的source/下新建文件<code>CNAME</code>（没有文件名后缀！！）。用记事本打开，<strong>只写入自己的域名</strong></p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/CNAME.PNG" alt="CNAME"></p>
+</li>
+</ul>
 
       
 
@@ -874,10 +889,10 @@
       
         <h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><ul>
 <li><p>JavaScript代码可以直接嵌在网页的任何地方，不过通常我们都把JavaScript代码放到<code>&lt;head&gt;</code>中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">'Hello, world'</span>);</div><div class="line">  <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">'Hello, world'</span>);</div><div class="line">  &lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>第二种方法是把JavaScript代码放到一个单独的<code>.js</code>文件，然后在HTML中通过<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>引入这个文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/static/js/abc.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/static/js/abc.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><ul>
@@ -1652,6 +1667,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hardware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">transistor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1664,10 +1691,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">硬件</a>
               </li>
              
@@ -1677,14 +1700,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hardware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">transistor</a>
               </li>
             
             <div class="clearfix"></div>

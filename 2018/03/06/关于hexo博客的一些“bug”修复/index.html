@@ -15,10 +15,15 @@
 <meta property="og:url" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
 <meta property="og:description" content="##hexo插入图片 方案：hexo插件hexo-asset-image +图片保存到git博客仓库 步骤  设置_config.yml中post_asset_folder: true（注意冒号后空格）  安装hexo-asset-image 1npm install https://github.com/CodeFalling/hexo-asset-image --save  在_draft目录">
-<meta property="og:updated_time" content="2018-03-05T03:26:00.991Z">
+<meta property="og:image" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/官方文档.PNG">
+<meta property="og:image" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/官方文档翻译.PNG">
+<meta property="og:image" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/setings1.png">
+<meta property="og:image" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/CNAME.PNG">
+<meta property="og:updated_time" content="2018-03-06T07:43:11.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于hexo博客的一些“bug”修复">
 <meta name="twitter:description" content="##hexo插入图片 方案：hexo插件hexo-asset-image +图片保存到git博客仓库 步骤  设置_config.yml中post_asset_folder: true（注意冒号后空格）  安装hexo-asset-image 1npm install https://github.com/CodeFalling/hexo-asset-image --save  在_draft目录">
+<meta name="twitter:image" content="https://matthew-sword.github.io/2018/03/06/关于hexo博客的一些“bug”修复/官方文档.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -187,8 +192,23 @@
 <li>看看文件夹里是否有相应的图片</li>
 <li>打开相应html文件查查看图片src是否为日期加上相应文件名，如2017/12/15/hexo插入图片教程/xxx.jpg</li>
 </ul>
-<h2 id="gitpage域名绑定"><a href="#gitpage域名绑定" class="headerlink" title="gitpage域名绑定"></a>gitpage域名绑定</h2><p>看官方文档！！！</p>
-<p><a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">https://help.github.com/articles/setting-up-an-apex-domain/</a></p>
+<h2 id="gitpage域名绑定"><a href="#gitpage域名绑定" class="headerlink" title="gitpage域名绑定"></a>gitpage域名绑定</h2><ul>
+<li>首先购买一个域名。以阿里云为例。<a href="http://www.wphostcn.com/?p=41" target="_blank" rel="external">具体见此处</a></li>
+</ul>
+<ul>
+<li><p>绑定域名</p>
+<p><strong>最直接方案：看官方文档！！！</strong><a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank" rel="external">传送门</a></p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/官方文档.PNG" alt="官方文档"></p>
+<p>google翻译后<img src="/2018/03/06/关于hexo博客的一些“bug”修复/官方文档翻译.PNG" alt="官方文档翻译"></p>
+<p>购买域名后，创建<strong>两条A记录</strong>将你的域名解析到所示两个IP<code>192.30.252.153</code>和<code>192.30.252.154</code>。</p>
+</li>
+<li><p>之后在自己github博客仓库的settings中找到git pages 选项</p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/setings1.png" alt="setings1"></p>
+</li>
+<li><p>在hexo目录下的source/下新建文件<code>CNAME</code>（没有文件名后缀！！）。用记事本打开，<strong>只写入自己的域名</strong></p>
+<p><img src="/2018/03/06/关于hexo博客的一些“bug”修复/CNAME.PNG" alt="CNAME"></p>
+</li>
+</ul>
 
       
 
@@ -417,6 +437,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hardware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">transistor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -429,10 +461,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">硬件</a>
               </li>
              
@@ -442,14 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">hardware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">transistor</a>
               </li>
             
             <div class="clearfix"></div>
