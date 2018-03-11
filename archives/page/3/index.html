@@ -6,22 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://matthew-sword.github.io">
-  <title>操作系统启动原理(基于Windows) | Record&amp;Think</title>
+  <title>Archives | Record&amp;Think</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="操作系统启动过程1、通电后从主板ROM上读取BIOS，进行系统硬件自检 BIOS烧录在主板的ROM上 硬件自检若出现故障，电脑会发出蜂鸣声  ###2、依照启动顺序将电脑控制权交给下一阶段启动程序  依照Boot Priority Order的顺序将控制权给下一个外部存储设备  3、读取主引导记录（MBR） 计算机读取该设备的第一个扇区（前512字节） 主引导记录结构  1-446字节：调用操作系">
-<meta name="keywords" content="系统">
-<meta property="og:type" content="article">
-<meta property="og:title" content="操作系统启动原理(基于Windows)">
-<meta property="og:url" content="https://matthew-sword.github.io/2018/03/04/操作系统启动原理(基于Windows)/index.html">
+  <meta name="description" content="走在勇往直前的路上">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Record&amp;Think">
+<meta property="og:url" content="https://matthew-sword.github.io/archives/page/3/index.html">
 <meta property="og:site_name" content="Record&amp;Think">
-<meta property="og:description" content="操作系统启动过程1、通电后从主板ROM上读取BIOS，进行系统硬件自检 BIOS烧录在主板的ROM上 硬件自检若出现故障，电脑会发出蜂鸣声  ###2、依照启动顺序将电脑控制权交给下一阶段启动程序  依照Boot Priority Order的顺序将控制权给下一个外部存储设备  3、读取主引导记录（MBR） 计算机读取该设备的第一个扇区（前512字节） 主引导记录结构  1-446字节：调用操作系">
-<meta property="og:image" content="https://matthew-sword.github.io/2018/03/04/操作系统启动原理(基于Windows)/hdd.jpg">
-<meta property="og:image" content="https://matthew-sword.github.io/2018/03/04/操作系统启动原理(基于Windows)/plater.png">
-<meta property="og:updated_time" content="2018-03-04T14:04:41.826Z">
+<meta property="og:description" content="走在勇往直前的路上">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作系统启动原理(基于Windows)">
-<meta name="twitter:description" content="操作系统启动过程1、通电后从主板ROM上读取BIOS，进行系统硬件自检 BIOS烧录在主板的ROM上 硬件自检若出现故障，电脑会发出蜂鸣声  ###2、依照启动顺序将电脑控制权交给下一阶段启动程序  依照Boot Priority Order的顺序将控制权给下一个外部存储设备  3、读取主引导记录（MBR） 计算机读取该设备的第一个扇区（前512字节） 主引导记录结构  1-446字节：调用操作系">
-<meta name="twitter:image" content="https://matthew-sword.github.io/2018/03/04/操作系统启动原理(基于Windows)/hdd.jpg">
+<meta name="twitter:title" content="Record&amp;Think">
+<meta name="twitter:description" content="走在勇往直前的路上">
   
     <link rel="alternative" href="/atom.xml" title="Record&amp;Think" type="application/atom+xml">
   
@@ -152,238 +147,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统启动原理(基于Windows)" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      操作系统启动原理(基于Windows)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/07/01/hexo-github搭建博客的小坑/" class="archive-article-date">
+  	<time datetime="2017-07-01T03:42:13.389Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/07/01/hexo-github搭建博客的小坑/">windows环境下hexo&amp;gitpage搭建博客的小坑</a>
     </h1>
   
 
-        
-        <a href="/2018/03/04/操作系统启动原理(基于Windows)/" class="archive-article-date">
-  	<time datetime="2018-03-04T08:04:26.116Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="操作系统启动过程"><a href="#操作系统启动过程" class="headerlink" title="操作系统启动过程"></a>操作系统启动过程</h1><h3 id="1、通电后从主板ROM上读取BIOS，进行系统硬件自检"><a href="#1、通电后从主板ROM上读取BIOS，进行系统硬件自检" class="headerlink" title="1、通电后从主板ROM上读取BIOS，进行系统硬件自检"></a>1、通电后从主板ROM上读取BIOS，进行系统硬件自检</h3><ul>
-<li>BIOS烧录在主板的ROM上</li>
-<li>硬件自检若出现故障，电脑会发出蜂鸣声</li>
-</ul>
-<p>###2、依照启动顺序将电脑控制权交给下一阶段启动程序</p>
-<ul>
-<li>依照Boot Priority Order的顺序将控制权给下一个外部存储设备</li>
-</ul>
-<h3 id="3、读取主引导记录（MBR）"><a href="#3、读取主引导记录（MBR）" class="headerlink" title="3、读取主引导记录（MBR）"></a>3、读取主引导记录（MBR）</h3><ul>
-<li><p>计算机读取该设备的第一个扇区（前512字节）</p>
-<p><strong>主引导记录结构</strong></p>
-<ul>
-<li><p>1-446字节：调用操作系统的机器码</p>
-</li>
-<li><p>447-510字节：分区表</p>
-</li>
-<li><p>511-512字节：主引导签名记录（0x550xAA），表明该设备适用于启动的</p>
-</li>
-</ul>
-<p><strong>分区表结构</strong>，分区表一共64字节，分成四个<strong>主分区</strong>，每一项（16字节）组成如下</p>
-<ul>
-<li><p>1字节：0x80表示该主分区为<strong>激活分区</strong>，控制权要交给它，四个主分区里面只能有<strong>一个是激活</strong>的。</p>
-</li>
-<li><p>2-4字节：主分区第一个扇区所在物理位置（柱面、磁头、扇区号）</p>
-</li>
-<li><p>5字节：主分区类型</p>
-</li>
-<li><p>6-8字节：主分区最后一个扇区的物理位置</p>
-</li>
-<li><p>9-12字节：主分区第一个扇区的逻辑地址</p>
-</li>
-<li><p>13-16字节：主分区的扇区总数</p>
-<p>扇区总数决定了这个主分区的长度。也就是说，一个主分区的扇区总数最多不超过2的32次方。如果每个扇区为512个字节，就意味着单个分区最大不超过2TB。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4、硬盘启动"><a href="#4、硬盘启动" class="headerlink" title="4、硬盘启动"></a>4、硬盘启动</h3><ul>
-<li><p>计算机的控制权交到存储设备（一般为硬盘）的某个分区</p>
-<p><strong>此处分为3种情况</strong></p>
-<ul>
-<li><p>卷引导记录</p>
-<p>计算机会读取激活分区的第一个扇区，叫做卷引导记录（VBR）。卷引导记录存有操作系统在这个分区里的位置</p>
-</li>
-<li><p>扩展分区和逻辑分区</p>
-<p>随着硬盘越来越大，四个主分区已经不够了，需要更多的分区。但是，分区表只有四项，因此规定<strong>有且仅有一个</strong>区可以被定义成”扩展分区”（Extended partition）。所谓”扩展分区”，就是指这个区里面又分成多个区。这种<strong>分区里面的分区</strong>，就叫做”逻辑分区”（logical partition）。<a href="http://www.ruanyifeng.com/blog/2013/02/booting.html" target="_blank" rel="external">具体过程看此处</a></p>
-<p>似乎很少通过这种方式启动操作系统。如果操作系统确实安装在扩展分区，一般采用下一种方式启动。</p>
-<p>​</p>
-</li>
-<li><p>启动管理器</p>
-<p>在这种情况下，计算机读取”主引导记录”前面446字节的机器码之后，不再把控制权转交给某一个分区，而是运行事先安装的”启动管理器”（boot loader），由用户选择启动哪一个操作系统。比如 grub</p>
-<h3 id="5、操作系统"><a href="#5、操作系统" class="headerlink" title="5、操作系统"></a>5、操作系统</h3></li>
-</ul>
-</li>
-<li><p>控制权转交给操作系统后，操作系统的内核首先被载入内存。</p>
-</li>
-</ul>
-<p>​             以Linux系统为例，先载入/boot目录下面的kernel。内核加载成功后，第一个运行的程序是/sbin/init。它根据配置文件（Debian系统是/etc/initab）产生init进程。这是Linux启动后的第一个进程，pid进程编号为1，其他进程都是它的后代。然后，init线程加载系统的各个模块，比如窗口程序和网络程序，直至执行/bin/login程序，跳出登录界面，等待用户输入用户名和密码。</p>
-<p>​                                                                           参考自<a href="http://www.ruanyifeng.com/blog/2013/02/booting.html" target="_blank" rel="external">阮一峰的网络日志</a></p>
-<h1 id="MBR和GPT"><a href="#MBR和GPT" class="headerlink" title="MBR和GPT"></a>MBR和GPT</h1><p>由于磁盘容量越来越大，传统的MBR分区表（主引导记录）已经不能满足大容量磁盘的需求。传统的MBR分区表只能识别磁盘前面的2.2TB左右的空间，对于后面的多余空间只能浪费掉了，而对于单盘4TB的磁盘，只能利用一半的容量。因此，才有了GPT（全局唯一标识分区表）。</p>
-<h3 id="GPT"><a href="#GPT" class="headerlink" title="GPT"></a>GPT</h3><p>GPT：<strong>GUID Partition Table</strong></p>
-<p>GTP分区格式则较为新颖，也是为了逐渐取代MBR而生。谈到GTP分区，就不得不说到UEFI(是什么的缩写？)，UEFI也是为了取代历史悠久的BIOS而出现的。GUID分区表格式，之所以被称作UEFI，是因为<strong>该分区格式为硬盘上的每一个分区都分配了“唯一”的数据标识符，或者称作”GUID”</strong>，意为一个随机长度的字符串，这样的随机性和长度组合，<strong>基本可以保障世界上每一个GPT的分区都不会相同</strong>。GPT分区没有MBR分区的限制，比如GPT的分区可以超越2TB的容量限制，并且分区的个数没有数量上限。而此时唯一的限制，就是操作系统对GPT分区的限制，比如，在WINDOWS系统条件下，GPT划分最多的分区数量为128，但是相应的，GPT分区也不再需要像MBR分区那样，为了多个分区而必须建立扩展分区。</p>
-<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>GPT分区通常为了保持对MBR分区的兼容性，从而包含一份所谓的”保护性MBR分区表“，这意味着如果你使用老版本的磁盘工具读取GPT分区，那么工具通常会将GPT分区视为一整块都是扩展分区的MBR硬盘。这一兼容机制是为了保证老版本的磁盘工具不会将GPT分区视为未分区磁盘，从而错误的为GPT重新进行MBR分区操作，而破坏原有数据。</p>
-<p>​                                                                                                                   参考自<a href="http://www.wuliaole.com/post/difference_between_GPT_and_MBR/" target="_blank" rel="external">无聊小博</a></p>
-<h1 id="机械硬盘结构"><a href="#机械硬盘结构" class="headerlink" title="机械硬盘结构"></a>机械硬盘结构</h1><p><img src="/2018/03/04/操作系统启动原理(基于Windows)/hdd.jpg" alt="hdd"></p>
-<p>机械硬盘主要由以下几部分组成：机械手臂（Boom）,磁头（Head）,转轴（Spindle），盘片（Platter）组成，在实际应用中又将盘片分成了磁道（Track），扇区（Sector）和柱面（Cylinder）。每一个盘片的结构如图</p>
-<p><img src="/2018/03/04/操作系统启动原理(基于Windows)/plater.png" alt="plater"></p>
-<h3 id="磁道"><a href="#磁道" class="headerlink" title="磁道"></a>磁道</h3><p>​         每个盘片的每个盘面被划分成多个狭窄的同心圆环，数据就是存储在这样的同心圆环上，我们将这样的圆环称为磁道(Track)，每个盘面可以划分多个磁道。在每个盘面的最外圈，离盘心最远的地方是“0”磁道，向盘心方向依次增长为1磁道，2磁道，等等。硬盘数据的存放就是从最外圈开始。</p>
-<h3 id="扇区"><a href="#扇区" class="headerlink" title="扇区"></a>扇区</h3><p>每个磁道划分成若干弧段，每段称为一个扇区(Sector)。扇区是硬盘上存储的物理单位。从DOS时代起，每扇区是128×22＝512字节，现在已经成了业界不成文的规定。另外扇区的编号是从1开始，而不是0。</p>
-<h3 id="柱面"><a href="#柱面" class="headerlink" title="柱面"></a>柱面</h3><p>柱面是抽象出来的一个逻辑概念，前面说过，离盘心最远的磁道为0磁道，依此往里为1磁道，2磁道，3磁道….，不同面上相同磁道编号则组成了一个圆柱面，即所称的柱面(Cylinder)。</p>
-<h3 id="簇"><a href="#簇" class="headerlink" title="簇"></a>簇</h3><p>物理相邻的若干个扇区称为簇。<strong>操作系统读写磁盘的基本单位是扇区，而文件系统的基本单位是簇(Cluster)</strong>。在Windows下，随便找个几字节的文件，在其上面点击鼠标右键选择属性，看看实际大小与占用空间两项内容，如大小：15 字节 (15 字节)， 占用空间：4.00 KB (4，096 字节)。这里的占用空间就是你机器分区的簇大小，因为<strong>再小的文件都会占用空间，逻辑基本单位是4K</strong>，所以都会占用4K。 簇一般有这几类大小 4K，8K，16K，32K，64K等。簇越大存储性能越好，但空间浪费严重。簇越小性能相对越低，但空间利用率高。NTFS格式的文件系统簇的大小为4K。</p>
-<p>​                                                                                                             参考自<a href="http://blog.csdn.net/xingjiarong/article/details/46312571" target="_blank" rel="external">csdn博客</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://matthew-sword.github.io/2018/03/04/操作系统启动原理(基于Windows)/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/03/06/关于hexo博客的一些“bug”修复/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于hexo博客的一些“bug”修复
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/12/09/tinyhttpd学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">tinyhttpd学习</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统启动过程"><span class="toc-number">1.</span> <span class="toc-text">操作系统启动过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、通电后从主板ROM上读取BIOS，进行系统硬件自检"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、通电后从主板ROM上读取BIOS，进行系统硬件自检</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、读取主引导记录（MBR）"><span class="toc-number">1.0.2.</span> <span class="toc-text">3、读取主引导记录（MBR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、硬盘启动"><span class="toc-number">1.0.3.</span> <span class="toc-text">4、硬盘启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、操作系统"><span class="toc-number">1.0.4.</span> <span class="toc-text">5、操作系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MBR和GPT"><span class="toc-number">2.</span> <span class="toc-text">MBR和GPT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT"><span class="toc-number">2.0.1.</span> <span class="toc-text">GPT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兼容性"><span class="toc-number">2.0.2.</span> <span class="toc-text">兼容性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#机械硬盘结构"><span class="toc-number">3.</span> <span class="toc-text">机械硬盘结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#磁道"><span class="toc-number">3.0.1.</span> <span class="toc-text">磁道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扇区"><span class="toc-number">3.0.2.</span> <span class="toc-text">扇区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#柱面"><span class="toc-number">3.0.3.</span> <span class="toc-text">柱面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#簇"><span class="toc-number">3.0.4.</span> <span class="toc-text">簇</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -407,8 +227,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

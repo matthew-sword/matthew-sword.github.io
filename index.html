@@ -149,6 +149,147 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ch1概览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/11/ch1概览/">CSAPP系列1-计算机系统漫游</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/11/ch1概览/" class="archive-article-date">
+  	<time datetime="2018-03-11T13:03:03.274Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>基础概念：计算机系统 = 硬件+软件系统</strong></p>
+<h2 id="C语言代码编译过程"><a href="#C语言代码编译过程" class="headerlink" title="C语言代码编译过程"></a>C语言代码编译过程</h2><p>hello.c –(预处理器)&gt; hello.i- -(编译器)&gt;hello.s –(汇编器)&gt; hello.o –(链接器)&gt; 可执行程序</p>
+<ul>
+<li><p>hello.c –&gt; hello.i:预处理器将 #include 里的内容直接插入程序文本</p>
+</li>
+<li><p>hello.i –&gt; hello.s:编译器将hello.i的内容处理成汇编语言</p>
+</li>
+<li><p>hello.s –&gt; hello.o:汇编器将汇编语言处理成机器代码（二进制）</p>
+</li>
+<li><p>hello.o –&gt; hello:链接器将库函数里已经编译好的函数（比如printf）可执行文件代码合并到hello.o中</p>
+</li>
+</ul>
+<h2 id="计算机主要硬件组成"><a href="#计算机主要硬件组成" class="headerlink" title="计算机主要硬件组成"></a>计算机主要硬件组成</h2><ul>
+<li><p>总线：在个部件之间传递信息。总是<strong>传送定长的字节块（字 word）。</strong>机器字长（<strong>字中字节的个数</strong>）一般为32位（4字节）或者64位（8字节）</p>
+</li>
+<li><p>I/O设备：一般鼠标、键盘、显示器、磁盘。每个I/O设备都有<strong>I/O控制器</strong>或者<strong>I/O适配器</strong>与I/O总线相连。I/O控制器一般为主板上的芯片，I/O适配器为插在主板上的卡。</p>
+</li>
+<li><p>主存：临时1存储设备，用于在程序运行时存储程序和相关数据。由一组DRAM构成</p>
+</li>
+<li><p>处理器：由寄存器（容量一个字）、程序计数器（CP）、算术逻辑单元（ALU）组成。CP指向主存中某一条机器语言指令的位置（其内存地址）。</p>
+</li>
+<li><p>高速缓存（cache memory）：一般存在三级缓存L1、L2、L3。存在于cpu和主存之间</p>
+</li>
+</ul>
+<p>##操作系统管理硬件</p>
+<p>基本功能：防止硬件被滥用、向应用程序提供简单机制控制硬件</p>
+<p>三大抽象概念</p>
+<ul>
+<li><p>文件：对I/O设备（包括磁盘）的抽象</p>
+</li>
+<li><p>虚拟内存：对主存和磁盘I/O设备的抽象</p>
+</li>
+<li><p>进程：对处理器、主存、I/O设备的抽象</p>
+</li>
+</ul>
+<p>###进程</p>
+<p>进程：操作系统对<strong>正在运行的程序</strong>的一种抽象。</p>
+<p>并发运行：一个进程和另一个进程的指令教程交错执行。</p>
+<p>线程：一个进程由多个线程组成，线程共享相同的代码和全局数据。</p>
+<p>虚拟内存：操作系统将每个进程的内存地址看作一致的，称为虚拟地址空间。</p>
+<p>虚拟内存结构（由低到高）</p>
+<ul>
+<li>程序代码和数据区（大小固定）</li>
+<li>堆（heap）：堆的容量可以动态变化</li>
+<li>共享库：用于存放类似C标准库、数学库等</li>
+<li>栈（stack）：用于函数调用，其容量可以动态的变化</li>
+<li>内核虚拟内存：由内核调用，不允许其它程序调用或者读写数据</li>
+</ul>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p>文件就是字节序列，网络也可以看作文件。</p>
+<h2 id="Amdahl-定律"><a href="#Amdahl-定律" class="headerlink" title="Amdahl 定律"></a>Amdahl 定律</h2><p>当对系统的部分加速时，其对系统整体性能的影响取决于该部分的重要程度和加速程度</p>
+<p>​                                              <strong>S = 1/[ (1-a) + a/k ]</strong></p>
+<ul>
+<li><p>S:加速比 T 原/ T现</p>
+</li>
+<li><p>a：该部分运行所占时间比例</p>
+</li>
+<li><p>k：该部分性能提升比例</p>
+</li>
+</ul>
+<p>##并行&amp;并发</p>
+<p><strong>并发（concurrency）</strong>:一个系统<strong>同时</strong>具有多个活动</p>
+<p><strong>并行（parallelism）</strong>:使用并行来使一个系统运行更快</p>
+<h3 id="线程级并发"><a href="#线程级并发" class="headerlink" title="线程级并发"></a>线程级并发</h3><p>即多个程序同时运行，这是通过在不同进程间快速切换来模拟。</p>
+<p><strong>多核处理器</strong>：每个核（CPU）有自己的寄存器、L1、L2缓存共用L3缓存。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">系统</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CSAPP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/11/ch1概览/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-GEB随想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1347,140 +1488,9 @@
 
 
   
-    <article id="post-php-part1-基础特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/29/php-part1-基础特性/">php-part1-基础特性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/29/php-part1-基础特性/" class="archive-article-date">
-  	<time datetime="2017-09-29T06:48:37.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="php-标记符-amp-注释"><a href="#php-标记符-amp-注释" class="headerlink" title="php 标记符&amp;注释"></a>php 标记符&amp;注释</h2><ul>
-<li><p>&lt;?php  ?&gt;</p>
-</li>
-<li><p>&lt;?  ?&gt;</p>
-</li>
-<li><p>&lt;%  %&gt;   </p>
-</li>
-</ul>
-<p>​             <em>注释</em></p>
-<ul>
-<li><p>//</p>
-</li>
-<li><p>/<em> </em>/</p>
-</li>
-</ul>
-<ul>
-<li>#</li>
-</ul>
-<h2 id="php标量数据类型"><a href="#php标量数据类型" class="headerlink" title="php标量数据类型"></a>php标量数据类型</h2><ul>
-<li>boolean</li>
-<li>string</li>
-<li>intergrt</li>
-<li>float<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3></li>
-<li><p>$a = ‘string’</p>
-</li>
-<li><p>$a = “string”</p>
-<ul>
-<li><p>&lt;&lt;&lt; string-name<br>  格式化文本</p>
-<pre><code> string-name
-
-**双引号 定界符(&lt;&lt;&lt;)包含的变量自动替换成变量值 ，简单字符串尽量用单引号**
-</code></pre><h3 id="integer"><a href="#integer" class="headerlink" title="integer"></a>integer</h3></li>
-</ul>
-</li>
-<li><p>八进制 ：0开头</p>
-</li>
-<li><p>十六进制；0x开头</p>
-</li>
-</ul>
-<h2 id="php复合数据类型"><a href="#php复合数据类型" class="headerlink" title="php复合数据类型"></a>php复合数据类型</h2><p> ###array</p>
-<ul>
-<li>$array = (“val1”,”val2”…)</li>
-<li>$array[key] = “val”;</li>
-<li>array(key1=&gt;val1, key2=&gt;val2…)<h3 id="检测数据类型"><a href="#检测数据类型" class="headerlink" title="检测数据类型"></a>检测数据类型</h3><ul>
-<li>is_bool</li>
-<li>is_string</li>
-<li>is_array…<h2 id="php数据输出"><a href="#php数据输出" class="headerlink" title="php数据输出"></a>php数据输出</h2>###print &amp; echo<br>print一次只输出一个字符串，echo可以输出多个，不同字符串之间用 . 连接。<strong>echo前不能用@错误屏蔽符。print是一个有返回值的函数，可以作为表达式，echo不行</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="php命名规则"><a href="#php命名规则" class="headerlink" title="php命名规则"></a>php命名规则</h2><ul>
-<li>类名&amp;文件：驼峰法</li>
-<li>常量：大写+下划线</li>
-<li>变量&amp;函数：小写+下划线</li>
-<li>数组：单词复数</li>
-</ul>
-<p>  ​</p>
-<p>  ​</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/29/php-part1-基础特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1591,15 +1601,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CSAPP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">系统</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1650,7 +1664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一条咸鱼......&lt;br&gt;想翻身&lt;br&gt;╮(╯▽╰)╭</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一条咸鱼......想翻身╮(╯▽╰)╭</div>
   	  	
     	</section>
     
