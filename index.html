@@ -59,8 +59,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/音乐/">音乐</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -80,8 +78,6 @@
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/matthew-sword" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="/lucklgh@126.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -116,16 +112,12 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/matthew-sword" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="mail" target="_blank" href="/lucklgh@126.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -134,9 +126,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/音乐/">音乐</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,6 +142,210 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-SSH登录原理及配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/11/SSH登录原理及配置/">SSH远程登陆原理及配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/11/SSH登录原理及配置/" class="archive-article-date">
+  	<time datetime="2018-03-11T07:48:01.293Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SSH是什么"><a href="#SSH是什么" class="headerlink" title="SSH是什么"></a>SSH是什么</h2><p><strong>SSH</strong>：<strong>Secure Shell</strong>，中文名称<strong>安全外壳协议</strong>。是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。一般用于计算机之间的加密登录。</p>
+<p>最开始，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案。</p>
+<h2 id="SSH的工作原理"><a href="#SSH的工作原理" class="headerlink" title="SSH的工作原理"></a>SSH的工作原理</h2><h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p><strong>非对称加密</strong>是密码学的一种算法，它需要两个密钥，一个是公开密钥，另一个是私有密钥；<strong>公开密钥用作加密的时候，私有密钥则用作解密</strong>。使用<strong>公开密钥</strong>加密后的明文，只能用<strong>私有密钥</strong>才能解密得到原本的明文。<br>​                                                                                             更多详细信息请参考<a href="https://zh.wikipedia.org/wiki/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86" target="_blank" rel="external">维基百科</a></p>
+<h3 id="工作流程（password-认证）"><a href="#工作流程（password-认证）" class="headerlink" title="工作流程（password 认证）"></a>工作流程（password 认证）</h3><p>SSH 连接是<strong>C/S模型</strong>, <strong>客户端</strong> 发出连接申请, <strong>服务器</strong> 对客户端进行验证, 再考虑是否接受连接申请</p>
+<ul>
+<li>客户端向 ssh 服务器发出请求, 服务器将自己的<strong>公钥</strong>返回给客户端</li>
+<li>客户端用<strong>公钥</strong>加密自己的<strong>登录密码</strong>后再发送给服务器</li>
+<li>服务器接收到加密后的密码, 用自己的<strong>私钥</strong>解码, 如果结果正确则建立起连接.</li>
+</ul>
+<h3 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h3><p>上述password认证方式仍然存在漏洞, 这就是著名的<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="external">中间人攻击</a>。<br>简单而言，如果中间人截获了登录请求，然后冒充服务器，将伪造的公钥发给用户，那么用户有可能把自己的登录密码发送给中间人。</p>
+<p>SSH协议是如何应对的呢？<br>如果你是第一次登录服务器，系统会出现下面的提示：</p>
+<blockquote>
+<p>　　$ ssh user@host</p>
+<p>　　The authenticity of host ‘host (xx.xx.xx.xx)’ can’t be established.</p>
+<p>　　RSA key fingerprint is 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d.</p>
+<p>　　Are you sure you want to continue connecting (yes/no)?</p>
+</blockquote>
+<p>这段话的意思是，无法确认host主机的真实性，只知道它的公钥指纹，问你还想继续连接吗？</p>
+<blockquote>
+<p>所谓”公钥指纹”，是指公钥长度较长（这里采用RSA算法，长达1024位），很难比对，所以对其进行MD5计算，将它变成一个128位的指纹。上例中是98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d，再进行比较，就容易多了。</p>
+</blockquote>
+<p>很自然的一个问题就是，用户怎么知道服务器的公钥指纹应该是多少？回答是没有好办法，服务器必须在自己的网站上贴出公钥指纹，以便用户自行核对。</p>
+<p>​                                                                                                     参考自<a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">阮一峰的网络日志</a></p>
+<h3 id="公钥登录"><a href="#公钥登录" class="headerlink" title="公钥登录"></a>公钥登录</h3><p>使用密码登录，每次都必须输入密码，非常麻烦。此外SSH还提供了公钥登录，可以省去输入密码的步骤。</p>
+<p>公钥登录，就是用户将自己的<strong>公钥</strong>储存在服务器上。登录的时候，服务器会向用户发送一段随机字符串，用户用自己的<strong>私钥</strong>加密后，再发回来。服务器用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。</p>
+<p>具体操作如下</p>
+<ul>
+<li><p>在客户端终端输入如下命令，用rsa算法生成公钥/私钥对。执行时可能会提示要不要对私钥设置口令（passphrase），如果担心私钥的安全，这里可以设置一个。</p>
+<p><code>ssh-keygen -t rsa</code></p>
+</li>
+<li><p>执行后在用户目录下会生成私钥文件 (id_rsa) 与公钥文件 (id_rsa.pub)</p>
+</li>
+<li><p>输入下面的命令，将公钥传送到服务器上面</p>
+<p><code>$ ssh-copy-id user@host</code></p>
+</li>
+<li><p>或者用一下命令直接将id_rsa.pub文件追加到服务器的authorized_keys的末尾</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ssh user@host </div><div class="line">mkdir -p .ssh </div><div class="line">cat &gt;&gt; .ssh/authorized_keys &lt; ~/.ssh/id_rsa.pub #第二个地址为本机目录</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​                                                                                                     参考自<a href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html" target="_blank" rel="external">阮一峰的网络日志</a></p>
+<p><strong>PS</strong></p>
+<blockquote>
+<p>如果无法登陆</p>
+<ul>
+<li>首先检查服务器ssh配置是否开启。在文件/etc/ssh/sshd_config中查看如下配置,是否被#注释掉<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span>    RSAAuthentication yes        # 启用 RSA 认证，默认为yes</div><div class="line"><span class="meta">&gt;</span>    PubkeyAuthentication yes     # 启用公钥认证，默认为yes</div><div class="line"><span class="meta">&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<ul>
+<li>修改完后重启ssh服务 <code>service ssh restart</code></li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/11/SSH登录原理及配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-域名简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/10/域名简介/">域名到底有哪些类别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/10/域名简介/" class="archive-article-date">
+  	<time datetime="2018-03-10T11:54:12.712Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一级域名"><a href="#一级域名" class="headerlink" title="一级域名"></a>一级域名</h2><p><strong>一级域名</strong>（或<strong>顶级域名</strong>；英语：Top-level Domain）是域名的最后一个部分，即是域名最后一点之后的字母。例如在<code>example.com</code>这个域名中，顶级域是<code>.com</code>（或<code>.COM</code>），大小写视为相同。有着<code>.com .org .edu</code>等不同类别。详细分类见<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%88%97%E8%A1%A8" target="_blank" rel="external">维基百科</a></p>
+<h2 id="二级域名"><a href="#二级域名" class="headerlink" title="二级域名"></a>二级域名</h2><p><strong>级域名</strong>（英语：Second-level domain）是处于顶级域名之下的域。二级域名是域名的倒数第二个部分，例如在<code>example.com</code>这个域名中，二级域名是<code>example</code></p>
+<h2 id="三级域名"><a href="#三级域名" class="headerlink" title="三级域名"></a>三级域名</h2><p>在二级域名之上再进行域名划分的话就产生三级域名。如<code>a.xxx.com</code>。比如百度在<code>baidu.com</code>的基础上还建立了如<code>www.baidu.com</code>搜索引擎 、<code>music.baidu.com</code>百度音乐、  <code>tieba.baidu.com</code>百度贴吧等子域名</p>
+<h2 id="更多级域名"><a href="#更多级域名" class="headerlink" title="更多级域名"></a>更多级域名</h2><p>三级域名之后，还有四级，五级，……等更多级可用。虽然每一级域名到底能设置多少个，理论上没有限制，但实际上域名的提供商是可以做限制的。要建立子域名，通过相应服务商添加DNS即可</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/10/域名简介/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-关于hexo博客的一些“bug”修复" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -713,7 +907,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h1><ul>
+        <h2 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h2><ul>
 <li>普通字符</li>
 <li>转义字符</li>
 <li>特殊字符（使用其本身需要转义）<ul>
@@ -731,21 +925,20 @@
 </ul>
 </li>
 </ul>
-<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
+<h2 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h2><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。</p>
 <ul>
 <li>* 0或者多次</li>
 <li>+ 一次或者多次</li>
 <li>?  0次或者1次</li>
 <li>{n} 匹配n次</li>
 <li>{n，} 至少匹配n次</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>​</li>
+<li>​</li>
+<li>​</li>
+<li>​</li>
+<li>​</li>
 </ul>
-
+<h2 id="待续…"><a href="#待续…" class="headerlink" title="待续…"></a>待续…</h2>
       
 
       
@@ -759,6 +952,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tools</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
         		</li>
       		
 		</ul>
@@ -964,19 +1161,19 @@
 
 
   
-    <article id="post-关于ssd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SSD结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/17/关于ssd/">SSD结构</a>
+      <a class="article-title" href="/2017/11/17/SSD结构/">SSD结构</a>
     </h1>
   
 
         
-        <a href="/2017/11/17/关于ssd/" class="archive-article-date">
+        <a href="/2017/11/17/SSD结构/" class="archive-article-date">
   	<time datetime="2017-11-17T06:35:15.091Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
 </a>
         
@@ -984,7 +1181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ssd结构"><a href="#ssd结构" class="headerlink" title="ssd结构"></a>ssd结构</h1><p>全称：Solid State Drive</p>
+        <h1 id="SSD工作原理"><a href="#SSD工作原理" class="headerlink" title="SSD工作原理"></a>SSD工作原理</h1><p>全称：Solid State Drive</p>
 <ul>
 <li><p>控制单元</p>
 </li>
@@ -1009,8 +1206,7 @@
 <p>​</p>
 </li>
 </ul>
-<p>###DRAM</p>
-<p>DRAM：Dynamic Random Access Memory   动态随机存取存储器</p>
+<h3 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h3><p>DRAM：Dynamic Random Access Memory   动态随机存取存储器</p>
 <p>内存原理，少见</p>
 <h2 id="寿命限制"><a href="#寿命限制" class="headerlink" title="寿命限制"></a>寿命限制</h2><p>反复写－擦，非常薄的栅氧化层（SiO2）的绝缘性就会降低（晶格结构被反复冲击之类的各种电效应热效应），漏电会越来越大，最后封不住电荷，也自然就读不出来不同状态－－所谓失效。 TLC在修改相同量数据时单个单元写－擦次数多，所以寿命短</p>
 
@@ -1036,7 +1232,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/17/关于ssd/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/17/SSD结构/">展开全文 >></a>
         </p>
       
 
@@ -1350,367 +1546,6 @@
 
 
   
-    <article id="post-php-part3-语句与数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/29/php-part3-语句与数组/">php-part3-语句和数组</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/29/php-part3-语句与数组/" class="archive-article-date">
-  	<time datetime="2017-09-29T06:48:37.892Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="php语句"><a href="#php语句" class="headerlink" title="php语句"></a>php语句</h2><ul>
-<li><p>foreach</p>
-<p>一般用于数组遍历，用法：</p>
-<p><code>foreach(array_name as $value)</code>  或者</p>
-<p><code>foreach(array_name as $key =&gt; $value)</code></p>
-<p><code>$value</code>为数组元素的值，<code>$key</code>为数组下标。</p>
-</li>
-<li><p>exit</p>
-<p>exit用于终止整个php程序的执行，exit之后的语句都不会被执行。用法：</p>
-<p><code>exit(&quot;退出信息&quot;);</code></p>
-</li>
-</ul>
-<hr>
-<h2 id="php数组"><a href="#php数组" class="headerlink" title="php数组"></a>php数组</h2><h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><ul>
-<li><p><strong>数字索引数组</strong>：下标是数字</p>
-</li>
-<li><p><strong>关联数组</strong>：数组下标含有字符串（数字字符串混合也行）；<strong>如果下标为字符串，则要加上 ‘’ 或者””</strong></p>
-</li>
-</ul>
-<p>###数组创建方式</p>
-<ul>
-<li><p>直接赋值法</p>
-<p><code>$arr[key] =value</code><br><code>$arr[] = value</code><br>其中key为int或者字符串数据，value可以为任何值，包括数组类型（此时$arr为二维数组）</p>
-</li>
-<li><p>使用array()函数<br> ​     <code>$arr = array(&#39;key1&#39;=&gt;&#39;value1&#39;,&#39;kay2&#39;=&gt;&#39;value2&#39;...);</code>使用array()函数时，可以省略键名（key）。如果key省略，则默认以0开始。</p>
-</li>
-<li><p>创建二维数组</p>
-<p> ​       <em>二维数组的元素本身是数组</em></p>
-<ul>
-<li><p>直接赋值法</p>
-<p><code>$arr[0] = array(&#39;key1&#39;=&gt;&#39;value1&#39;...)</code></p>
-<p><code>$arr[1] = array(&#39;key1&#39;=&gt;&#39;value1&#39;...)</code></p>
-<ul>
-<li>使用array()函数<br> `$str = array( <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">keys1 =&gt; <span class="keyword">array</span>(<span class="string">'key1'</span>=&gt;<span class="string">'value1'</span>...)</div><div class="line">keys2 =&gt;  <span class="keyword">array</span>(<span class="string">'key1'</span>=&gt;<span class="string">'value1'</span>...))`</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>###数组遍历与输出</p>
-<ul>
-<li><p>使用foreach（具体见前文）</p>
-</li>
-<li><p>使用list() 和 each()</p>
-<p> <code>list($key,$value) =each($array)</code>，list()将数组中的值赋给一些变量，each()返回当前数组中指针所指的键名和对应值，<strong>并将指针移到下一位。</strong></p>
-</li>
-</ul>
-<ul>
-<li><p>print_r(mixed expression)</p>
-<p>如果变量为非数组类型，则直接输出其本身，否则按键值对顺序显示数组</p>
-<ul>
-<li>var_dump()</li>
-</ul>
-<p>输出数组或对象，元素数量以及每个字符串长度。还能以缩进方式输出数组或对象的结构</p>
-</li>
-</ul>
-<hr>
-<h2 id="数组函数"><a href="#数组函数" class="headerlink" title="数组函数"></a>数组函数</h2><h3 id="1-创建函数"><a href="#1-创建函数" class="headerlink" title="1.创建函数"></a>1.创建函数</h3><ul>
-<li><p><strong>range(int low, int high, int step(可选))</strong></p>
-<p>low：数组元素最小值，high：数组元素最大值，step：数值进步数，默认为1</p>
-</li>
-<li><p><strong>array_combine( key_array, value_array)</strong></p>
-<p>将两个元素个数相等的数组合并成一个数组，如果两个数组元素个数不等或者为空，返回false。key_array做索引，value_array做数组值。</p>
-</li>
-<li><p><strong>array_fill( int start_index, int num, mixed value)</strong></p>
-<p>用同一个值填充数组。start_index：起始键名，num：填充数&gt;0，value：用来填充的值。</p>
-</li>
-<li><p><strong>array_pad( array input, int pad_size, pad_value)</strong></p>
-<p>用指定值将数组填充到指定长度。input：输入数组，pad_size：填充长度，正数从左边开始填充，负数从右边开始，pad_value：填充值。</p>
-</li>
-<li><p><strong>explode(separator, string, int limit（可选）)</strong></p>
-<p>按照指定规则对一串字符串进行分割，</p>
-<p>​</p>
-<p>​</p>
-<p>​</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/29/php-part3-语句与数组/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php-part4-网页交互" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/29/php-part4-网页交互/">php-part4-网页交互</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/29/php-part4-网页交互/" class="archive-article-date">
-  	<time datetime="2017-09-29T06:48:37.884Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="php网页交互"><a href="#php网页交互" class="headerlink" title="php网页交互"></a>php网页交互</h1><h2 id="GET-amp-POST方法获取数据"><a href="#GET-amp-POST方法获取数据" class="headerlink" title="GET &amp; POST方法获取数据"></a>GET &amp; POST方法获取数据</h2><ul>
-<li><strong>GET方法</strong>是<form>表单默认方法，提交的信息附加于url提交到服务器；并且url数据大小 &lt; 1MB，否则会被截断。</form></li>
-<li><strong>POST方法</strong>信息不附加于url；并且大小没有限制<h2 id="GET-amp-POST全局变量获取数据"><a href="#GET-amp-POST全局变量获取数据" class="headerlink" title="\$_GET &amp; $_POST全局变量获取数据"></a>\$_GET &amp; $_POST全局变量获取数据</h2></li>
-</ul>
-<p>\$_GET &amp; $_POST实际上是两个关联数组，//键名依次是”user”,”pwd”,”submit”</p>
-<hr>
-<h2 id="web表单"><a href="#web表单" class="headerlink" title="web表单"></a>web表单</h2><p>web表单主要用于将网页中的数据发送到服务器，实现交互。</p>
-<p>表单结构如下</p>
-<p><code>&lt;form name = &quot;&quot; method = &quot;&quot; action = &quot;&quot; enctype = &quot;&quot; target = &quot;&quot; id = &quot;&quot;&gt;</code></p>
-<p>​       <code>表单元素</code></p>
-<p> <code>&lt;/form&gt;</code></p>
-<h3 id="表单属性："><a href="#表单属性：" class="headerlink" title="表单属性："></a>表单属性：</h3><ul>
-<li><p>name：表单名称</p>
-</li>
-<li><p>method：提交方法（GET /  POST）</p>
-</li>
-<li><p>action：处理表单的页面的url（<strong>必须指定</strong>）</p>
-</li>
-<li><p>enctype：表单的编码方式（utf-8 …）</p>
-</li>
-<li><p>target：返回信息的<strong>显示方式</strong>，具体见下表</p>
-</li>
-<li><p>id：表单的id号</p>
-</li>
-</ul>
-<p>target属性</p>
-<ul>
-<li><p>_blank      返回信息显示在新窗口</p>
-</li>
-<li><p>_parent     返回信息显示在父级窗口</p>
-</li>
-<li><p>_self           返回信息显示在当前窗口</p>
-</li>
-<li><p>_top            返回信息显示在顶级窗口</p>
-</li>
-</ul>
-<hr>
-<h3 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a><strong>表单元素</strong></h3><h4 id="文字域text"><a href="#文字域text" class="headerlink" title="文字域text"></a>文字域text</h4><p>用于向文本域中输入任何字符。</p>
-<p> <code>&lt;input type = &quot;text&quot; name = &quot;&quot; maxlength = xxx size = xxx value = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：文字域名称</li>
-<li>maxlength：最大输入长度</li>
-<li>size：文字域宽度</li>
-<li>value：文字域默认值（一般用于输出说明）</li>
-</ul>
-<h4 id="密码域password"><a href="#密码域password" class="headerlink" title="密码域password"></a>密码域password</h4><p> <code>&lt;input type = &quot;password&quot; name = &quot;&quot; maxlength = xxx size = xxx &gt;</code></p>
-<ul>
-<li>name：密码域名称</li>
-<li>maxlength：最大密码长度</li>
-<li>size：密码域宽度</li>
-</ul>
-<h4 id="单选按钮radio"><a href="#单选按钮radio" class="headerlink" title="单选按钮radio"></a>单选按钮radio</h4><p><code>&lt;input type = &quot;radio&quot; name = &quot;&quot; value = &quot;&quot; checked &gt;</code></p>
-<ul>
-<li>name：按钮名称</li>
-<li>checked：表示此按钮默认选中</li>
-<li>value：选中后传送到服务器的值</li>
-</ul>
-<h4 id="复选框checkbox"><a href="#复选框checkbox" class="headerlink" title="复选框checkbox"></a>复选框checkbox</h4><p><code>&lt;input type = &quot;checkbox&quot; name = &quot;&quot; value = &quot;&quot; checked &gt;</code></p>
-<ul>
-<li>name：复选框名称</li>
-<li>checked：表示此按钮默认选中</li>
-<li>value：选中后传送到服务器的值<h4 id="普通按钮button"><a href="#普通按钮button" class="headerlink" title="普通按钮button"></a>普通按钮button</h4></li>
-</ul>
-<p><code>&lt;input type = &quot;button&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：普通按钮名称</li>
-<li>value：显示在按钮上的文字<h4 id="提交按钮submit"><a href="#提交按钮submit" class="headerlink" title="提交按钮submit"></a>提交按钮submit</h4></li>
-</ul>
-<p><code>&lt;input type = &quot;submit&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：提交按钮名称</li>
-<li>value：显示在按钮上的文字</li>
-</ul>
-<h4 id="重置按钮reset"><a href="#重置按钮reset" class="headerlink" title="重置按钮reset"></a>重置按钮reset</h4><p>清楚表单已填内容，恢复默认</p>
-<p><code>&lt;input type = &quot;reset&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：重置按钮名称</li>
-<li>value：显示在按钮上的文字</li>
-</ul>
-<h4 id="图像域image"><a href="#图像域image" class="headerlink" title="图像域image"></a>图像域image</h4><p>用图片代替按钮，使网页效果统一</p>
-<p><code>&lt;input type = &quot;image&quot; name = &quot;&quot; src = &quot;url&quot;&gt;</code></p>
-<ul>
-<li>name：图像域名称</li>
-<li>src：图片路径</li>
-</ul>
-<h4 id="隐藏域hidden"><a href="#隐藏域hidden" class="headerlink" title="隐藏域hidden"></a>隐藏域hidden</h4><p>在网页中对用户不可见。隐藏域用于向服务器收发数据，便于处理比如用户id，点提交时隐藏域一并提交到服务器。</p>
-<p><code>&lt;input type = &quot;hidden&quot; name = &quot;&quot; value = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：隐藏域名称</li>
-<li>value：选中后传送到服务器的值<h4 id="文件域file"><a href="#文件域file" class="headerlink" title="文件域file"></a>文件域file</h4></li>
-</ul>
-<p>用于传输文件，它可以查找硬盘中文件路径，并用表单将文件上传</p>
-<p><code>&lt;input type = &quot;file&quot; name = &quot;file&quot; size = &quot;&quot; maxlength = &quot;&quot;&gt;</code></p>
-<ul>
-<li>name：文件域名称</li>
-<li>size：文件域宽度</li>
-<li>maxlength：输入的最大字符数</li>
-</ul>
-<h4 id="文本域标记textarea"><a href="#文本域标记textarea" class="headerlink" title="文本域标记textarea"></a>文本域标记textarea</h4><p>与text相比textarea可以添加多行文字，一般用于留言板。</p>
-<p><code>&lt;textarea name = &quot;&quot; rows = xxx cols = xxx &gt; content &lt;/textarea&gt;</code></p>
-<ul>
-<li>name：文本域名称</li>
-<li>rows：文本域行数</li>
-<li>cols：文本域列数</li>
-<li>content：文本域显示的类容</li>
-</ul>
-<h4 id="选择域-amp"><a href="#选择域-amp" class="headerlink" title="选择域\ &amp;\"></a>选择域\<select> &amp;\<option></option></select></h4><p>\<select>可以建一个下拉菜单，\<option>可以建立一个列表菜单。</option></select></p>
-<p><code>&lt;select name = &quot;&quot; size = xxx multiple&gt;</code></p>
-<p> <code>&lt;option value = &quot;&quot; selected&gt;选项1&lt;/option&gt;</code><br><code>&lt;option value = &quot;&quot; &gt;选项2&lt;/option&gt;</code><br><code>&lt;option value = &quot;&quot; &gt;选项3&lt;/option&gt;</code><br><code>...</code><br><code>&lt;/select&gt;</code></p>
-<ul>
-<li>name：选择域名称</li>
-<li>size：列表行数</li>
-<li>value：菜单选项值</li>
-<li>multiple：表示以列表方式显示数据，省略则以菜单方式显示数据</li>
-</ul>
-<hr>
-<h3 id="使用数组提交表单"><a href="#使用数组提交表单" class="headerlink" title="使用数组提交表单"></a>使用数组提交表单</h3><h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><h4 id="配置php-ini文件相关参数"><a href="#配置php-ini文件相关参数" class="headerlink" title="配置php.ini文件相关参数"></a>配置php.ini文件相关参数</h4><h4 id="全局变量-FILES"><a href="#全局变量-FILES" class="headerlink" title="全局变量$_FILES"></a>全局变量$_FILES</h4><p>$_FILES是一个数组包含了上传文件的信息</p>
-<ul>
-<li>$_FILES[file_name][name]   上传文件名</li>
-<li>$_FILES[file_name][size]   文件大小</li>
-<li>$_FILES[file_name][tmp_name]   临时目录中使用的文件名</li>
-<li>$_FILES[file_name][type]   储存文件的MIME类型</li>
-<li>$_FILES[file_name][error]   储存文件上传结果</li>
-</ul>
-<h4 id="文件上传函数"><a href="#文件上传函数" class="headerlink" title="文件上传函数"></a>文件上传函数</h4><ul>
-<li><p>is_uploaded_file( filename )   判断文件是否是否是通过POST上传的</p>
-</li>
-<li><p>move_uploaded_file( filename, destination )  </p>
-<p>filename：指定文件上传的临时名称（tmp_name）</p>
-<p>destination：指定文件上传后的保存路径和新名称</p>
-</li>
-</ul>
-<p>##服务器获取数据的其它方法</p>
-<ul>
-<li>$_REQUEST[]全局变量可以获取GET / POST / http cookie传递的数据，当不能确定用什么方法传递数据时可以用\$_REQUEST[]获取数据</li>
-<li>$_SERVER[]全局变量包含服务器创建的信息</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/29/php-part4-网页交互/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1804,27 +1639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hardware</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">transistor</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1832,11 +1651,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DebugLog</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂想</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1887,7 +1718,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">咸鱼......&lt;br&gt;&lt;br&gt;想翻身&lt;br&gt;╮(╯▽╰)╭</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一条咸鱼......&lt;br&gt;想翻身&lt;br&gt;╮(╯▽╰)╭</div>
   	  	
     	</section>
     
